@@ -1,0 +1,77 @@
+{
+    "name": "cortex/categorizable",
+    "type": "cortex-module",
+    "description": "Cortex Categorizable is a frontend layer for the polymorphic Laravel package, for category management. You can categorize any eloquent model with ease, and utilize the power of Nested Sets, and the awesomeness of Sluggable, and Translatable models out of the box.",
+    "keywords": [
+        "model",
+        "cortex",
+        "laravel",
+        "eloquent",
+        "category",
+        "sluggable",
+        "translatable",
+        "categorizable",
+        "polymorphic",
+        "nested-set",
+        "taxonomy",
+        "rinvex"
+    ],
+    "license": "MIT",
+    "homepage": "https://rinvex.com",
+    "support": {
+        "email": "help@rinvex.com",
+        "issues": "https://github.com/rinvex/cortex-categorizable/issues",
+        "source": "https://github.com/rinvex/cortex-categorizable",
+        "docs": "https://github.com/rinvex/cortex-categorizable/README.md"
+    },
+    "authors": [
+        {
+            "name": "Rinvex LLC",
+            "homepage": "https://rinvex.com",
+            "email": "help@rinvex.com"
+        },
+        {
+            "name": "Abdelrahman Omran",
+            "homepage": "https://omranic.com",
+            "email": "me@omranic.com",
+            "role": "Project Lead"
+        },
+        {
+            "name": "The Generous Laravel Community",
+            "homepage": "https://github.com/rinvex/cortex-categorizable/contributors"
+        }
+    ],
+    "require": {
+        "php": "^7.0.0",
+        "laravel/framework": "~5.4.0",
+        "rinvex/modulable": "dev-develop",
+        "rinvex/composable": "dev-develop",
+        "rinvex/categorizable": "dev-develop"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cortex\\Categorizable\\": "src/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "cortex-module": {
+            "autoinstall": false,
+            "icon": {
+                "color": "#2196f3",
+                "name": "heartbeat",
+                "background-size": "cover",
+                "background-color": "#e3f2fd",
+                "background-position": "center",
+                "background-repeat": "no-repeat"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
