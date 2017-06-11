@@ -91,10 +91,10 @@ class CategoriesController extends AuthorizedController
     protected function process(Request $request, Category $category)
     {
         // Prepare required input fields
-        $input = $request->all();
+        $data = $request->all();
 
         // Save category
-        $category->fill($input)->save();
+        $category->fill($data)->save();
 
         return intend([
             'url' => route('backend.categories.index'),
