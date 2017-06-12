@@ -7,7 +7,7 @@ namespace Cortex\Categorizable\Models;
 use Rinvex\Categorizable\Category as BaseCategory;
 
 /**
- * Cortex\Categorizable\Models\Category
+ * Cortex\Categorizable\Models\Category.
  *
  * @property int                                                                       $id
  * @property string                                                                    $slug
@@ -21,6 +21,7 @@ use Rinvex\Categorizable\Category as BaseCategory;
  * @property string                                                                    $deleted_at
  * @property-read \Kalnoy\Nestedset\Collection|\Cortex\Categorizable\Models\Category[] $children
  * @property-read \Cortex\Categorizable\Models\Category                                $parent
+ *
  * @method static \Illuminate\Database\Query\Builder|\Rinvex\Categorizable\Category d()
  * @method static \Illuminate\Database\Query\Builder|\Cortex\Categorizable\Models\Category whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\Cortex\Categorizable\Models\Category whereDeletedAt($value)
