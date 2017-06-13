@@ -35,14 +35,14 @@
 
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#details" data-toggle="tab">{{ trans('cortex/categorizable::common.details') }}</a></li>
+                        <li class="active"><a href="#details-tab" data-toggle="tab">{{ trans('cortex/categorizable::common.details') }}</a></li>
                         @if($category->exists) <li><a href="{{ route('backend.categories.logs', ['category' => $category]) }}">{{ trans('cortex/categorizable::common.logs') }}</a></li> @endif
                         @if($category->exists && $currentUser->can('delete-categories', $category)) <li class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-item-href="{{ route('backend.categories.delete', ['category' => $category]) }}" data-item-name="{{ $category->slug }}"><i class="fa fa-trash text-danger"></i></a></li> @endif
                     </ul>
 
                     <div class="tab-content">
 
-                        <div class="tab-pane active" id="details">
+                        <div class="tab-pane active" id="details-tab">
 
                             <div class="row">
 
