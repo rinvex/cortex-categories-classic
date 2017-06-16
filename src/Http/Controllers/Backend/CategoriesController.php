@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Cortex\Categorizable\Models\Category;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 use Cortex\Categorizable\DataTables\Backend\CategoriesDataTable;
+use Cortex\Categorizable\Http\Requests\Backend\CategoryFormRequest;
 
 class CategoriesController extends AuthorizedController
 {
@@ -29,11 +30,11 @@ class CategoriesController extends AuthorizedController
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\Backend\CategoryFormRequest $request
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryFormRequest $request)
     {
         return $this->process($request, new Category());
     }
@@ -41,12 +42,12 @@ class CategoriesController extends AuthorizedController
     /**
      * Update the given resource in storage.
      *
-     * @param \Illuminate\Http\Request              $request
+     * @param \App\Http\Requests\Backend\CategoryFormRequest              $request
      * @param \Cortex\Categorizable\Models\Category $category
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryFormRequest $request, Category $category)
     {
         return $this->process($request, $category);
     }

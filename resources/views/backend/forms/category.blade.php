@@ -6,6 +6,10 @@
     {{ config('app.name') }} » {{ trans('cortex/foundation::common.backend') }} » {{ trans('cortex/categorizable::common.categories') }} » {{ $category->exists ? $category->slug : trans('cortex/categorizable::common.create_category') }}
 @stop
 
+@push('scripts')
+    {!! JsValidator::formRequest(Cortex\Categorizable\Http\Requests\Backend\CategoryFormRequest::class)->selector('#backend-categories-save') !!}
+@endpush
+
 {{-- Main Content --}}
 @section('content')
 
@@ -28,9 +32,9 @@
         <section class="content">
 
             @if ($category->exists)
-                {{ Form::model($category, ['url' => route('backend.categories.update', ['category' => $category]), 'method' => 'put']) }}
+                {{ Form::model($category, ['url' => route('backend.categories.update', ['category' => $category]), 'method' => 'put', 'id' => 'backend-categories-save']) }}
             @else
-                {{ Form::model($category, ['url' => route('backend.categories.store')]) }}
+                {{ Form::model($category, ['url' => route('backend.categories.store'), 'id' => 'backend-categories-save']) }}
             @endif
 
                 <div class="nav-tabs-custom">
