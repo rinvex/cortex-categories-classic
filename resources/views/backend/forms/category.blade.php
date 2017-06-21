@@ -31,22 +31,22 @@
         <!-- Main content -->
         <section class="content">
 
-            @if ($category->exists)
-                {{ Form::model($category, ['url' => route('backend.categories.update', ['category' => $category]), 'method' => 'put', 'id' => 'backend-categories-save']) }}
-            @else
-                {{ Form::model($category, ['url' => route('backend.categories.store'), 'id' => 'backend-categories-save']) }}
-            @endif
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#details-tab" data-toggle="tab">{{ trans('cortex/categorizable::common.details') }}</a></li>
+                    @if($category->exists) <li><a href="{{ route('backend.categories.logs', ['category' => $category]) }}">{{ trans('cortex/categorizable::common.logs') }}</a></li> @endif
+                    @if($category->exists && $currentUser->can('delete-categories', $category)) <li class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-item-href="{{ route('backend.categories.delete', ['category' => $category]) }}" data-item-name="{{ $category->slug }}"><i class="fa fa-trash text-danger"></i></a></li> @endif
+                </ul>
 
-                <div class="nav-tabs-custom">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#details-tab" data-toggle="tab">{{ trans('cortex/categorizable::common.details') }}</a></li>
-                        @if($category->exists) <li><a href="{{ route('backend.categories.logs', ['category' => $category]) }}">{{ trans('cortex/categorizable::common.logs') }}</a></li> @endif
-                        @if($category->exists && $currentUser->can('delete-categories', $category)) <li class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-item-href="{{ route('backend.categories.delete', ['category' => $category]) }}" data-item-name="{{ $category->slug }}"><i class="fa fa-trash text-danger"></i></a></li> @endif
-                    </ul>
+                <div class="tab-content">
 
-                    <div class="tab-content">
+                    <div class="tab-pane active" id="details-tab">
 
-                        <div class="tab-pane active" id="details-tab">
+                        @if ($category->exists)
+                            {{ Form::model($category, ['url' => route('backend.categories.update', ['category' => $category]), 'method' => 'put', 'id' => 'backend-categories-save']) }}
+                        @else
+                            {{ Form::model($category, ['url' => route('backend.categories.store'), 'id' => 'backend-categories-save']) }}
+                        @endif
 
                             <div class="row">
 
@@ -98,27 +98,28 @@
 
                             </div>
 
-                        </div>
+                            <div class="row">
+                                <div class="col-md-12">
 
-                        <div class="row">
-                            <div class="col-md-12">
+                                    <div class="pull-right">
+                                        {{ Form::button(trans('cortex/categorizable::common.reset'), ['class' => 'btn btn-default btn-flat', 'type' => 'reset']) }}
+                                        {{ Form::button(trans('cortex/categorizable::common.submit'), ['class' => 'btn btn-primary btn-flat', 'type' => 'submit']) }}
+                                    </div>
 
-                                <div class="pull-right">
-                                    {{ Form::button(trans('cortex/categorizable::common.reset'), ['class' => 'btn btn-default btn-flat', 'type' => 'reset']) }}
-                                    {{ Form::button(trans('cortex/categorizable::common.submit'), ['class' => 'btn btn-primary btn-flat', 'type' => 'submit']) }}
+                                    @include('cortex/foundation::backend.partials.timestamps', ['model' => $category])
+
                                 </div>
-
-                                @include('cortex/foundation::backend.partials.timestamps', ['model' => $category])
 
                             </div>
 
-                        </div>
+                        {{ Form::close() }}
 
                     </div>
 
                 </div>
 
-            {{ Form::close() }}
+            </div>
+
 
         </section>
 
