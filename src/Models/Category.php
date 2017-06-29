@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Categorizable\Models;
 
+use Kalnoy\Nestedset\NestedSet;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Rinvex\Categorizable\Category as BaseCategory;
 
 /**
@@ -36,5 +38,37 @@ use Rinvex\Categorizable\Category as BaseCategory;
  */
 class Category extends BaseCategory
 {
-    //
+    use LogsActivity;
+
+    /**
+     * Indicates whether to log only dirty attributes or all.
+     *
+     * @var bool
+     */
+    protected static $logOnlyDirty = true;
+
+    /**
+     * The attributes that are logged on change.
+     *
+     * @var array
+     */
+    protected static $logAttributes = [
+        'slug',
+        'name',
+        'description',
+        NestedSet::LFT,
+        NestedSet::RGT,
+        NestedSet::PARENT_ID,
+    ];
+
+    /**
+     * The attributes that are ignored on change.
+     *
+     * @var array
+     */
+    protected static $ignoreChangedAttributes = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
 }
