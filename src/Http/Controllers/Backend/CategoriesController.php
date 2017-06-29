@@ -43,7 +43,7 @@ class CategoriesController extends AuthorizedController
      * Update the given resource in storage.
      *
      * @param \Cortex\Categorizable\Http\Requests\Backend\CategoryFormRequest $request
-     * @param \Cortex\Categorizable\Models\Category          $category
+     * @param \Cortex\Categorizable\Models\Category                           $category
      *
      * @return \Illuminate\Http\Response
      */
