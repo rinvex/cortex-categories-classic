@@ -30,7 +30,7 @@ class CategoriesController extends AuthorizedController
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\Backend\CategoryFormRequest $request
+     * @param \Cortex\Categorizable\Http\Requests\Backend\CategoryFormRequest $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -42,7 +42,7 @@ class CategoriesController extends AuthorizedController
     /**
      * Update the given resource in storage.
      *
-     * @param \App\Http\Requests\Backend\CategoryFormRequest $request
+     * @param \Cortex\Categorizable\Http\Requests\Backend\CategoryFormRequest $request
      * @param \Cortex\Categorizable\Models\Category          $category
      *
      * @return \Illuminate\Http\Response
