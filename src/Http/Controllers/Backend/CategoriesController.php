@@ -27,7 +27,7 @@ class CategoriesController extends AuthorizedController
     {
         return app(CategoriesDataTable::class)->with([
             'id' => 'cortex-categorizable-categories',
-            'phrase' => trans('cortex/categorizable::common.categories')
+            'phrase' => trans('cortex/categorizable::common.categories'),
         ])->render('cortex/foundation::backend.partials.datatable');
     }
 
@@ -42,7 +42,7 @@ class CategoriesController extends AuthorizedController
             'type' => 'categories',
             'resource' => $category,
             'id' => 'cortex-categorizable-categories-logs',
-            'phrase' => trans('cortex/categorizable::common.categories')
+            'phrase' => trans('cortex/categorizable::common.categories'),
         ])->render('cortex/foundation::backend.partials.datatable-logs');
     }
 
