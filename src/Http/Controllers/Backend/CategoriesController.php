@@ -6,6 +6,7 @@ namespace Cortex\Categorizable\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use Cortex\Categorizable\Models\Category;
+use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 use Cortex\Categorizable\DataTables\Backend\CategoriesDataTable;
 use Cortex\Categorizable\Http\Requests\Backend\CategoryFormRequest;
@@ -25,6 +26,21 @@ class CategoriesController extends AuthorizedController
     public function index()
     {
         return app(CategoriesDataTable::class)->render('cortex/foundation::backend.partials.datatable', ['id' => 'cortex-categorizable-categories', 'phrase' => trans('cortex/categorizable::common.categories')]);
+    }
+
+    /**
+     * Display a listing of the resource logs.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function logs(Category $category)
+    {
+        return app(LogsDataTable::class)->with([
+            'type' => 'categories',
+            'resource' => $category,
+            'id' => 'cortex-categorizable-categories-logs',
+            'phrase' => trans('cortex/categorizable::common.categories')
+        ])->render('cortex/foundation::backend.partials.datatable-logs');
     }
 
     /**
