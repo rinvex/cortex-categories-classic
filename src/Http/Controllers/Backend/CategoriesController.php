@@ -25,7 +25,10 @@ class CategoriesController extends AuthorizedController
      */
     public function index()
     {
-        return app(CategoriesDataTable::class)->render('cortex/foundation::backend.partials.datatable', ['id' => 'cortex-categorizable-categories', 'phrase' => trans('cortex/categorizable::common.categories')]);
+        return app(CategoriesDataTable::class)->with([
+            'id' => 'cortex-categorizable-categories',
+            'phrase' => trans('cortex/categorizable::common.categories')
+        ])->render('cortex/foundation::backend.partials.datatable');
     }
 
     /**
