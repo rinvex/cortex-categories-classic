@@ -1,6 +1,6 @@
 # Cortex Categorizable
 
-Cortex Categorizable is a frontend layer for the polymorphic Laravel package, for category management. You can categorize any eloquent model with ease, and utilize the power of Nested Sets, and the awesomeness of Sluggable, and Translatable models out of the box.
+**Cortex Categorizable** is a frontend layer for the polymorphic Laravel package, for category management. You can categorize any eloquent model with ease, and utilize the power of Nested Sets, and the awesomeness of Sluggable, and Translatable models out of the box.
 
 [![Packagist](https://img.shields.io/packagist/v/cortex/categorizable.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/cortex/categorizable)
 [![VersionEye Dependencies](https://img.shields.io/versioneye/d/php/cortex:categorizable.svg?label=Dependencies&style=flat-square)](https://www.versioneye.com/php/cortex:categorizable/)
