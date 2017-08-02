@@ -18,14 +18,10 @@
     @endif
 
     <div class="content-wrapper">
-        <!-- Breadcrumbs -->
         <section class="content-header">
             <h1>{{ $category->exists ? $category->slug : trans('cortex/categorizable::common.create_category') }}</h1>
-            <ol class="breadcrumb">
-                <li><a href="{{ route('backend.home') }}"><i class="fa fa-dashboard"></i> {{ trans('cortex/foundation::common.backend') }}</a></li>
-                <li><a href="{{ route('backend.categories.index') }}">{{ trans('cortex/categorizable::common.categories') }}</a></li>
-                <li class="active">{{ $category->exists ? $category->slug : trans('cortex/categorizable::common.create_category') }}</li>
-            </ol>
+            <!-- Breadcrumbs -->
+            {{ Breadcrumbs::render() }}
         </section>
 
         <!-- Main content -->
