@@ -13,8 +13,8 @@ use Rinvex\Categorizable\Category as BaseCategory;
  *
  * @property int                                                                                 $id
  * @property string                                                                              $slug
- * @property array                                                                               $name
- * @property array                                                                               $description
+ * @property string                                                                              $name
+ * @property string                                                                              $description
  * @property int                                                                                 $_lft
  * @property int                                                                                 $_rgt
  * @property int|null                                                                            $parent_id
