@@ -63,6 +63,6 @@ class CategoryPolicy
      */
     public function delete($ability, User $user, Category $resource)
     {
-    return $user->allAbilities->pluck('slug')->contains($ability);   // User can delete categories
+        return $user->allAbilities->pluck('slug')->contains($ability);   // User can delete categories
     }
 }
