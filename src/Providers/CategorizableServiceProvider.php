@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Cortex\Categorizable\Providers;
 
+use Cortex\Categorizable\Models\Category;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\Compilers\BladeCompiler;
 
 class CategorizableServiceProvider extends ServiceProvider
 {
@@ -22,18 +24,6 @@ class CategorizableServiceProvider extends ServiceProvider
 
         // Publish Resources
         ! $this->app->runningInConsole() || $this->publishResources();
-
-        // Register sidebar menus
-        $this->app->singleton('menus.sidebar.management', function ($app) {
-            return collect();
-        });
-
-        // Register menu items
-        $this->app['view']->composer('cortex/foundation::backend.partials.sidebar', function ($view) {
-            app('menus.sidebar')->put('management', app('menus.sidebar.management'));
-            app('menus.sidebar.management')->put('header', '<li class="header">'.trans('cortex/fort::navigation.headers.management').'</li>');
-            app('menus.sidebar.management')->put('categories', '<li '.(mb_strpos(request()->route()->getName(), 'backend.categories.') === 0 ? 'class="active"' : '').'><a href="'.route('backend.categories.index').'"><i class="fa fa-sitemap"></i> <span>'.trans('cortex/categorizable::navigation.menus.categories').'</span></a></li>');
-        });
     }
 
     /**
