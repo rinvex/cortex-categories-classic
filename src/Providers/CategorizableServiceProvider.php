@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Categorizable\Providers;
 
-use Cortex\Categorizable\Models\Category;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\View\Compilers\BladeCompiler;
 
 class CategorizableServiceProvider extends ServiceProvider
 {
