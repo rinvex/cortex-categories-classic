@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Cortex\Categorizable\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Cortex\Categorizable\Console\Commands\SeedCommand;
+use Cortex\Categorizable\Console\Commands\MigrateCommand;
 
 class CategorizableServiceProvider extends ServiceProvider
 {
@@ -34,6 +36,7 @@ class CategorizableServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/categorizable');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/categorizable');
+        $this->commands([SeedCommand::class, MigrateCommand::class]);
         $this->app->afterResolving('blade.compiler', function () {
             require __DIR__.'/../../routes/menus.php';
         });
