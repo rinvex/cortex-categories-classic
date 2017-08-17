@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Categorizable\Policies;
 
-use Cortex\Fort\Models\User;
+use Rinvex\Fort\Models\User;
 use Cortex\Categorizable\Models\Category;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -16,7 +16,7 @@ class CategoryPolicy
      * Determine whether the user can list categories.
      *
      * @param string                   $ability
-     * @param \Cortex\Fort\Models\User $user
+     * @param \Rinvex\Fort\Models\User $user
      *
      * @return bool
      */
@@ -29,7 +29,7 @@ class CategoryPolicy
      * Determine whether the user can create categories.
      *
      * @param string                   $ability
-     * @param \Cortex\Fort\Models\User $user
+     * @param \Rinvex\Fort\Models\User $user
      *
      * @return bool
      */
@@ -42,7 +42,7 @@ class CategoryPolicy
      * Determine whether the user can update the category.
      *
      * @param string                                $ability
-     * @param \Cortex\Fort\Models\User              $user
+     * @param \Rinvex\Fort\Models\User              $user
      * @param \Cortex\Categorizable\Models\Category $resource
      *
      * @return bool
@@ -56,7 +56,7 @@ class CategoryPolicy
      * Determine whether the user can delete the category.
      *
      * @param string                                $ability
-     * @param \Cortex\Fort\Models\User              $user
+     * @param \Rinvex\Fort\Models\User              $user
      * @param \Cortex\Categorizable\Models\Category $resource
      *
      * @return bool
