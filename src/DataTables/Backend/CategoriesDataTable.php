@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Cortex\Categorizable\DataTables\Backend;
 
-use Cortex\Categorizable\Models\Category;
 use Cortex\Foundation\DataTables\AbstractDataTable;
 use Cortex\Categorizable\Transformers\Backend\CategoryTransformer;
 
@@ -13,7 +12,7 @@ class CategoriesDataTable extends AbstractDataTable
     /**
      * {@inheritdoc}
      */
-    protected $model = Category::class;
+    protected $model = 'rinvex.categorizable.category';
 
     /**
      * {@inheritdoc}
