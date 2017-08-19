@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Cortex\Categorizable\Http\Requests\Backend;
 
-use Cortex\Categorizable\Models\Category;
 use Rinvex\Support\Http\Requests\FormRequest;
 
 class CategoryFormRequest extends FormRequest
@@ -26,7 +25,7 @@ class CategoryFormRequest extends FormRequest
      */
     public function rules()
     {
-        $category = $this->route('category') ?? new Category();
+        $category = $this->route('category') ?? app('rinvex.categorizable.category');
         $category->updateRulesUniques();
 
         return $category->getRules();

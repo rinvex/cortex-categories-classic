@@ -55,7 +55,7 @@ class CategoriesController extends AuthorizedController
      */
     public function store(CategoryFormRequest $request)
     {
-        return $this->process($request, new Category());
+        return $this->process($request, app('rinvex.categorizable.category'));
     }
 
     /**
