@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Categorizable\DataTables\Backend;
 
+use Cortex\Categorizable\Models\Category;
 use Cortex\Foundation\DataTables\AbstractDataTable;
 use Cortex\Categorizable\Transformers\Backend\CategoryTransformer;
 
@@ -12,7 +13,7 @@ class CategoriesDataTable extends AbstractDataTable
     /**
      * {@inheritdoc}
      */
-    protected $model = 'rinvex.categorizable.category';
+    protected $model = Category::class;
 
     /**
      * {@inheritdoc}
@@ -26,9 +27,11 @@ class CategoriesDataTable extends AbstractDataTable
      */
     public function ajax()
     {
+        $transformer = app($this->transformer);
+
         return $this->datatables
             ->eloquent($this->query())
-            ->setTransformer(new $this->transformer())
+            ->setTransformer($transformer)
             ->orderColumn('name', 'name->"$.'.app()->getLocale().'" $1')
             ->make(true);
     }
