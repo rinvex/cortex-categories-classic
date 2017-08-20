@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Categorizable\Providers;
 
-use Cortex\Categorizable\Models\Category;
 use Illuminate\Support\ServiceProvider;
+use Cortex\Categorizable\Models\Category;
 use Cortex\Categorizable\Console\Commands\SeedCommand;
 use Cortex\Categorizable\Console\Commands\MigrateCommand;
 
