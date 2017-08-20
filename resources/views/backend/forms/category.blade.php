@@ -3,7 +3,7 @@
 
 {{-- Page Title --}}
 @section('title')
-    {{ config('app.name') }} » {{ trans('cortex/foundation::common.backend') }} » {{ trans('cortex/categorizable::common.categories') }} » {{ $category->exists ? $category->slug : trans('cortex/categorizable::common.create_category') }}
+    {{ config('app.name') }} » {{ trans('cortex/foundation::common.backend') }} » {{ trans('cortex/categorizable::common.categories') }} » {{ $category->exists ? $category->name : trans('cortex/categorizable::common.create_category') }}
 @stop
 
 @push('scripts')
@@ -19,7 +19,7 @@
 
     <div class="content-wrapper">
         <section class="content-header">
-            <h1>{{ $category->exists ? $category->slug : trans('cortex/categorizable::common.create_category') }}</h1>
+            <h1>{{ $category->exists ? $category->name : trans('cortex/categorizable::common.create_category') }}</h1>
             <!-- Breadcrumbs -->
             {{ Breadcrumbs::render() }}
         </section>
