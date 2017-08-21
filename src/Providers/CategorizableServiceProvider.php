@@ -8,8 +8,8 @@ use Illuminate\Support\ServiceProvider;
 use Cortex\Categorizable\Models\Category;
 use Cortex\Categorizable\Console\Commands\SeedCommand;
 use Cortex\Categorizable\Console\Commands\InstallCommand;
-use Cortex\Categorizable\Console\Commands\PublishCommand;
 use Cortex\Categorizable\Console\Commands\MigrateCommand;
+use Cortex\Categorizable\Console\Commands\PublishCommand;
 
 class CategorizableServiceProvider extends ServiceProvider
 {
