@@ -35,14 +35,8 @@ class CategorizableServiceProvider extends ServiceProvider
         // Bind eloquent models to IoC container
         $this->app->alias('rinvex.categorizable.category', Category::class);
 
-        // Register artisan commands
-        foreach ($this->commands as $key => $value) {
-            $this->app->singleton($value, function ($app) use ($key) {
-                return new $key();
-            });
-        }
-
-        $this->commands(array_values($this->commands));
+        // Register console commands
+        ! $this->app->runningInConsole() || $this->registerCommands();
     }
 
     /**
@@ -72,7 +66,24 @@ class CategorizableServiceProvider extends ServiceProvider
      */
     protected function publishResources()
     {
-        $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/categorizable')], 'lang');
-        $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/categorizable')], 'views');
+        $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/categorizable')], 'cortex-categorizable-lang');
+        $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/categorizable')], 'cortex-categorizable-views');
+    }
+
+    /**
+     * Register console commands.
+     *
+     * @return void
+     */
+    protected function registerCommands()
+    {
+        // Register artisan commands
+        foreach ($this->commands as $key => $value) {
+            $this->app->singleton($value, function ($app) use ($key) {
+                return new $key();
+            });
+        }
+
+        $this->commands(array_values($this->commands));
     }
 }
