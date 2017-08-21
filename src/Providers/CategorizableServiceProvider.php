@@ -7,6 +7,8 @@ namespace Cortex\Categorizable\Providers;
 use Illuminate\Support\ServiceProvider;
 use Cortex\Categorizable\Models\Category;
 use Cortex\Categorizable\Console\Commands\SeedCommand;
+use Cortex\Categorizable\Console\Commands\InstallCommand;
+use Cortex\Categorizable\Console\Commands\PublishCommand;
 use Cortex\Categorizable\Console\Commands\MigrateCommand;
 
 class CategorizableServiceProvider extends ServiceProvider
@@ -18,6 +20,8 @@ class CategorizableServiceProvider extends ServiceProvider
      */
     protected $commands = [
         MigrateCommand::class => 'command.cortex.categorizable.migrate',
+        PublishCommand::class => 'command.cortex.categorizable.publish',
+        InstallCommand::class => 'command.cortex.categorizable.install',
         SeedCommand::class => 'command.cortex.categorizable.seed',
     ];
 
