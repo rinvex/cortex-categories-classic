@@ -11,19 +11,19 @@ use Rinvex\Categorizable\Models\Category as BaseCategory;
 /**
  * Cortex\Categorizable\Models\Category.
  *
- * @property int                                                                                 $id
- * @property string                                                                              $slug
- * @property string                                                                              $name
- * @property string                                                                              $description
- * @property int                                                                                 $_lft
- * @property int                                                                                 $_rgt
- * @property int|null                                                                            $parent_id
- * @property \Carbon\Carbon|null                                                                 $created_at
- * @property \Carbon\Carbon|null                                                                 $updated_at
- * @property string|null                                                                         $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activity
- * @property-read \Kalnoy\Nestedset\Collection|\Cortex\Categorizable\Models\Category[]           $children
- * @property-read \Cortex\Categorizable\Models\Category|null                                     $parent
+ * @property int                                                                           $id
+ * @property string                                                                        $slug
+ * @property array                                                                         $name
+ * @property array                                                                         $description
+ * @property int                                                                           $_lft
+ * @property int                                                                           $_rgt
+ * @property int                                                                           $parent_id
+ * @property \Carbon\Carbon                                                                $created_at
+ * @property \Carbon\Carbon                                                                $updated_at
+ * @property string|null                                                                   $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Cortex\Foundation\Models\Log[] $activity
+ * @property-read \Kalnoy\Nestedset\Collection|\Cortex\Categorizable\Models\Category[]     $children
+ * @property-read \Cortex\Categorizable\Models\Category|null                               $parent
  *
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categorizable\Models\Category whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categorizable\Models\Category whereDeletedAt($value)
