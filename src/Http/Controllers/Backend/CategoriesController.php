@@ -74,7 +74,7 @@ class CategoriesController extends AuthorizedController
     /**
      * Delete the given resource from storage.
      *
-     * @param \Rinvex\Categorizable\Contracts\CategoryContractContract $category
+     * @param \Rinvex\Categorizable\Contracts\CategoryContract $category
      *
      * @return \Illuminate\Http\Response
      */
@@ -91,7 +91,7 @@ class CategoriesController extends AuthorizedController
     /**
      * Show the form for create/update of the given resource.
      *
-     * @param \Rinvex\Categorizable\Contracts\CategoryContractContract $category
+     * @param \Rinvex\Categorizable\Contracts\CategoryContract $category
      *
      * @return \Illuminate\Http\Response
      */
@@ -103,8 +103,8 @@ class CategoriesController extends AuthorizedController
     /**
      * Process the form for store/update of the given resource.
      *
-     * @param \Illuminate\Http\Request                                 $request
-     * @param \Rinvex\Categorizable\Contracts\CategoryContractContract $category
+     * @param \Illuminate\Http\Request                         $request
+     * @param \Rinvex\Categorizable\Contracts\CategoryContract $category
      *
      * @return \Illuminate\Http\Response
      */
