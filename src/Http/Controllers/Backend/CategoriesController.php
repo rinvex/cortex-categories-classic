@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Cortex\Categorizable\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use Rinvex\Categorizable\Contracts\CategoryContract;
 use Cortex\Foundation\DataTables\LogsDataTable;
+use Rinvex\Categorizable\Contracts\CategoryContract;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 use Cortex\Categorizable\DataTables\Backend\CategoriesDataTable;
 use Cortex\Categorizable\Http\Requests\Backend\CategoryFormRequest;
@@ -62,7 +62,7 @@ class CategoriesController extends AuthorizedController
      * Update the given resource in storage.
      *
      * @param \Cortex\Categorizable\Http\Requests\Backend\CategoryFormRequest $request
-     * @param \Rinvex\Categorizable\Contracts\CategoryContract                           $category
+     * @param \Rinvex\Categorizable\Contracts\CategoryContract                $category
      *
      * @return \Illuminate\Http\Response
      */
@@ -103,7 +103,7 @@ class CategoriesController extends AuthorizedController
     /**
      * Process the form for store/update of the given resource.
      *
-     * @param \Illuminate\Http\Request              $request
+     * @param \Illuminate\Http\Request                                 $request
      * @param \Rinvex\Categorizable\Contracts\CategoryContractContract $category
      *
      * @return \Illuminate\Http\Response

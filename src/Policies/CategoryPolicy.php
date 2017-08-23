@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Cortex\Categorizable\Policies;
 
 use Rinvex\Fort\Contracts\UserContract;
-use Rinvex\Categorizable\Contracts\CategoryContract;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Rinvex\Categorizable\Contracts\CategoryContract;
 
 class CategoryPolicy
 {
@@ -15,7 +15,7 @@ class CategoryPolicy
     /**
      * Determine whether the user can list categories.
      *
-     * @param string                   $ability
+     * @param string                              $ability
      * @param \Rinvex\Fort\Contracts\UserContract $user
      *
      * @return bool
@@ -28,7 +28,7 @@ class CategoryPolicy
     /**
      * Determine whether the user can create categories.
      *
-     * @param string                   $ability
+     * @param string                              $ability
      * @param \Rinvex\Fort\Contracts\UserContract $user
      *
      * @return bool
@@ -41,7 +41,7 @@ class CategoryPolicy
     /**
      * Determine whether the user can update the category.
      *
-     * @param string                                $ability
+     * @param string                                           $ability
      * @param \Rinvex\Fort\Contracts\UserContract              $user
      * @param \Rinvex\Categorizable\Contracts\CategoryContract $resource
      *
@@ -55,7 +55,7 @@ class CategoryPolicy
     /**
      * Determine whether the user can delete the category.
      *
-     * @param string                                $ability
+     * @param string                                           $ability
      * @param \Rinvex\Fort\Contracts\UserContract              $user
      * @param \Rinvex\Categorizable\Contracts\CategoryContract $resource
      *
