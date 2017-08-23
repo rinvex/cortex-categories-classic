@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Cortex\Categorizable\Models\Category;
+use Rinvex\Categorizable\Contracts\CategoryContract;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 
 Breadcrumbs::register('backend.categories.index', function (BreadcrumbsGenerator $breadcrumbs) {
@@ -15,12 +15,12 @@ Breadcrumbs::register('backend.categories.create', function (BreadcrumbsGenerato
     $breadcrumbs->push(trans('cortex/categorizable::common.create_category'), route('backend.categories.create'));
 });
 
-Breadcrumbs::register('backend.categories.edit', function (BreadcrumbsGenerator $breadcrumbs, Category $category) {
+Breadcrumbs::register('backend.categories.edit', function (BreadcrumbsGenerator $breadcrumbs, CategoryContract $category) {
     $breadcrumbs->parent('backend.categories.index');
     $breadcrumbs->push($category->name, route('backend.categories.edit', ['category' => $category]));
 });
 
-Breadcrumbs::register('backend.categories.logs', function (BreadcrumbsGenerator $breadcrumbs, Category $category) {
+Breadcrumbs::register('backend.categories.logs', function (BreadcrumbsGenerator $breadcrumbs, CategoryContract $category) {
     $breadcrumbs->parent('backend.categories.index');
     $breadcrumbs->push($category->name, route('backend.categories.edit', ['category' => $category]));
     $breadcrumbs->push(trans('cortex/categorizable::common.logs'), route('backend.categories.logs', ['category' => $category]));

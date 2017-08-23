@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Cortex\Categorizable\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Cortex\Categorizable\Models\Category;
 use Cortex\Categorizable\Console\Commands\SeedCommand;
 use Cortex\Categorizable\Console\Commands\InstallCommand;
 use Cortex\Categorizable\Console\Commands\MigrateCommand;
@@ -36,9 +35,6 @@ class CategorizableServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Bind eloquent models to IoC container
-        $this->app->alias('rinvex.categorizable.category', Category::class);
-
         // Register console commands
         ! $this->app->runningInConsole() || $this->registerCommands();
     }

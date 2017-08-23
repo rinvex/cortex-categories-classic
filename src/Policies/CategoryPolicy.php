@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Categorizable\Policies;
 
-use Rinvex\Fort\Models\User;
-use Cortex\Categorizable\Models\Category;
+use Rinvex\Fort\Contracts\UserContract;
+use Rinvex\Categorizable\Contracts\CategoryContract;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class CategoryPolicy
@@ -16,11 +16,11 @@ class CategoryPolicy
      * Determine whether the user can list categories.
      *
      * @param string                   $ability
-     * @param \Rinvex\Fort\Models\User $user
+     * @param \Rinvex\Fort\Contracts\UserContract $user
      *
      * @return bool
      */
-    public function list($ability, User $user)
+    public function list($ability, UserContract $user)
     {
         return $user->allAbilities->pluck('slug')->contains($ability);
     }
@@ -29,11 +29,11 @@ class CategoryPolicy
      * Determine whether the user can create categories.
      *
      * @param string                   $ability
-     * @param \Rinvex\Fort\Models\User $user
+     * @param \Rinvex\Fort\Contracts\UserContract $user
      *
      * @return bool
      */
-    public function create($ability, User $user)
+    public function create($ability, UserContract $user)
     {
         return $user->allAbilities->pluck('slug')->contains($ability);
     }
@@ -42,12 +42,12 @@ class CategoryPolicy
      * Determine whether the user can update the category.
      *
      * @param string                                $ability
-     * @param \Rinvex\Fort\Models\User              $user
-     * @param \Cortex\Categorizable\Models\Category $resource
+     * @param \Rinvex\Fort\Contracts\UserContract              $user
+     * @param \Rinvex\Categorizable\Contracts\CategoryContract $resource
      *
      * @return bool
      */
-    public function update($ability, User $user, Category $resource)
+    public function update($ability, UserContract $user, CategoryContract $resource)
     {
         return $user->allAbilities->pluck('slug')->contains($ability);   // User can update categories
     }
@@ -56,12 +56,12 @@ class CategoryPolicy
      * Determine whether the user can delete the category.
      *
      * @param string                                $ability
-     * @param \Rinvex\Fort\Models\User              $user
-     * @param \Cortex\Categorizable\Models\Category $resource
+     * @param \Rinvex\Fort\Contracts\UserContract              $user
+     * @param \Rinvex\Categorizable\Contracts\CategoryContract $resource
      *
      * @return bool
      */
-    public function delete($ability, User $user, Category $resource)
+    public function delete($ability, UserContract $user, CategoryContract $resource)
     {
         return $user->allAbilities->pluck('slug')->contains($ability);   // User can delete categories
     }

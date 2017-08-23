@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Categorizable\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use Cortex\Categorizable\Models\Category;
+use Rinvex\Categorizable\Contracts\CategoryContract;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 use Cortex\Categorizable\DataTables\Backend\CategoriesDataTable;
@@ -36,7 +36,7 @@ class CategoriesController extends AuthorizedController
      *
      * @return \Illuminate\Http\Response
      */
-    public function logs(Category $category)
+    public function logs(CategoryContract $category)
     {
         return app(LogsDataTable::class)->with([
             'type' => 'categories',
@@ -62,11 +62,11 @@ class CategoriesController extends AuthorizedController
      * Update the given resource in storage.
      *
      * @param \Cortex\Categorizable\Http\Requests\Backend\CategoryFormRequest $request
-     * @param \Cortex\Categorizable\Models\Category                           $category
+     * @param \Rinvex\Categorizable\Contracts\CategoryContract                           $category
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryFormRequest $request, Category $category)
+    public function update(CategoryFormRequest $request, CategoryContract $category)
     {
         return $this->process($request, $category);
     }
@@ -74,11 +74,11 @@ class CategoriesController extends AuthorizedController
     /**
      * Delete the given resource from storage.
      *
-     * @param \Cortex\Categorizable\Models\Category $category
+     * @param \Rinvex\Categorizable\Contracts\CategoryContractContract $category
      *
      * @return \Illuminate\Http\Response
      */
-    public function delete(Category $category)
+    public function delete(CategoryContract $category)
     {
         $category->delete();
 
@@ -91,11 +91,11 @@ class CategoriesController extends AuthorizedController
     /**
      * Show the form for create/update of the given resource.
      *
-     * @param \Cortex\Categorizable\Models\Category $category
+     * @param \Rinvex\Categorizable\Contracts\CategoryContractContract $category
      *
      * @return \Illuminate\Http\Response
      */
-    public function form(Category $category)
+    public function form(CategoryContract $category)
     {
         return view('cortex/categorizable::backend.forms.category', compact('category'));
     }
@@ -104,11 +104,11 @@ class CategoriesController extends AuthorizedController
      * Process the form for store/update of the given resource.
      *
      * @param \Illuminate\Http\Request              $request
-     * @param \Cortex\Categorizable\Models\Category $category
+     * @param \Rinvex\Categorizable\Contracts\CategoryContractContract $category
      *
      * @return \Illuminate\Http\Response
      */
-    protected function process(Request $request, Category $category)
+    protected function process(Request $request, CategoryContract $category)
     {
         // Prepare required input fields
         $data = $request->all();

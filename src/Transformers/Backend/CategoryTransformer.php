@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Cortex\Categorizable\Transformers\Backend;
 
 use League\Fractal\TransformerAbstract;
-use Cortex\Categorizable\Models\Category;
+use Rinvex\Categorizable\Contracts\CategoryContract;
 
 class CategoryTransformer extends TransformerAbstract
 {
     /**
      * @return array
      */
-    public function transform(Category $category)
+    public function transform(CategoryContract $category)
     {
         return [
             'id' => (int) $category->id,

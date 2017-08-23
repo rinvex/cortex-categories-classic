@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+use Rinvex\Categorizable\Contracts\CategoryContract;
+
+Route::model('category', CategoryContract::class);
+
 Route::group(['domain' => domain()], function () {
 
     Route::name('backend.')
