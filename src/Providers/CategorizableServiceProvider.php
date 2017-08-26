@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Cortex\Categorizable\Providers;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use Rinvex\Categorizable\Contracts\CategoryContract;
 use Cortex\Categorizable\Console\Commands\SeedCommand;
 use Cortex\Categorizable\Console\Commands\InstallCommand;
 use Cortex\Categorizable\Console\Commands\MigrateCommand;
@@ -44,8 +46,11 @@ class CategorizableServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Router $router)
     {
+        // Bind models explicitly
+        $router->model('category', CategoryContract::class);
+
         // Load resources
         require __DIR__.'/../../routes/breadcrumbs.php';
         $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
