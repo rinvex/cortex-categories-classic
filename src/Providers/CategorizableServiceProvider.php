@@ -48,7 +48,8 @@ class CategorizableServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        // Bind models explicitly
+        // Bind route models and constrains
+        $router->pattern('category', '[a-z0-9-]+');
         $router->model('category', CategoryContract::class);
 
         // Load resources
