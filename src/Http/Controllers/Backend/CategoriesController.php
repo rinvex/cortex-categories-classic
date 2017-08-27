@@ -84,7 +84,7 @@ class CategoriesController extends AuthorizedController
 
         return intend([
             'url' => route('backend.categories.index'),
-            'with' => ['warning' => trans('cortex/categorizable::messages.category.deleted', ['categoryId' => $category->id])],
+            'with' => ['warning' => trans('cortex/categorizable::messages.category.deleted', ['slug' => $category->slug])],
         ]);
     }
 
@@ -118,7 +118,7 @@ class CategoriesController extends AuthorizedController
 
         return intend([
             'url' => route('backend.categories.index'),
-            'with' => ['success' => trans('cortex/categorizable::messages.category.saved', ['categoryId' => $category->id])],
+            'with' => ['success' => trans('cortex/categorizable::messages.category.saved', ['slug' => $category->slug])],
         ]);
     }
 }
