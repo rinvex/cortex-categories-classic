@@ -1,13 +1,13 @@
 {{-- Master Layout --}}
-@extends('cortex/foundation::backend.layouts.default')
+@extends('cortex/foundation::adminarea.layouts.default')
 
 {{-- Page Title --}}
 @section('title')
-    {{ config('app.name') }} » {{ trans('cortex/foundation::common.backend') }} » {{ trans('cortex/categorizable::common.categories') }} » {{ $category->exists ? $category->name : trans('cortex/categorizable::common.create_category') }}
+    {{ config('app.name') }} » {{ trans('cortex/foundation::common.adminarea') }} » {{ trans('cortex/categorizable::common.categories') }} » {{ $category->exists ? $category->name : trans('cortex/categorizable::common.create_category') }}
 @stop
 
 @push('scripts')
-    {!! JsValidator::formRequest(Cortex\Categorizable\Http\Requests\Backend\CategoryFormRequest::class)->selector('#backend-categories-save') !!}
+    {!! JsValidator::formRequest(Cortex\Categorizable\Http\Requests\Adminarea\CategoryFormRequest::class)->selector('#adminarea-categories-save') !!}
 @endpush
 
 {{-- Main Content --}}
@@ -30,8 +30,8 @@
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#details-tab" data-toggle="tab">{{ trans('cortex/categorizable::common.details') }}</a></li>
-                    @if($category->exists) <li><a href="{{ route('backend.categories.logs', ['category' => $category]) }}">{{ trans('cortex/categorizable::common.logs') }}</a></li> @endif
-                    @if($category->exists && $currentUser->can('delete-categories', $category)) <li class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-item-href="{{ route('backend.categories.delete', ['category' => $category]) }}" data-item-name="{{ $category->slug }}"><i class="fa fa-trash text-danger"></i></a></li> @endif
+                    @if($category->exists) <li><a href="{{ route('adminarea.categories.logs', ['category' => $category]) }}">{{ trans('cortex/categorizable::common.logs') }}</a></li> @endif
+                    @if($category->exists && $currentUser->can('delete-categories', $category)) <li class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-item-href="{{ route('adminarea.categories.delete', ['category' => $category]) }}" data-item-name="{{ $category->slug }}"><i class="fa fa-trash text-danger"></i></a></li> @endif
                 </ul>
 
                 <div class="tab-content">
@@ -39,9 +39,9 @@
                     <div class="tab-pane active" id="details-tab">
 
                         @if ($category->exists)
-                            {{ Form::model($category, ['url' => route('backend.categories.update', ['category' => $category]), 'method' => 'put', 'id' => 'backend-categories-save']) }}
+                            {{ Form::model($category, ['url' => route('adminarea.categories.update', ['category' => $category]), 'method' => 'put', 'id' => 'adminarea-categories-save']) }}
                         @else
-                            {{ Form::model($category, ['url' => route('backend.categories.store'), 'id' => 'backend-categories-save']) }}
+                            {{ Form::model($category, ['url' => route('adminarea.categories.store'), 'id' => 'adminarea-categories-save']) }}
                         @endif
 
                             <div class="row">
@@ -101,7 +101,7 @@
                                         {{ Form::button(trans('cortex/categorizable::common.submit'), ['class' => 'btn btn-primary btn-flat', 'type' => 'submit']) }}
                                     </div>
 
-                                    @include('cortex/foundation::backend.partials.timestamps', ['model' => $category])
+                                    @include('cortex/foundation::adminarea.partials.timestamps', ['model' => $category])
 
                                 </div>
 

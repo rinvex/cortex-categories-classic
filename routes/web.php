@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 Route::group(['domain' => domain()], function () {
 
-    Route::name('backend.')
-         ->namespace('Cortex\Categorizable\Http\Controllers\Backend')
+    Route::name('adminarea.')
+         ->namespace('Cortex\Categorizable\Http\Controllers\Adminarea')
          ->middleware(['web', 'nohttpcache', 'can:access-dashboard'])
-         ->prefix(config('cortex.foundation.route.locale_prefix') ? '{locale}/backend' : 'backend')->group(function () {
+         ->prefix(config('cortex.foundation.route.locale_prefix') ? '{locale}/adminarea' : 'adminarea')->group(function () {
 
         // Categories Routes
         Route::name('categories.')->prefix('categories')->group(function () {

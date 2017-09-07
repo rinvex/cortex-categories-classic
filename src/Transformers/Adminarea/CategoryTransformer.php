@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Categorizable\Transformers\Backend;
+namespace Cortex\Categorizable\Transformers\Adminarea;
 
 use League\Fractal\TransformerAbstract;
 use Rinvex\Categorizable\Contracts\CategoryContract;
