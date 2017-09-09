@@ -1,7 +1,7 @@
 {
-    "name": "cortex/categorizable",
+    "name": "cortex/categories",
     "type": "cortex-module",
-    "description": "Cortex Categorizable is a frontend layer for the polymorphic Laravel package, for category management. You can categorize any eloquent model with ease, and utilize the power of Nested Sets, and the awesomeness of Sluggable, and Translatable models out of the box.",
+    "description": "Cortex Categories is a frontend layer for the polymorphic Laravel package, for category management. You can categorize any eloquent model with ease, and utilize the power of Nested Sets, and the awesomeness of Sluggable, and Translatable models out of the box.",
     "keywords": [
         "model",
         "cortex",
@@ -20,9 +20,9 @@
     "homepage": "https://rinvex.com",
     "support": {
         "email": "help@rinvex.com",
-        "issues": "https://github.com/rinvex/cortex-categorizable/issues",
-        "source": "https://github.com/rinvex/cortex-categorizable",
-        "docs": "https://github.com/rinvex/cortex-categorizable/README.md"
+        "issues": "https://github.com/rinvex/cortex-categories/issues",
+        "source": "https://github.com/rinvex/cortex-categories",
+        "docs": "https://github.com/rinvex/cortex-categories/README.md"
     },
     "authors": [
         {
@@ -38,7 +38,7 @@
         },
         {
             "name": "The Generous Laravel Community",
-            "homepage": "https://github.com/rinvex/cortex-categorizable/contributors"
+            "homepage": "https://github.com/rinvex/cortex-categories/contributors"
         }
     ],
     "require": {
@@ -68,7 +68,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Cortex\\Categorizable\\": "src/"
+            "Cortex\\Categories\\": "src/"
         }
     },
     "config": {
@@ -82,7 +82,7 @@
         },
         "laravel": {
             "providers": [
-                "Cortex\\Categorizable\\Providers\\CategorizableServiceProvider"
+                "Cortex\\Categories\\Providers\\CategoriesServiceProvider"
             ]
         },
         "cortex-module": {

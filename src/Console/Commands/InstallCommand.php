@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Categorizable\Console\Commands;
+namespace Cortex\Categories\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -13,14 +13,14 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'cortex:install:categorizable';
+    protected $signature = 'cortex:install:categories';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Install Cortex Categorizable Module.';
+    protected $description = 'Install Cortex Categories Module.';
 
     /**
      * Execute the console command.
@@ -29,9 +29,9 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        $this->warn('Install cortex/categorizable:');
-        $this->call('cortex:migrate:categorizable');
-        $this->call('cortex:seed:categorizable');
-        $this->call('cortex:publish:categorizable');
+        $this->warn('Install cortex/categories:');
+        $this->call('cortex:migrate:categories');
+        $this->call('cortex:seed:categories');
+        $this->call('cortex:publish:categories');
     }
 }

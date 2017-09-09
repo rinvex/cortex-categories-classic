@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Categorizable\Console\Commands;
+namespace Cortex\Categories\Console\Commands;
 
 use Rinvex\Categories\Console\Commands\MigrateCommand as BaseMigrateCommand;
 
@@ -13,12 +13,12 @@ class MigrateCommand extends BaseMigrateCommand
      *
      * @var string
      */
-    protected $signature = 'cortex:migrate:categorizable';
+    protected $signature = 'cortex:migrate:categories';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Migrate Cortex Categorizable Tables.';
+    protected $description = 'Migrate Cortex Categories Tables.';
 }

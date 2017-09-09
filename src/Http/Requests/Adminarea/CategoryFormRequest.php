@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Categorizable\Http\Requests\Adminarea;
+namespace Cortex\Categories\Http\Requests\Adminarea;
 
 use Rinvex\Support\Http\Requests\FormRequest;
 
@@ -25,7 +25,7 @@ class CategoryFormRequest extends FormRequest
      */
     public function rules()
     {
-        $category = $this->route('category') ?? app('rinvex.categorizable.category');
+        $category = $this->route('category') ?? app('rinvex.categories.category');
         $category->updateRulesUniques();
 
         return $category->getRules();

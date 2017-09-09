@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Categorizable\Http\Controllers\Adminarea;
+namespace Cortex\Categories\Http\Controllers\Adminarea;
 
 use Illuminate\Http\Request;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Rinvex\Categories\Contracts\CategoryContract;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
-use Cortex\Categorizable\DataTables\Adminarea\CategoriesDataTable;
-use Cortex\Categorizable\Http\Requests\Adminarea\CategoryFormRequest;
+use Cortex\Categories\DataTables\Adminarea\CategoriesDataTable;
+use Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest;
 
 class CategoriesController extends AuthorizedController
 {
@@ -26,8 +26,8 @@ class CategoriesController extends AuthorizedController
     public function index()
     {
         return app(CategoriesDataTable::class)->with([
-            'id' => 'cortex-categorizable-categories',
-            'phrase' => trans('cortex/categorizable::common.categories'),
+            'id' => 'cortex-categories-categories',
+            'phrase' => trans('cortex/categories::common.categories'),
         ])->render('cortex/foundation::adminarea.pages.datatable');
     }
 
@@ -41,27 +41,27 @@ class CategoriesController extends AuthorizedController
         return app(LogsDataTable::class)->with([
             'type' => 'categories',
             'resource' => $category,
-            'id' => 'cortex-categorizable-categories-logs',
-            'phrase' => trans('cortex/categorizable::common.categories'),
+            'id' => 'cortex-categories-categories-logs',
+            'phrase' => trans('cortex/categories::common.categories'),
         ])->render('cortex/foundation::adminarea.pages.datatable-logs');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Cortex\Categorizable\Http\Requests\Adminarea\CategoryFormRequest $request
+     * @param \Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest $request
      *
      * @return \Illuminate\Http\Response
      */
     public function store(CategoryFormRequest $request)
     {
-        return $this->process($request, app('rinvex.categorizable.category'));
+        return $this->process($request, app('rinvex.categories.category'));
     }
 
     /**
      * Update the given resource in storage.
      *
-     * @param \Cortex\Categorizable\Http\Requests\Adminarea\CategoryFormRequest $request
+     * @param \Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest $request
      * @param \Rinvex\Categories\Contracts\CategoryContract                  $category
      *
      * @return \Illuminate\Http\Response
@@ -84,7 +84,7 @@ class CategoriesController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.categories.index'),
-            'with' => ['warning' => trans('cortex/categorizable::messages.category.deleted', ['slug' => $category->slug])],
+            'with' => ['warning' => trans('cortex/categories::messages.category.deleted', ['slug' => $category->slug])],
         ]);
     }
 
@@ -97,7 +97,7 @@ class CategoriesController extends AuthorizedController
      */
     public function form(CategoryContract $category)
     {
-        return view('cortex/categorizable::adminarea.forms.category', compact('category'));
+        return view('cortex/categories::adminarea.forms.category', compact('category'));
     }
 
     /**
@@ -118,7 +118,7 @@ class CategoriesController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.categories.index'),
-            'with' => ['success' => trans('cortex/categorizable::messages.category.saved', ['slug' => $category->slug])],
+            'with' => ['success' => trans('cortex/categories::messages.category.saved', ['slug' => $category->slug])],
         ]);
     }
 }

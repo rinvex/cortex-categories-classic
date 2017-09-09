@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Categorizable\Transformers\Adminarea;
+namespace Cortex\Categories\Transformers\Adminarea;
 
 use League\Fractal\TransformerAbstract;
-use Rinvex\Categorizable\Contracts\CategoryContract;
+use Rinvex\Categories\Contracts\CategoryContract;
 
 class CategoryTransformer extends TransformerAbstract
 {

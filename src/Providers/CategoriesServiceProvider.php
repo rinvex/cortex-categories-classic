@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Categorizable\Providers;
+namespace Cortex\Categories\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
-use Cortex\Categorizable\Console\Commands\SeedCommand;
-use Cortex\Categorizable\Console\Commands\InstallCommand;
-use Cortex\Categorizable\Console\Commands\MigrateCommand;
-use Cortex\Categorizable\Console\Commands\PublishCommand;
 use Rinvex\Categories\Contracts\CategoryContract;
+use Cortex\Categories\Console\Commands\SeedCommand;
+use Cortex\Categories\Console\Commands\InstallCommand;
+use Cortex\Categories\Console\Commands\MigrateCommand;
+use Cortex\Categories\Console\Commands\PublishCommand;
 
-class CategorizableServiceProvider extends ServiceProvider
+class CategoriesServiceProvider extends ServiceProvider
 {
     /**
      * The commands to be registered.
@@ -20,10 +20,10 @@ class CategorizableServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
-        MigrateCommand::class => 'command.cortex.categorizable.migrate',
-        PublishCommand::class => 'command.cortex.categorizable.publish',
-        InstallCommand::class => 'command.cortex.categorizable.install',
-        SeedCommand::class => 'command.cortex.categorizable.seed',
+        MigrateCommand::class => 'command.cortex.categories.migrate',
+        PublishCommand::class => 'command.cortex.categories.publish',
+        InstallCommand::class => 'command.cortex.categories.install',
+        SeedCommand::class => 'command.cortex.categories.seed',
     ];
 
     /**
@@ -55,8 +55,8 @@ class CategorizableServiceProvider extends ServiceProvider
         // Load resources
         require __DIR__.'/../../routes/breadcrumbs.php';
         $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/categorizable');
-        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/categorizable');
+        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/categories');
+        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/categories');
         $this->app->afterResolving('blade.compiler', function () {
             require __DIR__.'/../../routes/menus.php';
         });
@@ -72,8 +72,8 @@ class CategorizableServiceProvider extends ServiceProvider
      */
     protected function publishResources()
     {
-        $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/categorizable')], 'cortex-categorizable-lang');
-        $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/categorizable')], 'cortex-categorizable-views');
+        $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/categories')], 'cortex-categories-lang');
+        $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/categories')], 'cortex-categories-views');
     }
 
     /**

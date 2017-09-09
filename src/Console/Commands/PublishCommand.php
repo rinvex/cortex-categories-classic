@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Categorizable\Console\Commands;
+namespace Cortex\Categories\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -13,14 +13,14 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'cortex:publish:categorizable';
+    protected $signature = 'cortex:publish:categories';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Publish Cortex Categorizable Resources.';
+    protected $description = 'Publish Cortex Categories Resources.';
 
     /**
      * Execute the console command.
@@ -29,9 +29,9 @@ class PublishCommand extends Command
      */
     public function handle()
     {
-        $this->warn('Publish cortex/categorizable:');
-        $this->call('vendor:publish', ['--tag' => 'rinvex-categorizable-config']);
-        $this->call('vendor:publish', ['--tag' => 'cortex-categorizable-views']);
-        $this->call('vendor:publish', ['--tag' => 'cortex-categorizable-lang']);
+        $this->warn('Publish cortex/categories:');
+        $this->call('vendor:publish', ['--tag' => 'rinvex-categories-config']);
+        $this->call('vendor:publish', ['--tag' => 'cortex-categories-views']);
+        $this->call('vendor:publish', ['--tag' => 'cortex-categories-lang']);
     }
 }
