@@ -55,7 +55,7 @@
         "laravelcollective/html": "~5.5.0",
         "league/fractal": "^0.16.0",
         "proengsoft/laravel-jsvalidation": "^2.1.0",
-        "rinvex/categorizable": "dev-develop",
+        "rinvex/categories": "dev-develop",
         "rinvex/composer": "dev-develop",
         "rinvex/fort": "dev-develop",
         "rinvex/support": "dev-develop",

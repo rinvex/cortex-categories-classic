@@ -6,7 +6,7 @@ namespace Cortex\Categorizable\Http\Controllers\Adminarea;
 
 use Illuminate\Http\Request;
 use Cortex\Foundation\DataTables\LogsDataTable;
-use Rinvex\Categorizable\Contracts\CategoryContract;
+use Rinvex\Categories\Contracts\CategoryContract;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 use Cortex\Categorizable\DataTables\Adminarea\CategoriesDataTable;
 use Cortex\Categorizable\Http\Requests\Adminarea\CategoryFormRequest;
@@ -62,7 +62,7 @@ class CategoriesController extends AuthorizedController
      * Update the given resource in storage.
      *
      * @param \Cortex\Categorizable\Http\Requests\Adminarea\CategoryFormRequest $request
-     * @param \Rinvex\Categorizable\Contracts\CategoryContract                  $category
+     * @param \Rinvex\Categories\Contracts\CategoryContract                  $category
      *
      * @return \Illuminate\Http\Response
      */
@@ -74,7 +74,7 @@ class CategoriesController extends AuthorizedController
     /**
      * Delete the given resource from storage.
      *
-     * @param \Rinvex\Categorizable\Contracts\CategoryContract $category
+     * @param \Rinvex\Categories\Contracts\CategoryContract $category
      *
      * @return \Illuminate\Http\Response
      */
@@ -91,7 +91,7 @@ class CategoriesController extends AuthorizedController
     /**
      * Show the form for create/update of the given resource.
      *
-     * @param \Rinvex\Categorizable\Contracts\CategoryContract $category
+     * @param \Rinvex\Categories\Contracts\CategoryContract $category
      *
      * @return \Illuminate\Http\Response
      */
@@ -104,7 +104,7 @@ class CategoriesController extends AuthorizedController
      * Process the form for store/update of the given resource.
      *
      * @param \Illuminate\Http\Request                         $request
-     * @param \Rinvex\Categorizable\Contracts\CategoryContract $category
+     * @param \Rinvex\Categories\Contracts\CategoryContract $category
      *
      * @return \Illuminate\Http\Response
      */

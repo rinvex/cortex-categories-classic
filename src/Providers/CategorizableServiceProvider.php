@@ -6,11 +6,11 @@ namespace Cortex\Categorizable\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
-use Rinvex\Categorizable\Contracts\CategoryContract;
 use Cortex\Categorizable\Console\Commands\SeedCommand;
 use Cortex\Categorizable\Console\Commands\InstallCommand;
 use Cortex\Categorizable\Console\Commands\MigrateCommand;
 use Cortex\Categorizable\Console\Commands\PublishCommand;
+use Rinvex\Categories\Contracts\CategoryContract;
 
 class CategorizableServiceProvider extends ServiceProvider
 {

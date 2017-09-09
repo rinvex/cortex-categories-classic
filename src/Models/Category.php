@@ -6,7 +6,7 @@ namespace Cortex\Categorizable\Models;
 
 use Kalnoy\Nestedset\NestedSet;
 use Spatie\Activitylog\Traits\LogsActivity;
-use Rinvex\Categorizable\Models\Category as BaseCategory;
+use Rinvex\Categories\Models\Category as BaseCategory;
 
 /**
  * Cortex\Categorizable\Models\Category.

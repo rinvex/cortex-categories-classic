@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Rinvex\Categorizable\Contracts\CategoryContract;
+use Rinvex\Categories\Contracts\CategoryContract;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 
 Breadcrumbs::register('adminarea.categories.index', function (BreadcrumbsGenerator $breadcrumbs) {

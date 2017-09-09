@@ -6,7 +6,7 @@ namespace Cortex\Categorizable\Policies;
 
 use Rinvex\Fort\Contracts\UserContract;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Rinvex\Categorizable\Contracts\CategoryContract;
+use Rinvex\Categories\Contracts\CategoryContract;
 
 class CategoryPolicy
 {
@@ -43,7 +43,7 @@ class CategoryPolicy
      *
      * @param string                                           $ability
      * @param \Rinvex\Fort\Contracts\UserContract              $user
-     * @param \Rinvex\Categorizable\Contracts\CategoryContract $resource
+     * @param \Rinvex\Categories\Contracts\CategoryContract $resource
      *
      * @return bool
      */
@@ -57,7 +57,7 @@ class CategoryPolicy
      *
      * @param string                                           $ability
      * @param \Rinvex\Fort\Contracts\UserContract              $user
-     * @param \Rinvex\Categorizable\Contracts\CategoryContract $resource
+     * @param \Rinvex\Categories\Contracts\CategoryContract $resource
      *
      * @return bool
      */
