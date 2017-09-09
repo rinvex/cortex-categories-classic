@@ -41,8 +41,8 @@ class CategoryPolicy
     /**
      * Determine whether the user can update the category.
      *
-     * @param string                                           $ability
-     * @param \Rinvex\Fort\Contracts\UserContract              $user
+     * @param string                                        $ability
+     * @param \Rinvex\Fort\Contracts\UserContract           $user
      * @param \Rinvex\Categories\Contracts\CategoryContract $resource
      *
      * @return bool
@@ -55,8 +55,8 @@ class CategoryPolicy
     /**
      * Determine whether the user can delete the category.
      *
-     * @param string                                           $ability
-     * @param \Rinvex\Fort\Contracts\UserContract              $user
+     * @param string                                        $ability
+     * @param \Rinvex\Fort\Contracts\UserContract           $user
      * @param \Rinvex\Categories\Contracts\CategoryContract $resource
      *
      * @return bool
