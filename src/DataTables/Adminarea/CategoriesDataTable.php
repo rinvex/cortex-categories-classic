@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\DataTables\Adminarea;
 
-use Cortex\Foundation\DataTables\AbstractDataTable;
 use Rinvex\Categories\Contracts\CategoryContract;
+use Cortex\Foundation\DataTables\AbstractDataTable;
 use Cortex\Categories\Transformers\Adminarea\CategoryTransformer;
 
 class CategoriesDataTable extends AbstractDataTable
