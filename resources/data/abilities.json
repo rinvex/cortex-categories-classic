@@ -1,0 +1,26 @@
+[
+    {
+        "action": "list",
+        "resource": "categories",
+        "policy": "Cortex\\Categories\\Policies\\CategoryPolicy@list",
+        "name": "Can List Existing Categories"
+    },
+    {
+        "action": "create",
+        "resource": "categories",
+        "policy": "Cortex\\Categories\\Policies\\CategoryPolicy@create",
+        "name": "Can Create New Categories"
+    },
+    {
+        "action": "update",
+        "resource": "categories",
+        "policy": "Cortex\\Categories\\Policies\\CategoryPolicy@update",
+        "name": "Can Update Existing Categories"
+    },
+    {
+        "action": "delete",
+        "resource": "categories",
+        "policy": "Cortex\\Categories\\Policies\\CategoryPolicy@delete",
+        "name": "Can Delete Existing Categories"
+    }
+]
