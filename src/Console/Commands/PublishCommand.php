@@ -13,7 +13,7 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'cortex:publish:categories';
+    protected $signature = 'cortex:publish:categories {--force : Overwrite any existing files.}';
 
     /**
      * The console command description.
@@ -30,8 +30,8 @@ class PublishCommand extends Command
     public function handle()
     {
         $this->warn('Publish cortex/categories:');
-        $this->call('vendor:publish', ['--tag' => 'rinvex-categories-config']);
-        $this->call('vendor:publish', ['--tag' => 'cortex-categories-views']);
-        $this->call('vendor:publish', ['--tag' => 'cortex-categories-lang']);
+        $this->call('vendor:publish', ['--tag' => 'rinvex-categories-config', '--force' => $this->option('force')]);
+        $this->call('vendor:publish', ['--tag' => 'cortex-categories-views', '--force' => $this->option('force')]);
+        $this->call('vendor:publish', ['--tag' => 'cortex-categories-lang', '--force' => $this->option('force')]);
     }
 }
