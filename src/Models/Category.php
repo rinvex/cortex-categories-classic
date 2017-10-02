@@ -82,4 +82,14 @@ class Category extends BaseCategory
     {
         return 'slug';
     }
+
+    /**
+     * Get the class name for polymorphic relations.
+     *
+     * @return string
+     */
+    public function getMorphClass()
+    {
+        return 'category';
+    }
 }
