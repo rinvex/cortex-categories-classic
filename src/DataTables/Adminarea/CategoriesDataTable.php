@@ -42,8 +42,12 @@ class CategoriesDataTable extends AbstractDataTable
      */
     protected function getColumns()
     {
+        $link = config('cortex.foundation.route.locale_prefix')
+            ? '"<a href=\""+routes.route(\'adminarea.categories.edit\', {category: full.slug, locale: \''.$this->request->segment(1).'\'})+"\">"+data+"</a>"'
+            : '"<a href=\""+routes.route(\'adminarea.categories.edit\', {category: full.slug})+"\">"+data+"</a>"';
+
         return [
-            'name' => ['title' => trans('cortex/categories::common.name'), 'render' => '"<a href=\""+routes.route(\'adminarea.categories.edit\', {category: full.slug})+"\">"+data+"</a>"', 'responsivePriority' => 0],
+            'name' => ['title' => trans('cortex/categories::common.name'), 'render' => $link, 'responsivePriority' => 0],
             'slug' => ['title' => trans('cortex/categories::common.slug')],
             'created_at' => ['title' => trans('cortex/categories::common.created_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
             'updated_at' => ['title' => trans('cortex/categories::common.updated_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
