@@ -8,6 +8,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Rinvex\Categories\Contracts\CategoryContract;
 use Cortex\Categories\Console\Commands\SeedCommand;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Cortex\Categories\Console\Commands\InstallCommand;
 use Cortex\Categories\Console\Commands\MigrateCommand;
 use Cortex\Categories\Console\Commands\PublishCommand;
@@ -51,6 +52,11 @@ class CategoriesServiceProvider extends ServiceProvider
         // Bind route models and constrains
         $router->pattern('category', '[a-z0-9-]+');
         $router->model('category', CategoryContract::class);
+
+        // Map relations
+        Relation::morphMap([
+            'category' => config('rinvex.categories.models.category'),
+        ]);
 
         // Load resources
         require __DIR__.'/../../routes/breadcrumbs.php';
