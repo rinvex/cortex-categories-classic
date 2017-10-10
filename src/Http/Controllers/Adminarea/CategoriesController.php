@@ -44,7 +44,7 @@ class CategoriesController extends AuthorizedController
             'resource' => $category,
             'id' => 'cortex-categories-categories-logs',
             'phrase' => trans('cortex/categories::common.categories'),
-        ])->render('cortex/foundation::adminarea.pages.datatable-logs');
+        ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
 
     /**
