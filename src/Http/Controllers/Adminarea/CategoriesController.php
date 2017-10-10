@@ -39,6 +39,7 @@ class CategoriesController extends AuthorizedController
     public function logs(CategoryContract $category)
     {
         return app(LogsDataTable::class)->with([
+            'tab' => 'logs',
             'type' => 'categories',
             'resource' => $category,
             'id' => 'cortex-categories-categories-logs',
