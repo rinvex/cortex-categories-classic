@@ -42,6 +42,33 @@ class Category extends BaseCategory
     use LogsActivity;
 
     /**
+     * {@inheritdoc}
+     */
+    protected $fillable = [
+        'slug',
+        'name',
+        'description',
+        NestedSet::LFT,
+        NestedSet::RGT,
+        NestedSet::PARENT_ID,
+        'color',
+        'icon',
+    ];
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $casts = [
+        'slug' => 'string',
+        NestedSet::LFT => 'integer',
+        NestedSet::RGT => 'integer',
+        NestedSet::PARENT_ID => 'integer',
+        'color' => 'string',
+        'icon' => 'string',
+        'deleted_at' => 'datetime',
+    ];
+
+    /**
      * Indicates whether to log only dirty attributes or all.
      *
      * @var bool
@@ -60,6 +87,8 @@ class Category extends BaseCategory
         NestedSet::LFT,
         NestedSet::RGT,
         NestedSet::PARENT_ID,
+        'color',
+        'icon',
     ];
 
     /**
@@ -72,6 +101,28 @@ class Category extends BaseCategory
         'updated_at',
         'deleted_at',
     ];
+
+    /**
+     * Create a new Eloquent model instance.
+     *
+     * @param array $attributes
+     */
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->setTable(config('rinvex.categories.tables.categories'));
+        $this->setRules([
+            'name' => 'required|string|max:150',
+            'description' => 'nullable|string|max:10000',
+            'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.categories.tables.categories').',slug',
+            NestedSet::LFT => 'sometimes|required|integer',
+            NestedSet::RGT => 'sometimes|required|integer',
+            NestedSet::PARENT_ID => 'nullable|integer',
+            'color' => 'nullable|string|max:7',
+            'icon' => 'nullable|string|max:150',
+        ]);
+    }
 
     /**
      * Get the route key for the model.

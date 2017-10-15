@@ -46,7 +46,7 @@
 
                             <div class="row">
 
-                                <div class="col-md-6">
+                                <div class="col-md-4">
 
                                     {{-- Name --}}
                                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -60,7 +60,7 @@
 
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-4">
 
                                     {{-- Slug --}}
                                     <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
@@ -69,6 +69,41 @@
 
                                         @if ($errors->has('slug'))
                                             <span class="help-block">{{ $errors->first('slug') }}</span>
+                                        @endif
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-2">
+
+                                    {{-- Color --}}
+                                    <div class="form-group{{ $errors->has('color') ? ' has-error' : '' }}">
+                                        {{ Form::label('color', trans('cortex/categories::common.color'), ['class' => 'control-label']) }}
+
+                                        <div class="input-group color-picker">
+                                            {{ Form::text('color', null, ['class' => 'form-control', 'placeholder' => trans('cortex/categories::common.color'), 'readonly' => 'readonly']) }}
+
+                                            <div class="input-group-addon">
+                                                <i></i>
+                                            </div>
+                                        </div>
+
+                                        @if ($errors->has('color'))
+                                            <span class="help-block">{{ $errors->first('color') }}</span>
+                                        @endif
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-2">
+
+                                    {{-- Icon --}}
+                                    <div class="form-group{{ $errors->has('icon') ? ' has-error' : '' }}">
+                                        {{ Form::label('icon', trans('cortex/categories::common.icon'), ['class' => 'control-label']) }}
+                                        {{ Form::text('icon', null, ['class' => 'form-control', 'placeholder' => trans('cortex/categories::common.icon'), 'required' => 'required']) }}
+
+                                        @if ($errors->has('icon'))
+                                            <span class="help-block">{{ $errors->first('icon') }}</span>
                                         @endif
                                     </div>
 

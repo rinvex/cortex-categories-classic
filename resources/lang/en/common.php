@@ -6,6 +6,8 @@ return [
 
     'name' => 'Name',
     'slug' => 'Slug',
+    'color' => 'Color',
+    'icon' => 'Icon',
     'description' => 'Description',
     'logs' => 'Logs',
     'created_at' => 'Created At',
