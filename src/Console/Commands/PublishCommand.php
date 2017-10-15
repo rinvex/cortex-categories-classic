@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\Console\Commands;
 
-use Illuminate\Console\Command;
+use Rinvex\Categories\Console\Commands\PublishCommand as BasePublishCommand;
 
-class PublishCommand extends Command
+class PublishCommand extends BasePublishCommand
 {
     /**
      * The name and signature of the console command.
@@ -29,8 +29,8 @@ class PublishCommand extends Command
      */
     public function handle()
     {
-        $this->warn('Publish cortex/categories:');
-        $this->call('vendor:publish', ['--tag' => 'rinvex-categories-config', '--force' => $this->option('force')]);
+        parent::handle();
+
         $this->call('vendor:publish', ['--tag' => 'cortex-categories-views', '--force' => $this->option('force')]);
         $this->call('vendor:publish', ['--tag' => 'cortex-categories-lang', '--force' => $this->option('force')]);
     }
