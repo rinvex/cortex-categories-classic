@@ -18,12 +18,12 @@ use Rinvex\Categories\Models\Category as BaseCategory;
  * @property int                                                                           $_lft
  * @property int                                                                           $_rgt
  * @property int                                                                           $parent_id
- * @property \Carbon\Carbon                                                                $created_at
- * @property \Carbon\Carbon                                                                $updated_at
- * @property string|null                                                                   $deleted_at
+ * @property \Carbon\Carbon|null                                                           $created_at
+ * @property \Carbon\Carbon|null                                                           $updated_at
+ * @property \Carbon\Carbon|null                                                           $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cortex\Foundation\Models\Log[] $activity
- * @property-read \Kalnoy\Nestedset\Collection|\Cortex\Categories\Models\Category[]     $children
- * @property-read \Cortex\Categories\Models\Category|null                               $parent
+ * @property-read \Kalnoy\Nestedset\Collection|\Cortex\Categories\Models\Category[]        $children
+ * @property-read \Cortex\Categories\Models\Category|null                                  $parent
  *
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereDeletedAt($value)
