@@ -76,20 +76,13 @@
 
                                 <div class="col-md-2">
 
-                                    {{-- Color --}}
-                                    <div class="form-group{{ $errors->has('color') ? ' has-error' : '' }}">
-                                        {{ Form::label('color', trans('cortex/categories::common.color'), ['class' => 'control-label']) }}
+                                    {{-- Style --}}
+                                    <div class="form-group{{ $errors->has('style') ? ' has-error' : '' }}">
+                                        {{ Form::label('style', trans('cortex/tags::common.style'), ['class' => 'control-label']) }}
+                                        {{ Form::text('style', null, ['class' => 'form-control style-picker', 'placeholder' => trans('cortex/tags::common.style'), 'data-placement' => 'bottomRight', 'readonly' => 'readonly']) }}
 
-                                        <div class="input-group color-picker">
-                                            {{ Form::text('color', null, ['class' => 'form-control', 'placeholder' => trans('cortex/categories::common.color'), 'readonly' => 'readonly']) }}
-
-                                            <div class="input-group-addon">
-                                                <i></i>
-                                            </div>
-                                        </div>
-
-                                        @if ($errors->has('color'))
-                                            <span class="help-block">{{ $errors->first('color') }}</span>
+                                        @if ($errors->has('style'))
+                                            <span class="help-block">{{ $errors->first('style') }}</span>
                                         @endif
                                     </div>
 

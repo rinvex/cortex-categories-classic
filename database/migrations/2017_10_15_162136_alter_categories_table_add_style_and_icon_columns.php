@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterCategoriesTableAddColorAndIconColumns extends Migration
+class AlterCategoriesTableAddStyleAndIconColumns extends Migration
 {
     /**
      * Run the migrations.
@@ -17,7 +17,7 @@ class AlterCategoriesTableAddColorAndIconColumns extends Migration
     {
         Schema::table(config('rinvex.categories.tables.categories'), function (Blueprint $table) {
             $table->string('icon')->nullable();
-            $table->string('color', 7)->nullable();
+            $table->string('style')->nullable();
         });
     }
 
@@ -29,7 +29,7 @@ class AlterCategoriesTableAddColorAndIconColumns extends Migration
     public function down()
     {
         Schema::table(config('rinvex.categories.tables.categories'), function (Blueprint $table) {
-            $table->dropColumn('color');
+            $table->dropColumn('style');
             $table->dropColumn('icon');
         });
     }

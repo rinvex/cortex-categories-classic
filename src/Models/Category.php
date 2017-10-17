@@ -51,7 +51,7 @@ class Category extends BaseCategory
         NestedSet::LFT,
         NestedSet::RGT,
         NestedSet::PARENT_ID,
-        'color',
+        'style',
         'icon',
     ];
 
@@ -63,7 +63,7 @@ class Category extends BaseCategory
         NestedSet::LFT => 'integer',
         NestedSet::RGT => 'integer',
         NestedSet::PARENT_ID => 'integer',
-        'color' => 'string',
+        'style' => 'string',
         'icon' => 'string',
         'deleted_at' => 'datetime',
     ];
@@ -87,7 +87,7 @@ class Category extends BaseCategory
         NestedSet::LFT,
         NestedSet::RGT,
         NestedSet::PARENT_ID,
-        'color',
+        'style',
         'icon',
     ];
 
@@ -119,7 +119,7 @@ class Category extends BaseCategory
             NestedSet::LFT => 'sometimes|required|integer',
             NestedSet::RGT => 'sometimes|required|integer',
             NestedSet::PARENT_ID => 'nullable|integer',
-            'color' => 'nullable|string|max:7',
+            'style' => 'nullable|string|max:150',
             'icon' => 'nullable|string|max:150',
         ]);
     }

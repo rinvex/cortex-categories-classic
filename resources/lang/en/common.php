@@ -6,7 +6,7 @@ return [
 
     'name' => 'Name',
     'slug' => 'Slug',
-    'color' => 'Color',
+    'style' => 'Style',
     'icon' => 'Icon',
     'description' => 'Description',
     'logs' => 'Logs',
