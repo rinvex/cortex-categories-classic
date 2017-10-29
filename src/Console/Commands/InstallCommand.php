@@ -29,7 +29,7 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        $this->warn('Install cortex/categories:');
+        $this->warn($this->description);
         $this->call('cortex:migrate:categories');
         $this->call('cortex:seed:categories');
         $this->call('cortex:publish:categories');
