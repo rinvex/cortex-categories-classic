@@ -3,7 +3,6 @@
 **Cortex Categories** is a frontend layer for the polymorphic Laravel package, for category management. You can categorize any eloquent model with ease, and utilize the power of Nested Sets, and the awesomeness of Sluggable, and Translatable models out of the box.
 
 [![Packagist](https://img.shields.io/packagist/v/cortex/categories.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/cortex/categories)
-[![VersionEye Dependencies](https://img.shields.io/versioneye/d/php/cortex:categories.svg?label=Dependencies&style=flat-square)](https://www.versioneye.com/php/cortex:categories/)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/cortex/categories.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/cortex/categories/)
 [![Code Climate](https://img.shields.io/codeclimate/github/cortex/categories.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/cortex/categories)
 [![Travis](https://img.shields.io/travis/cortex/categories.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/cortex/categories)
