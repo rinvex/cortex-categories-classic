@@ -21,11 +21,13 @@ class CategoriesController extends AuthorizedController
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param \Cortex\Categories\DataTables\Adminarea\CategoriesDataTable $categoriesDataTable
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
-    public function index()
+    public function index(CategoriesDataTable $categoriesDataTable)
     {
-        return app(CategoriesDataTable::class)->with([
+        return $categoriesDataTable->with([
             'id' => 'cortex-categories-categories',
             'phrase' => trans('cortex/categories::common.categories'),
         ])->render('cortex/foundation::adminarea.pages.datatable');
@@ -34,11 +36,14 @@ class CategoriesController extends AuthorizedController
     /**
      * Display a listing of the resource logs.
      *
-     * @return \Illuminate\Http\Response
+     * @param \Rinvex\Categories\Contracts\CategoryContract $category
+     * @param \Cortex\Foundation\DataTables\LogsDataTable   $logsDataTable
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
-    public function logs(CategoryContract $category)
+    public function logs(CategoryContract $category, LogsDataTable $logsDataTable)
     {
-        return app(LogsDataTable::class)->with([
+        return $logsDataTable->with([
             'tab' => 'logs',
             'type' => 'categories',
             'resource' => $category,
