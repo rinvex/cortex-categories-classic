@@ -103,7 +103,7 @@ class CategoriesController extends AuthorizedController
      */
     public function form(CategoryContract $category)
     {
-        return view('cortex/categories::adminarea.forms.category', compact('category'));
+        return view('cortex/categories::adminarea.pages.category', compact('category'));
     }
 
     /**
