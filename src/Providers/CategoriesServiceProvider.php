@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use Cortex\Categories\Console\Commands\InstallCommand;
 use Cortex\Categories\Console\Commands\MigrateCommand;
 use Cortex\Categories\Console\Commands\PublishCommand;
+use Cortex\Categories\Console\Commands\RollbackCommand;
 
 class CategoriesServiceProvider extends ServiceProvider
 {
@@ -21,10 +22,11 @@ class CategoriesServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
+        SeedCommand::class => 'command.cortex.categories.seed',
+        InstallCommand::class => 'command.cortex.categories.install',
         MigrateCommand::class => 'command.cortex.categories.migrate',
         PublishCommand::class => 'command.cortex.categories.publish',
-        InstallCommand::class => 'command.cortex.categories.install',
-        SeedCommand::class => 'command.cortex.categories.seed',
+        RollbackCommand::class => 'command.cortex.categories.rollback',
     ];
 
     /**
