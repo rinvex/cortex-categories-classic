@@ -28,7 +28,7 @@ class CategoriesController extends AuthorizedController
     public function index(CategoriesDataTable $categoriesDataTable)
     {
         return $categoriesDataTable->with([
-            'id' => 'cortex-categories-categories',
+            'id' => 'cortex-categories',
             'phrase' => trans('cortex/categories::common.categories'),
         ])->render('cortex/foundation::adminarea.pages.datatable');
     }
@@ -47,7 +47,7 @@ class CategoriesController extends AuthorizedController
             'tab' => 'logs',
             'type' => 'categories',
             'resource' => $category,
-            'id' => 'cortex-categories-categories-logs',
+            'id' => 'cortex-categories-logs',
             'phrase' => trans('cortex/categories::common.categories'),
         ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
