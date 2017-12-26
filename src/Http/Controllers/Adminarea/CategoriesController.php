@@ -34,23 +34,17 @@ class CategoriesController extends AuthorizedController
     }
 
     /**
-     * Display a listing of the resource logs.
+     * Get a listing of the resource logs.
      *
      * @param \Rinvex\Categories\Contracts\CategoryContract $category
-     * @param \Cortex\Foundation\DataTables\LogsDataTable   $logsDataTable
      *
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
-    public function logs(CategoryContract $category, LogsDataTable $logsDataTable)
+    public function logs(CategoryContract $category)
     {
-        return $logsDataTable->with([
-            'tab' => 'logs',
-            'type' => 'categories',
-            'resource' => $category,
-            'title' => $category->name,
-            'id' => 'cortex-categories-logs',
-            'phrase' => trans('cortex/categories::common.categories'),
-        ])->render('cortex/foundation::adminarea.pages.datatable-tab');
+        return request()->ajax() && request()->wantsJson()
+            ? app(LogsDataTable::class)->with(['resource' => $category])->ajax()
+            : intend(['url' => route('adminarea.categories.edit', ['category' => $category]).'#logs-tab']);
     }
 
     /**
@@ -104,7 +98,9 @@ class CategoriesController extends AuthorizedController
      */
     public function form(CategoryContract $category)
     {
-        return view('cortex/categories::adminarea.pages.category', compact('category'));
+        $logs = app(LogsDataTable::class)->with(['id' => 'logs-table'])->html()->minifiedAjax(route('adminarea.categories.logs', ['category' => $category]));
+
+        return view('cortex/categories::adminarea.pages.category', compact('category', 'logs'));
     }
 
     /**
