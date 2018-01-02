@@ -19,9 +19,7 @@
 
     <div class="content-wrapper">
         <section class="content-header">
-            <h1>{{ $category->exists ? $category->name : trans('cortex/categories::common.create_category') }}</h1>
-            <!-- Breadcrumbs -->
-            {{ Breadcrumbs::render() }}
+            <h1>{{ Breadcrumbs::render() }}</h1>
         </section>
 
         <!-- Main content -->
