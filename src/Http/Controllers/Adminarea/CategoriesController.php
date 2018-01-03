@@ -48,6 +48,20 @@ class CategoriesController extends AuthorizedController
     }
 
     /**
+     * Show the form for create/update of the given resource.
+     *
+     * @param \Rinvex\Categories\Contracts\CategoryContract $category
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function form(CategoryContract $category)
+    {
+        $logs = app(LogsDataTable::class)->with(['id' => 'logs-table'])->html()->minifiedAjax(route('adminarea.categories.logs', ['category' => $category]));
+
+        return view('cortex/categories::adminarea.pages.category', compact('category', 'logs'));
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param \Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest $request
@@ -73,37 +87,6 @@ class CategoriesController extends AuthorizedController
     }
 
     /**
-     * Delete the given resource from storage.
-     *
-     * @param \Rinvex\Categories\Contracts\CategoryContract $category
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function delete(CategoryContract $category)
-    {
-        $category->delete();
-
-        return intend([
-            'url' => route('adminarea.categories.index'),
-            'with' => ['warning' => trans('cortex/categories::messages.category.deleted', ['slug' => $category->slug])],
-        ]);
-    }
-
-    /**
-     * Show the form for create/update of the given resource.
-     *
-     * @param \Rinvex\Categories\Contracts\CategoryContract $category
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function form(CategoryContract $category)
-    {
-        $logs = app(LogsDataTable::class)->with(['id' => 'logs-table'])->html()->minifiedAjax(route('adminarea.categories.logs', ['category' => $category]));
-
-        return view('cortex/categories::adminarea.pages.category', compact('category', 'logs'));
-    }
-
-    /**
      * Process the form for store/update of the given resource.
      *
      * @param \Illuminate\Http\Request                      $request
@@ -122,6 +105,23 @@ class CategoriesController extends AuthorizedController
         return intend([
             'url' => route('adminarea.categories.index'),
             'with' => ['success' => trans('cortex/categories::messages.category.saved', ['slug' => $category->slug])],
+        ]);
+    }
+
+    /**
+     * Delete the given resource from storage.
+     *
+     * @param \Rinvex\Categories\Contracts\CategoryContract $category
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(CategoryContract $category)
+    {
+        $category->delete();
+
+        return intend([
+            'url' => route('adminarea.categories.index'),
+            'with' => ['warning' => trans('cortex/categories::messages.category.deleted', ['slug' => $category->slug])],
         ]);
     }
 }
