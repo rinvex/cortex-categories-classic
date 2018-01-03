@@ -97,7 +97,7 @@ class CategoriesController extends AuthorizedController
     protected function process(Request $request, CategoryContract $category)
     {
         // Prepare required input fields
-        $data = $request->all();
+        $data = $request->validated();
 
         // Save category
         $category->fill($data)->save();
