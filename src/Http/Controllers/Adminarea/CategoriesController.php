@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\Http\Controllers\Adminarea;
 
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Rinvex\Categories\Contracts\CategoryContract;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
@@ -89,12 +89,12 @@ class CategoriesController extends AuthorizedController
     /**
      * Process the form for store/update of the given resource.
      *
-     * @param \Illuminate\Http\Request                      $request
+     * @param \Illuminate\Foundation\Http\FormRequest       $request
      * @param \Rinvex\Categories\Contracts\CategoryContract $category
      *
      * @return \Illuminate\Http\Response
      */
-    protected function process(Request $request, CategoryContract $category)
+    protected function process(FormRequest $request, CategoryContract $category)
     {
         // Prepare required input fields
         $data = $request->validated();
