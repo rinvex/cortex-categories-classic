@@ -15,7 +15,7 @@ class CategoryTransformer extends TransformerAbstract
     public function transform(CategoryContract $category)
     {
         return [
-            'id' => (int) $category->id,
+            'id' => (int) $category->getKey(),
             'name' => (string) $category->name,
             'slug' => (string) $category->slug,
             'created_at' => (string) $category->created_at,
