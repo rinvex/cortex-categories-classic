@@ -7,7 +7,7 @@
 @stop
 
 @push('scripts')
-    {!! JsValidator::formRequest(Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest::class)->selector('#adminarea-categories-save') !!}
+    {!! JsValidator::formRequest(Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest::class)->selector("#adminarea-categories-create-form, #adminarea-categories-{$category->getKey()}-update-form") !!}
 @endpush
 
 {{-- Main Content --}}
@@ -37,9 +37,9 @@
                     <div class="tab-pane active" id="details-tab">
 
                         @if ($category->exists)
-                            {{ Form::model($category, ['url' => route('adminarea.categories.update', ['category' => $category]), 'method' => 'put', 'id' => 'adminarea-categories-save']) }}
+                            {{ Form::model($category, ['url' => route('adminarea.categories.update', ['category' => $category]), 'method' => 'put', 'id' => "adminarea-categories-{$category->getKey()}-update-form"]) }}
                         @else
-                            {{ Form::model($category, ['url' => route('adminarea.categories.store'), 'id' => 'adminarea-categories-save']) }}
+                            {{ Form::model($category, ['url' => route('adminarea.categories.store'), 'id' => 'adminarea-categories-create-form']) }}
                         @endif
 
                             <div class="row">
@@ -147,7 +147,7 @@
                     @if($category->exists)
 
                         <div class="tab-pane" id="logs-tab">
-                            {!! $logs->table(['class' => 'table table-striped table-hover responsive dataTableBuilder', 'id' => 'logs-table']) !!}
+                            {!! $logs->table(['class' => 'table table-striped table-hover responsive dataTableBuilder', 'id' => "adminarea-categories-{$category->getKey()}-logs-table"]) !!}
                         </div>
 
                     @endif

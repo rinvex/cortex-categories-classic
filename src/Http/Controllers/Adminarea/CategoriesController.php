@@ -28,7 +28,7 @@ class CategoriesController extends AuthorizedController
     public function index(CategoriesDataTable $categoriesDataTable)
     {
         return $categoriesDataTable->with([
-            'id' => 'cortex-categories',
+            'id' => 'adminarea-categories-index-table',
             'phrase' => trans('cortex/categories::common.categories'),
         ])->render('cortex/foundation::adminarea.pages.datatable');
     }
@@ -56,7 +56,7 @@ class CategoriesController extends AuthorizedController
      */
     public function form(CategoryContract $category)
     {
-        $logs = app(LogsDataTable::class)->with(['id' => 'logs-table'])->html()->minifiedAjax(route('adminarea.categories.logs', ['category' => $category]));
+        $logs = app(LogsDataTable::class)->with(['id' => "adminarea-categories-{$category->getKey()}-logs-table"])->html()->minifiedAjax(route('adminarea.categories.logs', ['category' => $category]));
 
         return view('cortex/categories::adminarea.pages.category', compact('category', 'logs'));
     }
