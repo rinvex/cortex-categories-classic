@@ -13,7 +13,7 @@ class AlterCategoriesTableAddStyleAndIconColumns extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table(config('rinvex.categories.tables.categories'), function (Blueprint $table) {
             $table->string('style')->after('parent_id')->nullable();
@@ -26,7 +26,7 @@ class AlterCategoriesTableAddStyleAndIconColumns extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table(config('rinvex.categories.tables.categories'), function (Blueprint $table) {
             $table->dropColumn('icon');
