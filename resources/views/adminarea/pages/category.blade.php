@@ -4,7 +4,7 @@
 {{-- Page Title --}}
 @section('title')
     {{ config('app.name') }} » {{ trans('cortex/foundation::common.adminarea') }} » {{ trans('cortex/categories::common.categories') }} » {{ $category->exists ? $category->name : trans('cortex/categories::common.create_category') }}
-@stop
+@endsection
 
 @push('inline-scripts')
     {!! JsValidator::formRequest(Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest::class)->selector("#adminarea-categories-create-form, #adminarea-categories-{$category->getKey()}-update-form") !!}
