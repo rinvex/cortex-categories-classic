@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\DataTables\Adminarea;
 
-use Rinvex\Categories\Contracts\CategoryContract;
+use Rinvex\Categories\Models\Category;
 use Cortex\Foundation\DataTables\AbstractDataTable;
 use Cortex\Categories\Transformers\Adminarea\CategoryTransformer;
 
@@ -13,7 +13,7 @@ class CategoriesDataTable extends AbstractDataTable
     /**
      * {@inheritdoc}
      */
-    protected $model = CategoryContract::class;
+    protected $model = Category::class;
 
     /**
      * {@inheritdoc}

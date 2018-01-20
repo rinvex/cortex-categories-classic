@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\Policies;
 
-use Rinvex\Fort\Contracts\UserContract;
+use Rinvex\Fort\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Rinvex\Categories\Contracts\CategoryContract;
+use Rinvex\Categories\Models\Category;
 
 class CategoryPolicy
 {
@@ -16,11 +16,11 @@ class CategoryPolicy
      * Determine whether the user can list categories.
      *
      * @param string                              $ability
-     * @param \Rinvex\Fort\Contracts\UserContract $user
+     * @param \Rinvex\Fort\Models\User $user
      *
      * @return bool
      */
-    public function list($ability, UserContract $user): bool
+    public function list($ability, User $user): bool
     {
         return $user->allAbilities->pluck('slug')->contains($ability);
     }
@@ -29,11 +29,11 @@ class CategoryPolicy
      * Determine whether the user can create categories.
      *
      * @param string                              $ability
-     * @param \Rinvex\Fort\Contracts\UserContract $user
+     * @param \Rinvex\Fort\Models\User $user
      *
      * @return bool
      */
-    public function create($ability, UserContract $user): bool
+    public function create($ability, User $user): bool
     {
         return $user->allAbilities->pluck('slug')->contains($ability);
     }
@@ -42,12 +42,12 @@ class CategoryPolicy
      * Determine whether the user can update the category.
      *
      * @param string                                        $ability
-     * @param \Rinvex\Fort\Contracts\UserContract           $user
-     * @param \Rinvex\Categories\Contracts\CategoryContract $resource
+     * @param \Rinvex\Fort\Models\User           $user
+     * @param \Rinvex\Categories\Models\Category $resource
      *
      * @return bool
      */
-    public function update($ability, UserContract $user, CategoryContract $resource): bool
+    public function update($ability, User $user, Category $resource): bool
     {
         return $user->allAbilities->pluck('slug')->contains($ability);   // User can update categories
     }
@@ -56,12 +56,12 @@ class CategoryPolicy
      * Determine whether the user can delete the category.
      *
      * @param string                                        $ability
-     * @param \Rinvex\Fort\Contracts\UserContract           $user
-     * @param \Rinvex\Categories\Contracts\CategoryContract $resource
+     * @param \Rinvex\Fort\Models\User           $user
+     * @param \Rinvex\Categories\Models\Category $resource
      *
      * @return bool
      */
-    public function delete($ability, UserContract $user, CategoryContract $resource): bool
+    public function delete($ability, User $user, Category $resource): bool
     {
         return $user->allAbilities->pluck('slug')->contains($ability);   // User can delete categories
     }

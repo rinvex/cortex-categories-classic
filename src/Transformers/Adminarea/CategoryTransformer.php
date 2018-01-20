@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Cortex\Categories\Transformers\Adminarea;
 
 use League\Fractal\TransformerAbstract;
-use Rinvex\Categories\Contracts\CategoryContract;
+use Rinvex\Categories\Models\Category;
 
 class CategoryTransformer extends TransformerAbstract
 {
     /**
      * @return array
      */
-    public function transform(CategoryContract $category): array
+    public function transform(Category $category): array
     {
         return [
             'id' => (int) $category->getKey(),

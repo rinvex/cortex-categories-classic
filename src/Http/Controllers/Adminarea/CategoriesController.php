@@ -6,7 +6,7 @@ namespace Cortex\Categories\Http\Controllers\Adminarea;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
-use Rinvex\Categories\Contracts\CategoryContract;
+use Rinvex\Categories\Models\Category;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 use Cortex\Categories\DataTables\Adminarea\CategoriesDataTable;
 use Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest;
@@ -36,11 +36,11 @@ class CategoriesController extends AuthorizedController
     /**
      * Get a listing of the resource logs.
      *
-     * @param \Rinvex\Categories\Contracts\CategoryContract $category
+     * @param \Rinvex\Categories\Models\Category $category
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function logs(CategoryContract $category)
+    public function logs(Category $category)
     {
         return request()->ajax() && request()->wantsJson()
             ? app(LogsDataTable::class)->with(['resource' => $category])->ajax()
@@ -50,11 +50,11 @@ class CategoriesController extends AuthorizedController
     /**
      * Show the form for create/update of the given resource.
      *
-     * @param \Rinvex\Categories\Contracts\CategoryContract $category
+     * @param \Rinvex\Categories\Models\Category $category
      *
      * @return \Illuminate\View\View
      */
-    public function form(CategoryContract $category)
+    public function form(Category $category)
     {
         $logs = app(LogsDataTable::class)->with(['id' => "adminarea-categories-{$category->getKey()}-logs-table"])->html()->minifiedAjax(route('adminarea.categories.logs', ['category' => $category]));
 
@@ -77,11 +77,11 @@ class CategoriesController extends AuthorizedController
      * Update the given resource in storage.
      *
      * @param \Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest $request
-     * @param \Rinvex\Categories\Contracts\CategoryContract                  $category
+     * @param \Rinvex\Categories\Models\Category                  $category
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function update(CategoryFormRequest $request, CategoryContract $category)
+    public function update(CategoryFormRequest $request, Category $category)
     {
         return $this->process($request, $category);
     }
@@ -90,11 +90,11 @@ class CategoriesController extends AuthorizedController
      * Process the form for store/update of the given resource.
      *
      * @param \Illuminate\Foundation\Http\FormRequest       $request
-     * @param \Rinvex\Categories\Contracts\CategoryContract $category
+     * @param \Rinvex\Categories\Models\Category $category
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    protected function process(FormRequest $request, CategoryContract $category)
+    protected function process(FormRequest $request, Category $category)
     {
         // Prepare required input fields
         $data = $request->validated();
@@ -111,11 +111,11 @@ class CategoriesController extends AuthorizedController
     /**
      * Delete the given resource from storage.
      *
-     * @param \Rinvex\Categories\Contracts\CategoryContract $category
+     * @param \Rinvex\Categories\Models\Category $category
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function delete(CategoryContract $category)
+    public function delete(Category $category)
     {
         $category->delete();
 
