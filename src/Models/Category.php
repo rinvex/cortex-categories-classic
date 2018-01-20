@@ -133,7 +133,7 @@ class Category extends BaseCategory
      *
      * @return string
      */
-    public function getRouteKeyName()
+    public function getRouteKeyName(): string
     {
         return 'slug';
     }

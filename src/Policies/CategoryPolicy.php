@@ -20,7 +20,7 @@ class CategoryPolicy
      *
      * @return bool
      */
-    public function list($ability, UserContract $user)
+    public function list($ability, UserContract $user): bool
     {
         return $user->allAbilities->pluck('slug')->contains($ability);
     }
@@ -33,7 +33,7 @@ class CategoryPolicy
      *
      * @return bool
      */
-    public function create($ability, UserContract $user)
+    public function create($ability, UserContract $user): bool
     {
         return $user->allAbilities->pluck('slug')->contains($ability);
     }
@@ -47,7 +47,7 @@ class CategoryPolicy
      *
      * @return bool
      */
-    public function update($ability, UserContract $user, CategoryContract $resource)
+    public function update($ability, UserContract $user, CategoryContract $resource): bool
     {
         return $user->allAbilities->pluck('slug')->contains($ability);   // User can update categories
     }
@@ -61,7 +61,7 @@ class CategoryPolicy
      *
      * @return bool
      */
-    public function delete($ability, UserContract $user, CategoryContract $resource)
+    public function delete($ability, UserContract $user, CategoryContract $resource): bool
     {
         return $user->allAbilities->pluck('slug')->contains($ability);   // User can delete categories
     }

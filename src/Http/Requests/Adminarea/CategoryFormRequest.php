@@ -13,7 +13,7 @@ class CategoryFormRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -23,7 +23,7 @@ class CategoryFormRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         $category = $this->route('category') ?? app('rinvex.categories.category');
         $category->updateRulesUniques();

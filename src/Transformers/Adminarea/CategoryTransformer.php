@@ -12,7 +12,7 @@ class CategoryTransformer extends TransformerAbstract
     /**
      * @return array
      */
-    public function transform(CategoryContract $category)
+    public function transform(CategoryContract $category): array
     {
         return [
             'id' => (int) $category->getKey(),
