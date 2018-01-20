@@ -38,7 +38,7 @@ class CategoriesController extends AuthorizedController
      *
      * @param \Rinvex\Categories\Contracts\CategoryContract $category
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function logs(CategoryContract $category)
     {
@@ -52,7 +52,7 @@ class CategoriesController extends AuthorizedController
      *
      * @param \Rinvex\Categories\Contracts\CategoryContract $category
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function form(CategoryContract $category)
     {
@@ -66,7 +66,7 @@ class CategoriesController extends AuthorizedController
      *
      * @param \Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest $request
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function store(CategoryFormRequest $request)
     {
@@ -79,7 +79,7 @@ class CategoriesController extends AuthorizedController
      * @param \Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest $request
      * @param \Rinvex\Categories\Contracts\CategoryContract                  $category
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function update(CategoryFormRequest $request, CategoryContract $category)
     {
@@ -92,7 +92,7 @@ class CategoriesController extends AuthorizedController
      * @param \Illuminate\Foundation\Http\FormRequest       $request
      * @param \Rinvex\Categories\Contracts\CategoryContract $category
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     protected function process(FormRequest $request, CategoryContract $category)
     {
@@ -113,7 +113,7 @@ class CategoriesController extends AuthorizedController
      *
      * @param \Rinvex\Categories\Contracts\CategoryContract $category
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function delete(CategoryContract $category)
     {
