@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Cortex\Categories\Providers;
 
 use Illuminate\Routing\Router;
-use Illuminate\Support\ServiceProvider;
 use Rinvex\Categories\Models\Category;
+use Illuminate\Support\ServiceProvider;
 use Cortex\Categories\Console\Commands\SeedCommand;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Cortex\Categories\Console\Commands\InstallCommand;

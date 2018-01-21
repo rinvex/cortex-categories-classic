@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\Http\Controllers\Adminarea;
 
+use Rinvex\Categories\Models\Category;
 use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
-use Rinvex\Categories\Models\Category;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 use Cortex\Categories\DataTables\Adminarea\CategoriesDataTable;
 use Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest;
@@ -77,7 +77,7 @@ class CategoriesController extends AuthorizedController
      * Update the given resource in storage.
      *
      * @param \Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest $request
-     * @param \Rinvex\Categories\Models\Category                  $category
+     * @param \Rinvex\Categories\Models\Category                             $category
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
@@ -89,8 +89,8 @@ class CategoriesController extends AuthorizedController
     /**
      * Process the form for store/update of the given resource.
      *
-     * @param \Illuminate\Foundation\Http\FormRequest       $request
-     * @param \Rinvex\Categories\Models\Category $category
+     * @param \Illuminate\Foundation\Http\FormRequest $request
+     * @param \Rinvex\Categories\Models\Category      $category
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
