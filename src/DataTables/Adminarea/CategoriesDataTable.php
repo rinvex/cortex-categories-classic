@@ -6,7 +6,6 @@ namespace Cortex\Categories\DataTables\Adminarea;
 
 use Rinvex\Categories\Models\Category;
 use Cortex\Foundation\DataTables\AbstractDataTable;
-use Cortex\Categories\Transformers\Adminarea\CategoryTransformer;
 
 class CategoriesDataTable extends AbstractDataTable
 {
@@ -16,21 +15,13 @@ class CategoriesDataTable extends AbstractDataTable
     protected $model = Category::class;
 
     /**
-     * {@inheritdoc}
-     */
-    protected $transformer = CategoryTransformer::class;
-
-    /**
      * Display ajax response.
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function ajax()
     {
-        $transformer = app($this->transformer);
-
         return datatables($this->query())
-            ->setTransformer($transformer)
             ->orderColumn('name', 'name->"$.'.app()->getLocale().'" $1')
             ->make(true);
     }
