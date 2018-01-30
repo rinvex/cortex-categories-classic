@@ -40,11 +40,14 @@ class CategoriesController extends AuthorizedController
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function logs(Category $category)
+    public function logs(Category $category, LogsDataTable $logsDataTable)
     {
-        return request()->ajax() && request()->wantsJson()
-            ? app(LogsDataTable::class)->with(['resource' => $category])->ajax()
-            : intend(['url' => route('adminarea.categories.edit', ['category' => $category]).'#logs-tab']);
+        return $logsDataTable->with([
+            'resource' => $category,
+            'tabs' => 'adminarea.categories.tabs',
+            'phrase' => trans('cortex/categories::common.categories'),
+            'id' => "adminarea-categories-{$category->getKey()}-logs-table",
+        ])->render('cortex/foundation::adminarea.pages.datatable-logs');
     }
 
     /**
@@ -56,9 +59,7 @@ class CategoriesController extends AuthorizedController
      */
     public function form(Category $category)
     {
-        $logs = app(LogsDataTable::class)->with(['id' => "adminarea-categories-{$category->getKey()}-logs-table"])->html()->minifiedAjax(route('adminarea.categories.logs', ['category' => $category]));
-
-        return view('cortex/categories::adminarea.pages.category', compact('category', 'logs'));
+        return view('cortex/categories::adminarea.pages.category', compact('category'));
     }
 
     /**
