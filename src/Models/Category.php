@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Categories\Models;
 
 use Kalnoy\Nestedset\NestedSet;
+use Cortex\Foundation\Traits\Auditable;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Rinvex\Categories\Models\Category as BaseCategory;
 
@@ -43,6 +44,7 @@ use Rinvex\Categories\Models\Category as BaseCategory;
  */
 class Category extends BaseCategory
 {
+    use Auditable;
     use LogsActivity;
 
     /**
