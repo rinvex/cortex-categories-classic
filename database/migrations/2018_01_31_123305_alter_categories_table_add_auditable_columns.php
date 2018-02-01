@@ -16,7 +16,7 @@ class AlterCategoriesTableAddAuditableColumns extends Migration
     public function up()
     {
         Schema::table(config('rinvex.categories.tables.categories'), function (Blueprint $table) {
-            $table->auditable();
+            $table->auditable(true);
         });
     }
 
