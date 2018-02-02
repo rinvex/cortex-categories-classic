@@ -13,7 +13,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'cortex:install:categories';
+    protected $signature = 'cortex:install:categories {--force : Force the operation to run when in production.}';
 
     /**
      * The console command description.
@@ -31,8 +31,8 @@ class InstallCommand extends Command
     {
         $this->warn($this->description);
 
-        $this->call('cortex:migrate:categories');
+        $this->call('cortex:migrate:categories', ['--force' => $this->option('force')]);
         $this->call('cortex:seed:categories');
-        $this->call('cortex:publish:categories');
+        $this->call('cortex:publish:categories', ['--force' => $this->option('force')]);
     }
 }
