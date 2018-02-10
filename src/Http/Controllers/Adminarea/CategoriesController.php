@@ -116,7 +116,7 @@ class CategoriesController extends AuthorizedController
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function delete(Category $category)
+    public function destroy(Category $category)
     {
         $category->delete();
 

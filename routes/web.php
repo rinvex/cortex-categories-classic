@@ -17,7 +17,7 @@ Route::domain(domain())->group(function () {
             Route::get('{category}')->name('edit')->uses('CategoriesController@form');
             Route::put('{category}')->name('update')->uses('CategoriesController@update');
             Route::get('{category}/logs')->name('logs')->uses('CategoriesController@logs');
-            Route::delete('{category}')->name('delete')->uses('CategoriesController@delete');
+            Route::delete('{category}')->name('destroy')->uses('CategoriesController@destroy');
         });
 
     });
