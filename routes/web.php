@@ -12,9 +12,9 @@ Route::domain(domain())->group(function () {
         // Categories Routes
         Route::name('categories.')->prefix('categories')->group(function () {
             Route::get('/')->name('index')->uses('CategoriesController@index');
-            Route::get('create')->name('create')->uses('CategoriesController@form');
+            Route::get('create')->name('create')->uses('CategoriesController@create');
             Route::post('create')->name('store')->uses('CategoriesController@store');
-            Route::get('{category}')->name('edit')->uses('CategoriesController@form');
+            Route::get('{category}')->name('edit')->uses('CategoriesController@edit');
             Route::put('{category}')->name('update')->uses('CategoriesController@update');
             Route::get('{category}/logs')->name('logs')->uses('CategoriesController@logs');
             Route::delete('{category}')->name('destroy')->uses('CategoriesController@destroy');

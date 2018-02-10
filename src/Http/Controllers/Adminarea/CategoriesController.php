@@ -51,13 +51,37 @@ class CategoriesController extends AuthorizedController
     }
 
     /**
-     * Show the form for create/update of the given resource.
+     * Create new category.
      *
-     * @param \Rinvex\Categories\Models\Category $category
+     * @param \Cortex\Categories\Models\Category $category
      *
      * @return \Illuminate\View\View
      */
-    public function form(Category $category)
+    public function create(Category $category)
+    {
+        return $this->form($category);
+    }
+
+    /**
+     * Edit given category.
+     *
+     * @param \Cortex\Categories\Models\Category $category
+     *
+     * @return \Illuminate\View\View
+     */
+    public function edit(Category $category)
+    {
+        return $this->form($category);
+    }
+
+    /**
+     * Show category create/edit form.
+     *
+     * @param \Cortex\Categories\Models\Category $category
+     *
+     * @return \Illuminate\View\View
+     */
+    protected function form(Category $category)
     {
         return view('cortex/categories::adminarea.pages.category', compact('category'));
     }
