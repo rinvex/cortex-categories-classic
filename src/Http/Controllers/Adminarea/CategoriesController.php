@@ -19,7 +19,7 @@ class CategoriesController extends AuthorizedController
     protected $resource = 'category';
 
     /**
-     * Display a listing of the resource.
+     * List all categories.
      *
      * @param \Cortex\Categories\DataTables\Adminarea\CategoriesDataTable $categoriesDataTable
      *
@@ -34,9 +34,10 @@ class CategoriesController extends AuthorizedController
     }
 
     /**
-     * Get a listing of the resource logs.
+     * List category logs.
      *
-     * @param \Rinvex\Categories\Models\Category $category
+     * @param \Cortex\Categories\Models\Category          $category
+     * @param \Cortex\Foundation\DataTables\LogsDataTable $logsDataTable
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
@@ -87,22 +88,23 @@ class CategoriesController extends AuthorizedController
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store new category.
      *
      * @param \Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest $request
+     * @param \Cortex\Categories\Models\Category                             $category
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function store(CategoryFormRequest $request)
+    public function store(CategoryFormRequest $request, Category $category)
     {
-        return $this->process($request, app('rinvex.categories.category'));
+        return $this->process($request, $category);
     }
 
     /**
-     * Update the given resource in storage.
+     * Update given category.
      *
      * @param \Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest $request
-     * @param \Rinvex\Categories\Models\Category                             $category
+     * @param \Cortex\Categories\Models\Category                             $category
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
@@ -112,10 +114,10 @@ class CategoriesController extends AuthorizedController
     }
 
     /**
-     * Process the form for store/update of the given resource.
+     * Process stored/updated category.
      *
      * @param \Illuminate\Foundation\Http\FormRequest $request
-     * @param \Rinvex\Categories\Models\Category      $category
+     * @param \Cortex\Categories\Models\Category      $category
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
@@ -134,9 +136,9 @@ class CategoriesController extends AuthorizedController
     }
 
     /**
-     * Delete the given resource from storage.
+     * Destroy given category.
      *
-     * @param \Rinvex\Categories\Models\Category $category
+     * @param \Cortex\Categories\Models\Category $category
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
