@@ -86,16 +86,7 @@ class Category extends BaseCategory
      *
      * @var array
      */
-    protected static $logAttributes = [
-        'slug',
-        'name',
-        'description',
-        NestedSet::LFT,
-        NestedSet::RGT,
-        NestedSet::PARENT_ID,
-        'style',
-        'icon',
-    ];
+    protected static $logFillable = true;
 
     /**
      * The attributes that are ignored on change.
