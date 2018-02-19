@@ -13,7 +13,7 @@ use Rinvex\Categories\Models\Category as BaseCategory;
  * Cortex\Categories\Models\Category.
  *
  * @property int                                                                           $id
- * @property string                                                                        $slug
+ * @property string                                                                        $name
  * @property array                                                                         $title
  * @property array                                                                         $description
  * @property int                                                                           $_lft
@@ -37,7 +37,7 @@ use Rinvex\Categories\Models\Category as BaseCategory;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereParentId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereRgt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereStyle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereUpdatedAt($value)
  * @mixin \Eloquent
@@ -51,7 +51,7 @@ class Category extends BaseCategory
      * {@inheritdoc}
      */
     protected $fillable = [
-        'slug',
+        'name',
         'title',
         'description',
         NestedSet::LFT,
@@ -65,7 +65,7 @@ class Category extends BaseCategory
      * {@inheritdoc}
      */
     protected $casts = [
-        'slug' => 'string',
+        'name' => 'string',
         NestedSet::LFT => 'integer',
         NestedSet::RGT => 'integer',
         NestedSet::PARENT_ID => 'integer',
@@ -112,7 +112,7 @@ class Category extends BaseCategory
         $this->setRules([
             'title' => 'required|string|max:150',
             'description' => 'nullable|string|max:10000',
-            'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.categories.tables.categories').',slug',
+            'name' => 'required|alpha_dash|max:150|unique:'.config('rinvex.categories.tables.categories').',name',
             NestedSet::LFT => 'sometimes|required|integer',
             NestedSet::RGT => 'sometimes|required|integer',
             NestedSet::PARENT_ID => 'nullable|integer',
@@ -128,6 +128,6 @@ class Category extends BaseCategory
      */
     public function getRouteKeyName(): string
     {
-        return 'slug';
+        return 'name';
     }
 }

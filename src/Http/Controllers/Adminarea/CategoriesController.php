@@ -148,7 +148,7 @@ class CategoriesController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.categories.index'),
-            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => 'category', 'id' => $category->slug])],
+            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => 'category', 'id' => $category->name])],
         ]);
     }
 }
