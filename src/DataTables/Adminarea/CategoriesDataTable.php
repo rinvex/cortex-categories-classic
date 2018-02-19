@@ -22,7 +22,7 @@ class CategoriesDataTable extends AbstractDataTable
     public function ajax()
     {
         return datatables($this->query())
-            ->orderColumn('name', 'name->"$.'.app()->getLocale().'" $1')
+            ->orderColumn('title', 'title->"$.'.app()->getLocale().'" $1')
             ->make(true);
     }
 
@@ -38,7 +38,7 @@ class CategoriesDataTable extends AbstractDataTable
             : '"<a href=\""+routes.route(\'adminarea.categories.edit\', {category: full.slug})+"\">"+data+"</a>"';
 
         return [
-            'name' => ['title' => trans('cortex/categories::common.name'), 'render' => $link, 'responsivePriority' => 0],
+            'title' => ['title' => trans('cortex/categories::common.title'), 'render' => $link, 'responsivePriority' => 0],
             'slug' => ['title' => trans('cortex/categories::common.slug')],
             'created_at' => ['title' => trans('cortex/categories::common.created_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
             'updated_at' => ['title' => trans('cortex/categories::common.updated_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],

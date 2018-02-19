@@ -14,7 +14,7 @@ use Rinvex\Categories\Models\Category as BaseCategory;
  *
  * @property int                                                                           $id
  * @property string                                                                        $slug
- * @property array                                                                         $name
+ * @property array                                                                         $title
  * @property array                                                                         $description
  * @property int                                                                           $_lft
  * @property int                                                                           $_rgt
@@ -34,7 +34,7 @@ use Rinvex\Categories\Models\Category as BaseCategory;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereIcon($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereLft($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereParentId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereRgt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereSlug($value)
@@ -52,7 +52,7 @@ class Category extends BaseCategory
      */
     protected $fillable = [
         'slug',
-        'name',
+        'title',
         'description',
         NestedSet::LFT,
         NestedSet::RGT,
@@ -110,7 +110,7 @@ class Category extends BaseCategory
 
         $this->setTable(config('rinvex.categories.tables.categories'));
         $this->setRules([
-            'name' => 'required|string|max:150',
+            'title' => 'required|string|max:150',
             'description' => 'nullable|string|max:10000',
             'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.categories.tables.categories').',slug',
             NestedSet::LFT => 'sometimes|required|integer',
