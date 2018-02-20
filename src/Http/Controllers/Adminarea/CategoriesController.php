@@ -16,7 +16,7 @@ class CategoriesController extends AuthorizedController
     /**
      * {@inheritdoc}
      */
-    protected $resource = 'category';
+    protected $resource = Category::class;
 
     /**
      * List all categories.
