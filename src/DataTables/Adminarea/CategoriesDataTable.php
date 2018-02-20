@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\DataTables\Adminarea;
 
-use Rinvex\Categories\Models\Category;
+use Cortex\Categories\Models\Category;
 use Cortex\Foundation\DataTables\AbstractDataTable;
 
 class CategoriesDataTable extends AbstractDataTable

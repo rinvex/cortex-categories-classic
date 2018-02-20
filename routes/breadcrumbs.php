@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Rinvex\Categories\Models\Category;
+use Cortex\Categories\Models\Category;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 
 Breadcrumbs::register('adminarea.categories.index', function (BreadcrumbsGenerator $breadcrumbs) {

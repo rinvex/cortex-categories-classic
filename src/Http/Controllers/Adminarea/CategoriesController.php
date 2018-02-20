@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\Http\Controllers\Adminarea;
 
-use Rinvex\Categories\Models\Category;
+use Cortex\Categories\Models\Category;
 use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
