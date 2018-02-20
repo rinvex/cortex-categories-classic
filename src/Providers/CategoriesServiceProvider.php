@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Cortex\Categories\Providers;
 
 use Illuminate\Routing\Router;
-use Rinvex\Categories\Models\Category;
 use Illuminate\Support\ServiceProvider;
 use Cortex\Categories\Console\Commands\SeedCommand;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -53,7 +52,7 @@ class CategoriesServiceProvider extends ServiceProvider
     {
         // Bind route models and constrains
         $router->pattern('category', '[a-z0-9-]+');
-        $router->model('category', Category::class);
+        $router->model('category', config('rinvex.categories.models.category'));
 
         // Map relations
         Relation::morphMap([
