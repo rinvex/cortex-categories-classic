@@ -13,6 +13,8 @@ Menu::register('adminarea.sidebar', function (MenuGenerator $menu, Category $cat
 });
 
 Menu::register('adminarea.categories.tabs', function (MenuGenerator $menu, Category $category) {
+    $menu->route(['adminarea.categories.import'], trans('cortex/categories::common.file'))->ifCan('import', $category)->if(Route::is('adminarea.categories.import*'));
+    $menu->route(['adminarea.categories.import.logs'], trans('cortex/categories::common.logs'))->ifCan('import', $category)->if(Route::is('adminarea.categories.import*'));
     $menu->route(['adminarea.categories.create'], trans('cortex/categories::common.details'))->ifCan('create', $category)->if(Route::is('adminarea.categories.create'));
     $menu->route(['adminarea.categories.edit', ['category' => $category]], trans('cortex/categories::common.details'))->ifCan('update', $category)->if($category->exists);
     $menu->route(['adminarea.categories.logs', ['category' => $category]], trans('cortex/categories::common.logs'))->ifCan('audit', $category)->if($category->exists);

@@ -10,6 +10,17 @@ Breadcrumbs::register('adminarea.categories.index', function (BreadcrumbsGenerat
     $breadcrumbs->push(trans('cortex/categories::common.categories'), route('adminarea.categories.index'));
 });
 
+Breadcrumbs::register('adminarea.categories.import', function (BreadcrumbsGenerator $breadcrumbs) {
+    $breadcrumbs->parent('adminarea.categories.index');
+    $breadcrumbs->push(trans('cortex/categories::common.import'), route('adminarea.categories.import'));
+});
+
+Breadcrumbs::register('adminarea.categories.import.logs', function (BreadcrumbsGenerator $breadcrumbs) {
+    $breadcrumbs->parent('adminarea.categories.index');
+    $breadcrumbs->push(trans('cortex/categories::common.import'), route('adminarea.categories.import'));
+    $breadcrumbs->push(trans('cortex/categories::common.logs'), route('adminarea.categories.import.logs'));
+});
+
 Breadcrumbs::register('adminarea.categories.create', function (BreadcrumbsGenerator $breadcrumbs) {
     $breadcrumbs->parent('adminarea.categories.index');
     $breadcrumbs->push(trans('cortex/categories::common.create_category'), route('adminarea.categories.create'));

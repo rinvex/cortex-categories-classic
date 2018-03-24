@@ -12,6 +12,9 @@ Route::domain(domain())->group(function () {
         // Categories Routes
         Route::name('categories.')->prefix('categories')->group(function () {
             Route::get('/')->name('index')->uses('CategoriesController@index');
+            Route::get('import')->name('import')->uses('CategoriesController@import');
+            Route::post('import')->name('hoard')->uses('CategoriesController@hoard');
+            Route::get('import/logs')->name('import.logs')->uses('CategoriesController@importLogs');
             Route::get('create')->name('create')->uses('CategoriesController@create');
             Route::post('create')->name('store')->uses('CategoriesController@store');
             Route::get('{category}')->name('edit')->uses('CategoriesController@edit');
