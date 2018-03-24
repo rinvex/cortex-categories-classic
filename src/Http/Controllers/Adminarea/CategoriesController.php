@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Cortex\Categories\Http\Controllers\Adminarea;
 
 use Cortex\Categories\Models\Category;
-use Cortex\Foundation\DataTables\ImportLogsDataTable;
-use Cortex\Foundation\Http\Requests\ImportFormRequest;
-use Cortex\Foundation\Importers\DefaultImporter;
 use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
+use Cortex\Foundation\Importers\DefaultImporter;
+use Cortex\Foundation\DataTables\ImportLogsDataTable;
+use Cortex\Foundation\Http\Requests\ImportFormRequest;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 use Cortex\Categories\DataTables\Adminarea\CategoriesDataTable;
 use Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest;
