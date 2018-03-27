@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Categories\Providers;
 
 use Illuminate\Routing\Router;
+use Cortex\Categories\Models\Category;
 use Illuminate\Support\ServiceProvider;
 use Cortex\Categories\Console\Commands\SeedCommand;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -39,6 +40,10 @@ class CategoriesServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        // Bind eloquent models to IoC container
+        $this->app['config']['rinvex.categories.models.category'] === Category::class
+        || $this->app->alias('rinvex.categories.category', Category::class);
+
         // Register console commands
         ! $this->app->runningInConsole() || $this->registerCommands();
     }
