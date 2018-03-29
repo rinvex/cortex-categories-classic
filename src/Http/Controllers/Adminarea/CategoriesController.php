@@ -50,7 +50,7 @@ class CategoriesController extends AuthorizedController
             'resource' => $category,
             'tabs' => 'adminarea.categories.tabs',
             'phrase' => trans('cortex/categories::common.categories'),
-            'id' => "adminarea-categories-{$category->getKey()}-logs-table",
+            'id' => "adminarea-categories-{$category->getRouteKey()}-logs-table",
         ])->render('cortex/foundation::adminarea.pages.datatable-logs');
     }
 

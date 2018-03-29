@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Categories\Models;
 
 use Kalnoy\Nestedset\NestedSet;
+use Vinkla\Hashids\Facades\Hashids;
 use Cortex\Foundation\Traits\Auditable;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Rinvex\Categories\Models\Category as BaseCategory;
@@ -122,12 +123,25 @@ class Category extends BaseCategory
     }
 
     /**
-     * Get the route key for the model.
+     * Get the value of the model's route key.
      *
-     * @return string
+     * @return mixed
      */
-    public function getRouteKeyName(): string
+    public function getRouteKey()
     {
-        return 'name';
+        return Hashids::encode($this->getAttribute($this->getRouteKeyName()));
+    }
+
+    /**
+     * Retrieve the model for a bound value.
+     *
+     * @param  mixed  $value
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
+    public function resolveRouteBinding($value)
+    {
+        $value = Hashids::decode($value)[0];
+
+        return $this->where($this->getRouteKeyName(), $value)->first();
     }
 }

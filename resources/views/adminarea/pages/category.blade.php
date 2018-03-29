@@ -7,7 +7,7 @@
 @endsection
 
 @push('inline-scripts')
-    {!! JsValidator::formRequest(Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest::class)->selector("#adminarea-categories-create-form, #adminarea-categories-{$category->getKey()}-update-form") !!}
+    {!! JsValidator::formRequest(Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest::class)->selector("#adminarea-categories-create-form, #adminarea-categories-{$category->getRouteKey()}-update-form") !!}
 @endpush
 
 {{-- Main Content --}}
@@ -34,7 +34,7 @@
                     <div class="tab-pane active" id="details-tab">
 
                         @if ($category->exists)
-                            {{ Form::model($category, ['url' => route('adminarea.categories.update', ['category' => $category]), 'method' => 'put', 'id' => "adminarea-categories-{$category->getKey()}-update-form"]) }}
+                            {{ Form::model($category, ['url' => route('adminarea.categories.update', ['category' => $category]), 'method' => 'put', 'id' => "adminarea-categories-{$category->getRouteKey()}-update-form"]) }}
                         @else
                             {{ Form::model($category, ['url' => route('adminarea.categories.store'), 'id' => 'adminarea-categories-create-form']) }}
                         @endif

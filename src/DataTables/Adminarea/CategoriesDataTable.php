@@ -34,8 +34,8 @@ class CategoriesDataTable extends AbstractDataTable
     protected function getColumns(): array
     {
         $link = config('cortex.foundation.route.locale_prefix')
-            ? '"<a href=\""+routes.route(\'adminarea.categories.edit\', {category: full.name, locale: \''.$this->request->segment(1).'\'})+"\">"+data+"</a>"'
-            : '"<a href=\""+routes.route(\'adminarea.categories.edit\', {category: full.name})+"\">"+data+"</a>"';
+            ? '"<a href=\""+routes.route(\'adminarea.categories.edit\', {category: hashids.encode(full.id), locale: \''.$this->request->segment(1).'\'})+"\">"+data+"</a>"'
+            : '"<a href=\""+routes.route(\'adminarea.categories.edit\', {category: hashids.encode(full.id)})+"\">"+data+"</a>"';
 
         return [
             'title' => ['title' => trans('cortex/categories::common.title'), 'render' => $link, 'responsivePriority' => 0],
