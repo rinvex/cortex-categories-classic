@@ -28,11 +28,11 @@ Breadcrumbs::register('adminarea.categories.create', function (BreadcrumbsGenera
 
 Breadcrumbs::register('adminarea.categories.edit', function (BreadcrumbsGenerator $breadcrumbs, Category $category) {
     $breadcrumbs->parent('adminarea.categories.index');
-    $breadcrumbs->push($category->title, route('adminarea.categories.edit', ['category' => $category]));
+    $breadcrumbs->push($category->name, route('adminarea.categories.edit', ['category' => $category]));
 });
 
 Breadcrumbs::register('adminarea.categories.logs', function (BreadcrumbsGenerator $breadcrumbs, Category $category) {
     $breadcrumbs->parent('adminarea.categories.index');
-    $breadcrumbs->push($category->title, route('adminarea.categories.edit', ['category' => $category]));
+    $breadcrumbs->push($category->name, route('adminarea.categories.edit', ['category' => $category]));
     $breadcrumbs->push(trans('cortex/categories::common.logs'), route('adminarea.categories.logs', ['category' => $category]));
 });
