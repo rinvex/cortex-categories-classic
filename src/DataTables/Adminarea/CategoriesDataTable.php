@@ -6,6 +6,7 @@ namespace Cortex\Categories\DataTables\Adminarea;
 
 use Cortex\Categories\Models\Category;
 use Cortex\Foundation\DataTables\AbstractDataTable;
+use Cortex\Categories\Transformers\Adminarea\CategoryTransformer;
 
 class CategoriesDataTable extends AbstractDataTable
 {
@@ -15,16 +16,9 @@ class CategoriesDataTable extends AbstractDataTable
     protected $model = Category::class;
 
     /**
-     * Display ajax response.
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * {@inheritdoc}
      */
-    public function ajax()
-    {
-        return datatables($this->query())
-            ->orderColumn('name', 'name->"$.'.app()->getLocale().'" $1')
-            ->make(true);
-    }
+    protected $transformer = CategoryTransformer::class;
 
     /**
      * Get columns.
@@ -34,8 +28,8 @@ class CategoriesDataTable extends AbstractDataTable
     protected function getColumns(): array
     {
         $link = config('cortex.foundation.route.locale_prefix')
-            ? '"<a href=\""+routes.route(\'adminarea.categories.edit\', {category: hashids.encode(full.id), locale: \''.$this->request->segment(1).'\'})+"\">"+data+"</a>"'
-            : '"<a href=\""+routes.route(\'adminarea.categories.edit\', {category: hashids.encode(full.id)})+"\">"+data+"</a>"';
+            ? '"<a href=\""+routes.route(\'adminarea.categories.edit\', {category: full.id, locale: \''.$this->request->segment(1).'\'})+"\">"+data+"</a>"'
+            : '"<a href=\""+routes.route(\'adminarea.categories.edit\', {category: full.id})+"\">"+data+"</a>"';
 
         return [
             'name' => ['title' => trans('cortex/categories::common.name'), 'render' => $link, 'responsivePriority' => 0],
