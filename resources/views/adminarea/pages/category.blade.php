@@ -26,7 +26,7 @@
         <section class="content">
 
             <div class="nav-tabs-custom">
-                @if($category->exists && $currentUser->can('delete', $category)) <div class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-modal-action="{{ route('adminarea.categories.destroy', ['category' => $category]) }}" data-modal-title="{!! trans('cortex/foundation::messages.delete_confirmation_title') !!}" data-modal-body="{!! trans('cortex/foundation::messages.delete_confirmation_body', ['type' => 'category', 'name' => $category->slug]) !!}" title="{{ trans('cortex/foundation::common.delete') }}" class="btn btn-default" style="margin: 4px"><i class="fa fa-trash text-danger"></i></a></div> @endif
+                @if($category->exists && $currentUser->can('delete', $category)) <div class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-modal-action="{{ route('adminarea.categories.destroy', ['category' => $category]) }}" data-modal-title="{!! trans('cortex/foundation::messages.delete_confirmation_title') !!}" data-modal-body="{!! trans('cortex/foundation::messages.delete_confirmation_body', ['resource' => 'category', 'identifier' => $category->slug]) !!}" title="{{ trans('cortex/foundation::common.delete') }}" class="btn btn-default" style="margin: 4px"><i class="fa fa-trash text-danger"></i></a></div> @endif
                 {!! Menu::render('adminarea.categories.tabs', 'nav-tab') !!}
 
                 <div class="tab-content">
