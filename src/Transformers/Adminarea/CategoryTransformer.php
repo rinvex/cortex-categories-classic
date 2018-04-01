@@ -17,7 +17,7 @@ class CategoryTransformer extends TransformerAbstract
      */
     public function transform(Category $category): array
     {
-        return $this->escapeRow([
+        return $this->escape([
             'id' => (string) $category->getRouteKey(),
             'name' => (string) $category->name,
             'created_at' => (string) $category->created_at,
