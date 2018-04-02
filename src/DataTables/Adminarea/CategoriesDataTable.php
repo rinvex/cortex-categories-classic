@@ -33,8 +33,8 @@ class CategoriesDataTable extends AbstractDataTable
 
         return [
             'name' => ['title' => trans('cortex/categories::common.name'), 'render' => $link, 'responsivePriority' => 0],
-            'created_at' => ['title' => trans('cortex/categories::common.created_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
-            'updated_at' => ['title' => trans('cortex/categories::common.updated_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
+            'created_at' => ['title' => trans('cortex/categories::common.created_at'), 'render' => "moment(data).format('MMMM Do YYYY, hh:mm:ss A')"],
+            'updated_at' => ['title' => trans('cortex/categories::common.updated_at'), 'render' => "moment(data).format('MMMM Do YYYY, hh:mm:ss A')"],
         ];
     }
 }
