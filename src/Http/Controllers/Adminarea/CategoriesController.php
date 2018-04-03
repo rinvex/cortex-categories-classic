@@ -32,7 +32,6 @@ class CategoriesController extends AuthorizedController
     {
         return $categoriesDataTable->with([
             'id' => 'adminarea-categories-index-table',
-            'phrase' => trans('cortex/categories::common.categories'),
         ])->render('cortex/foundation::adminarea.pages.datatable');
     }
 
@@ -49,7 +48,6 @@ class CategoriesController extends AuthorizedController
         return $logsDataTable->with([
             'resource' => $category,
             'tabs' => 'adminarea.categories.tabs',
-            'phrase' => trans('cortex/categories::common.categories'),
             'id' => "adminarea-categories-{$category->getRouteKey()}-logs-table",
         ])->render('cortex/foundation::adminarea.pages.datatable-logs');
     }
@@ -65,7 +63,6 @@ class CategoriesController extends AuthorizedController
             'id' => 'adminarea-categories-import',
             'tabs' => 'adminarea.categories.tabs',
             'url' => route('adminarea.categories.hoard'),
-            'phrase' => trans('cortex/categories::common.categories'),
         ]);
     }
 
@@ -97,8 +94,7 @@ class CategoriesController extends AuthorizedController
             'resource' => 'category',
             'tabs' => 'adminarea.categories.tabs',
             'id' => 'adminarea-categories-import-logs-table',
-            'phrase' => trans('cortex/categories::common.categories'),
-        ])->render('cortex/foundation::adminarea.pages.datatable-import-logs');
+        ])->render('cortex/foundation::adminarea.pages.datatable-logs');
     }
 
     /**
