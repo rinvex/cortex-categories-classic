@@ -91,7 +91,7 @@ class CategoriesController extends AuthorizedController
     public function importLogs(ImportLogsDataTable $importLogsDatatable)
     {
         return $importLogsDatatable->with([
-            'resource' => 'category',
+            'resource' => trans('cortex/categories::common.category'),
             'tabs' => 'adminarea.categories.tabs',
             'id' => 'adminarea-categories-import-logs-table',
         ])->render('cortex/foundation::adminarea.pages.datatable-logs');
@@ -177,7 +177,7 @@ class CategoriesController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.categories.index'),
-            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => 'category', 'identifier' => $category->name])],
+            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/categories::common.category'), 'identifier' => $category->name])],
         ]);
     }
 
@@ -194,7 +194,7 @@ class CategoriesController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.categories.index'),
-            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => 'category', 'identifier' => $category->name])],
+            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/categories::common.category'), 'identifier' => $category->name])],
         ]);
     }
 }
