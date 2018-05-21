@@ -14,7 +14,7 @@ return [
     'updated_at' => 'Updated At',
     'submit' => 'Submit',
     'details' => 'Details',
-    'file' => 'File',
+    'records' => 'Records',
     'import' => 'Import',
 
     'categories' => 'Categories',

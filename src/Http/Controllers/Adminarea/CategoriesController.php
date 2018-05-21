@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Cortex\Categories\Http\Controllers\Adminarea;
 
 use Cortex\Categories\Models\Category;
+use Cortex\Foundation\DataTables\ImportRecordsDataTable;
+use Exception;
 use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Foundation\Importers\DefaultImporter;
@@ -55,30 +57,65 @@ class CategoriesController extends AuthorizedController
     /**
      * Import categories.
      *
+     * @param \Cortex\Categories\Models\Category                   $category
+     * @param \Cortex\Foundation\DataTables\ImportRecordsDataTable $importRecordsDataTable
+     *
      * @return \Illuminate\View\View
      */
-    public function import()
+    public function import(Category $category, ImportRecordsDataTable $importRecordsDataTable)
     {
-        return view('cortex/foundation::adminarea.pages.import', [
-            'id' => 'adminarea-categories-import',
+        return $importRecordsDataTable->with([
+            'resource' => $category,
             'tabs' => 'adminarea.categories.tabs',
-            'url' => route('adminarea.categories.hoard'),
-        ]);
+            'url' => route('adminarea.categories.stash'),
+            'id' => "adminarea-categories-{$category->getRouteKey()}-import-table",
+        ])->render('cortex/foundation::adminarea.pages.datatable-dropzone');
     }
 
     /**
-     * Hoard categories.
+     * Stash categories.
      *
      * @param \Cortex\Foundation\Http\Requests\ImportFormRequest $request
      * @param \Cortex\Foundation\Importers\DefaultImporter       $importer
      *
      * @return void
      */
-    public function hoard(ImportFormRequest $request, DefaultImporter $importer)
+    public function stash(ImportFormRequest $request, DefaultImporter $importer)
     {
         // Handle the import
         $importer->config['resource'] = $this->resource;
         $importer->handleImport();
+    }
+
+    /**
+     * Hoard categories.
+     *
+     * @param \Cortex\Foundation\Http\Requests\ImportFormRequest $request
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    public function hoard(ImportFormRequest $request)
+    {
+        foreach ((array) $request->get('selected_ids') as $recordId) {
+            $record = app('cortex.foundation.import_record')->find($recordId);
+
+            try {
+                $fillable = collect($record['data'])->intersectByKeys(array_flip(app('rinvex.categories.category')->getFillable()))->toArray();
+
+                tap(app('rinvex.categories.category')->firstOrNew($fillable), function ($instance) use ($record) {
+                    $instance->save() && $record->delete();
+                });
+            } catch (Exception $exception) {
+                $record->notes = $exception->getMessage().(method_exists($exception, 'getMessageBag') ? "\n".json_encode($exception->getMessageBag())."\n\n" : '');
+                $record->status = 'fail';
+                $record->save();
+            }
+        }
+
+        return intend([
+            'back' => true,
+            'with' => ['success' => trans('cortex/foundation::messages.import_complete')],
+        ]);
     }
 
     /**
