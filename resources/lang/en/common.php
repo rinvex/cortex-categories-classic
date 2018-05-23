@@ -17,6 +17,7 @@ return [
     'records' => 'Records',
     'import' => 'Import',
 
+    'category' => 'Category',
     'categories' => 'Categories',
     'create_category' => 'Create New Category',
 
