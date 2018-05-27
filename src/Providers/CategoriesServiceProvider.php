@@ -56,7 +56,7 @@ class CategoriesServiceProvider extends ServiceProvider
     public function boot(Router $router): void
     {
         // Bind route models and constrains
-        $router->pattern('category', '[a-zA-Z0-9]+');
+        $router->pattern('category', '[a-zA-Z0-9-]+');
         $router->model('category', config('rinvex.categories.models.category'));
 
         // Map relations
