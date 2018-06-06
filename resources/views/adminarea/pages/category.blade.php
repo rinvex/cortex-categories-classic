@@ -7,7 +7,7 @@
 @endsection
 
 @push('inline-scripts')
-    {!! JsValidator::formRequest(Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest::class)->selector("#adminarea-categories-create-form, #adminarea-categories-{$category->getRouteKey()}-update-form") !!}
+    {!! JsValidator::formRequest(Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest::class)->selector("#adminarea-categories-create-form, #adminarea-categories-{$category->getRouteKey()}-update-form")->ignore('.skip-validation') !!}
 @endpush
 
 {{-- Main Content --}}
