@@ -77,6 +77,11 @@
             "Cortex\\Categories\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Cortex\\Categories\\Tests\\": "tests"
+        }
+    },
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
