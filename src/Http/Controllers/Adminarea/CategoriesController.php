@@ -223,6 +223,8 @@ class CategoriesController extends AuthorizedController
      *
      * @param \Cortex\Categories\Models\Category $category
      *
+     * @throws \Exception
+     *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function destroy(Category $category)
