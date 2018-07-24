@@ -17,8 +17,9 @@ Route::domain(domain())->group(function () {
                  Route::get('import/logs')->name('import.logs')->uses('CategoriesController@importLogs');
                  Route::get('create')->name('create')->uses('CategoriesController@create');
                  Route::post('create')->name('store')->uses('CategoriesController@store');
-                 Route::get('{category}')->name('edit')->uses('CategoriesController@edit');
-                 Route::put('{category}')->name('update')->uses('CategoriesController@update');
+                 Route::get('{category}')->name('show')->uses('CategoriesController@show');
+                 Route::get('{category}/edit')->name('edit')->uses('CategoriesController@edit');
+                 Route::put('{category}/edit')->name('update')->uses('CategoriesController@update');
                  Route::get('{category}/logs')->name('logs')->uses('CategoriesController@logs');
                  Route::delete('{category}')->name('destroy')->uses('CategoriesController@destroy');
              });
