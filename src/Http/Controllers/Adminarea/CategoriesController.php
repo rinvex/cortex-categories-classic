@@ -4,9 +4,14 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\Http\Controllers\Adminarea;
 
-use Illuminate\Http\Request;
+use Exception;
+use Cortex\Categories\Models\Category;
+use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
-use Rinvex\Categories\Contracts\CategoryContract;
+use Cortex\Foundation\Importers\DefaultImporter;
+use Cortex\Foundation\DataTables\ImportLogsDataTable;
+use Cortex\Foundation\Http\Requests\ImportFormRequest;
+use Cortex\Foundation\DataTables\ImportRecordsDataTable;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 use Cortex\Categories\DataTables\Adminarea\CategoriesDataTable;
 use Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest;
@@ -16,109 +21,219 @@ class CategoriesController extends AuthorizedController
     /**
      * {@inheritdoc}
      */
-    protected $resource = 'categories';
+    protected $resource = Category::class;
 
     /**
-     * Display a listing of the resource.
+     * List all categories.
      *
-     * @return \Illuminate\Http\Response
+     * @param \Cortex\Categories\DataTables\Adminarea\CategoriesDataTable $categoriesDataTable
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
-    public function index()
+    public function index(CategoriesDataTable $categoriesDataTable)
     {
-        return app(CategoriesDataTable::class)->with([
-            'id' => 'cortex-categories-categories',
-            'phrase' => trans('cortex/categories::common.categories'),
-        ])->render('cortex/foundation::adminarea.pages.datatable');
+        return $categoriesDataTable->with([
+            'id' => 'adminarea-categories-index-table',
+        ])->render('cortex/foundation::adminarea.pages.datatable-index');
     }
 
     /**
-     * Display a listing of the resource logs.
+     * List category logs.
      *
-     * @return \Illuminate\Http\Response
+     * @param \Cortex\Categories\Models\Category          $category
+     * @param \Cortex\Foundation\DataTables\LogsDataTable $logsDataTable
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function logs(CategoryContract $category)
+    public function logs(Category $category, LogsDataTable $logsDataTable)
     {
-        return app(LogsDataTable::class)->with([
-            'type' => 'categories',
+        return $logsDataTable->with([
             'resource' => $category,
-            'id' => 'cortex-categories-categories-logs',
-            'phrase' => trans('cortex/categories::common.categories'),
-        ])->render('cortex/foundation::adminarea.pages.datatable-logs');
+            'tabs' => 'adminarea.categories.tabs',
+            'id' => "adminarea-categories-{$category->getRouteKey()}-logs-table",
+        ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Import categories.
      *
-     * @param \Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest $request
+     * @param \Cortex\Categories\Models\Category                   $category
+     * @param \Cortex\Foundation\DataTables\ImportRecordsDataTable $importRecordsDataTable
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function store(CategoryFormRequest $request)
+    public function import(Category $category, ImportRecordsDataTable $importRecordsDataTable)
     {
-        return $this->process($request, app('rinvex.categories.category'));
+        return $importRecordsDataTable->with([
+            'resource' => $category,
+            'tabs' => 'adminarea.categories.tabs',
+            'url' => route('adminarea.categories.stash'),
+            'id' => "adminarea-categories-{$category->getRouteKey()}-import-table",
+        ])->render('cortex/foundation::adminarea.pages.datatable-dropzone');
     }
 
     /**
-     * Update the given resource in storage.
+     * Stash categories.
+     *
+     * @param \Cortex\Foundation\Http\Requests\ImportFormRequest $request
+     * @param \Cortex\Foundation\Importers\DefaultImporter       $importer
+     *
+     * @return void
+     */
+    public function stash(ImportFormRequest $request, DefaultImporter $importer)
+    {
+        // Handle the import
+        $importer->config['resource'] = $this->resource;
+        $importer->handleImport();
+    }
+
+    /**
+     * Hoard categories.
+     *
+     * @param \Cortex\Foundation\Http\Requests\ImportFormRequest $request
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    public function hoard(ImportFormRequest $request)
+    {
+        foreach ((array) $request->get('selected_ids') as $recordId) {
+            $record = app('cortex.foundation.import_record')->find($recordId);
+
+            try {
+                $fillable = collect($record['data'])->intersectByKeys(array_flip(app('rinvex.categories.category')->getFillable()))->toArray();
+
+                tap(app('rinvex.categories.category')->firstOrNew($fillable), function ($instance) use ($record) {
+                    $instance->save() && $record->delete();
+                });
+            } catch (Exception $exception) {
+                $record->notes = $exception->getMessage().(method_exists($exception, 'getMessageBag') ? "\n".json_encode($exception->getMessageBag())."\n\n" : '');
+                $record->status = 'fail';
+                $record->save();
+            }
+        }
+
+        return intend([
+            'back' => true,
+            'with' => ['success' => trans('cortex/foundation::messages.import_complete')],
+        ]);
+    }
+
+    /**
+     * List category import logs.
+     *
+     * @param \Cortex\Foundation\DataTables\ImportLogsDataTable $importLogsDatatable
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    public function importLogs(ImportLogsDataTable $importLogsDatatable)
+    {
+        return $importLogsDatatable->with([
+            'resource' => trans('cortex/categories::common.category'),
+            'tabs' => 'adminarea.categories.tabs',
+            'id' => 'adminarea-categories-import-logs-table',
+        ])->render('cortex/foundation::adminarea.pages.datatable-tab');
+    }
+
+    /**
+     * Create new category.
+     *
+     * @param \Cortex\Categories\Models\Category $category
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create(Category $category)
+    {
+        return $this->form($category);
+    }
+
+    /**
+     * Edit given category.
+     *
+     * @param \Cortex\Categories\Models\Category $category
+     *
+     * @return \Illuminate\View\View
+     */
+    public function edit(Category $category)
+    {
+        return $this->form($category);
+    }
+
+    /**
+     * Show category create/edit form.
+     *
+     * @param \Cortex\Categories\Models\Category $category
+     *
+     * @return \Illuminate\View\View
+     */
+    protected function form(Category $category)
+    {
+        return view('cortex/categories::adminarea.pages.category', compact('category'));
+    }
+
+    /**
+     * Store new category.
      *
      * @param \Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest $request
-     * @param \Rinvex\Categories\Contracts\CategoryContract                  $category
+     * @param \Cortex\Categories\Models\Category                             $category
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function update(CategoryFormRequest $request, CategoryContract $category)
+    public function store(CategoryFormRequest $request, Category $category)
     {
         return $this->process($request, $category);
     }
 
     /**
-     * Delete the given resource from storage.
+     * Update given category.
      *
-     * @param \Rinvex\Categories\Contracts\CategoryContract $category
+     * @param \Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest $request
+     * @param \Cortex\Categories\Models\Category                             $category
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function delete(CategoryContract $category)
+    public function update(CategoryFormRequest $request, Category $category)
     {
-        $category->delete();
-
-        return intend([
-            'url' => route('adminarea.categories.index'),
-            'with' => ['warning' => trans('cortex/categories::messages.category.deleted', ['slug' => $category->slug])],
-        ]);
+        return $this->process($request, $category);
     }
 
     /**
-     * Show the form for create/update of the given resource.
+     * Process stored/updated category.
      *
-     * @param \Rinvex\Categories\Contracts\CategoryContract $category
+     * @param \Illuminate\Foundation\Http\FormRequest $request
+     * @param \Cortex\Categories\Models\Category      $category
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function form(CategoryContract $category)
-    {
-        return view('cortex/categories::adminarea.forms.category', compact('category'));
-    }
-
-    /**
-     * Process the form for store/update of the given resource.
-     *
-     * @param \Illuminate\Http\Request                      $request
-     * @param \Rinvex\Categories\Contracts\CategoryContract $category
-     *
-     * @return \Illuminate\Http\Response
-     */
-    protected function process(Request $request, CategoryContract $category)
+    protected function process(FormRequest $request, Category $category)
     {
         // Prepare required input fields
-        $data = $request->all();
+        $data = $request->validated();
 
         // Save category
         $category->fill($data)->save();
 
         return intend([
             'url' => route('adminarea.categories.index'),
-            'with' => ['success' => trans('cortex/categories::messages.category.saved', ['slug' => $category->slug])],
+            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/categories::common.category'), 'identifier' => $category->name])],
+        ]);
+    }
+
+    /**
+     * Destroy given category.
+     *
+     * @param \Cortex\Categories\Models\Category $category
+     *
+     * @throws \Exception
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Category $category)
+    {
+        $category->delete();
+
+        return intend([
+            'url' => route('adminarea.categories.index'),
+            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/categories::common.category'), 'identifier' => $category->name])],
         ]);
     }
 }

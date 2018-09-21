@@ -4,22 +4,24 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\Transformers\Adminarea;
 
+use Rinvex\Support\Traits\Escaper;
+use Cortex\Categories\Models\Category;
 use League\Fractal\TransformerAbstract;
-use Rinvex\Categories\Contracts\CategoryContract;
 
 class CategoryTransformer extends TransformerAbstract
 {
+    use Escaper;
+
     /**
      * @return array
      */
-    public function transform(CategoryContract $category)
+    public function transform(Category $category): array
     {
-        return [
-            'id' => (int) $category->id,
+        return $this->escape([
+            'id' => (string) $category->getRouteKey(),
             'name' => (string) $category->name,
-            'slug' => (string) $category->slug,
             'created_at' => (string) $category->created_at,
             'updated_at' => (string) $category->updated_at,
-        ];
+        ]);
     }
 }

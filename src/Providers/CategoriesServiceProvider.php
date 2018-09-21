@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace Cortex\Categories\Providers;
 
 use Illuminate\Routing\Router;
+use Cortex\Categories\Models\Category;
 use Illuminate\Support\ServiceProvider;
-use Rinvex\Categories\Contracts\CategoryContract;
 use Cortex\Categories\Console\Commands\SeedCommand;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Cortex\Categories\Console\Commands\InstallCommand;
 use Cortex\Categories\Console\Commands\MigrateCommand;
 use Cortex\Categories\Console\Commands\PublishCommand;
+use Cortex\Categories\Console\Commands\RollbackCommand;
 
 class CategoriesServiceProvider extends ServiceProvider
 {
@@ -20,10 +22,11 @@ class CategoriesServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
+        SeedCommand::class => 'command.cortex.categories.seed',
+        InstallCommand::class => 'command.cortex.categories.install',
         MigrateCommand::class => 'command.cortex.categories.migrate',
         PublishCommand::class => 'command.cortex.categories.publish',
-        InstallCommand::class => 'command.cortex.categories.install',
-        SeedCommand::class => 'command.cortex.categories.seed',
+        RollbackCommand::class => 'command.cortex.categories.rollback',
     ];
 
     /**
@@ -35,8 +38,12 @@ class CategoriesServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
+        // Bind eloquent models to IoC container
+        $this->app['config']['rinvex.categories.models.category'] === Category::class
+        || $this->app->alias('rinvex.categories.category', Category::class);
+
         // Register console commands
         ! $this->app->runningInConsole() || $this->registerCommands();
     }
@@ -46,19 +53,25 @@ class CategoriesServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Router $router)
+    public function boot(Router $router): void
     {
         // Bind route models and constrains
-        $router->pattern('category', '[a-z0-9-]+');
-        $router->model('category', CategoryContract::class);
+        $router->pattern('category', '[a-zA-Z0-9-]+');
+        $router->model('category', config('rinvex.categories.models.category'));
+
+        // Map relations
+        Relation::morphMap([
+            'category' => config('rinvex.categories.models.category'),
+        ]);
 
         // Load resources
-        require __DIR__.'/../../routes/breadcrumbs.php';
-        $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
+        require __DIR__.'/../../routes/breadcrumbs/adminarea.php';
+        $this->loadRoutesFrom(__DIR__.'/../../routes/web/adminarea.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/categories');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/categories');
-        $this->app->afterResolving('blade.compiler', function () {
-            require __DIR__.'/../../routes/menus.php';
+        ! $this->app->runningInConsole() || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+        $this->app->runningInConsole() || $this->app->afterResolving('blade.compiler', function () {
+            require __DIR__.'/../../routes/menus/adminarea.php';
         });
 
         // Publish Resources
@@ -70,8 +83,9 @@ class CategoriesServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function publishResources()
+    protected function publishResources(): void
     {
+        $this->publishes([realpath(__DIR__.'/../../database/migrations') => database_path('migrations')], 'cortex-categories-migrations');
         $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/categories')], 'cortex-categories-lang');
         $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/categories')], 'cortex-categories-views');
     }
@@ -81,13 +95,11 @@ class CategoriesServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerCommands()
+    protected function registerCommands(): void
     {
         // Register artisan commands
         foreach ($this->commands as $key => $value) {
-            $this->app->singleton($value, function ($app) use ($key) {
-                return new $key();
-            });
+            $this->app->singleton($value, $key);
         }
 
         $this->commands(array_values($this->commands));
