@@ -135,30 +135,6 @@ class CategoriesController extends AuthorizedController
     }
 
     /**
-     * Create new category.
-     *
-     * @param \Cortex\Categories\Models\Category $category
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create(Category $category)
-    {
-        return $this->form($category);
-    }
-
-    /**
-     * Edit given category.
-     *
-     * @param \Cortex\Categories\Models\Category $category
-     *
-     * @return \Illuminate\View\View
-     */
-    public function edit(Category $category)
-    {
-        return $this->form($category);
-    }
-
-    /**
      * Show category create/edit form.
      *
      * @param \Cortex\Categories\Models\Category $category
