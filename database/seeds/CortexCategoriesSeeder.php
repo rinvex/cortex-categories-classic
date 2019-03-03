@@ -13,11 +13,17 @@ class CortexCategoriesSeeder extends Seeder
      */
     public function run()
     {
-        Bouncer::allow('admin')->to('list', config('rinvex.categories.models.category'));
-        Bouncer::allow('admin')->to('import', config('rinvex.categories.models.category'));
-        Bouncer::allow('admin')->to('create', config('rinvex.categories.models.category'));
-        Bouncer::allow('admin')->to('update', config('rinvex.categories.models.category'));
-        Bouncer::allow('admin')->to('delete', config('rinvex.categories.models.category'));
-        Bouncer::allow('admin')->to('audit', config('rinvex.categories.models.category'));
+        $abilities = [
+            ['name' => 'list', 'title' => 'List categories', 'entity_type' => 'category'],
+            ['name' => 'import', 'title' => 'Import categories', 'entity_type' => 'category'],
+            ['name' => 'create', 'title' => 'Create categories', 'entity_type' => 'category'],
+            ['name' => 'update', 'title' => 'Update categories', 'entity_type' => 'category'],
+            ['name' => 'delete', 'title' => 'Delete categories', 'entity_type' => 'category'],
+            ['name' => 'audit', 'title' => 'Audit categories', 'entity_type' => 'category'],
+        ];
+
+        collect($abilities)->each(function (array $ability) {
+            app('cortex.auth.ability')->create($ability);
+        });
     }
 }
