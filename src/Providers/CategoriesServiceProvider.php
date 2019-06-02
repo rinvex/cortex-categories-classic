@@ -48,7 +48,7 @@ class CategoriesServiceProvider extends ServiceProvider
         || $this->app->alias('rinvex.categories.category', Category::class);
 
         // Register console commands
-        ! $this->app->runningInConsole() || $this->registersCommands();
+        ! $this->app->runningInConsole() || $this->registerCommands();
     }
 
     /**
