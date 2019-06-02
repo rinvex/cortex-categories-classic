@@ -52,7 +52,7 @@
         "davejamesmiller/laravel-breadcrumbs": "^5.2.0",
         "kalnoy/nestedset": "^4.3.0",
         "laravelcollective/html": "~5.8.0",
-        "league/fractal": "^0.18.0",
+        "league/fractal": "^0.17.0",
         "proengsoft/laravel-jsvalidation": "^2.4.0",
         "rinvex/laravel-categories": "^2.0.0",
         "rinvex/laravel-composer": "^2.0.0",
