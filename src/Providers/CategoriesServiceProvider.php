@@ -77,8 +77,8 @@ class CategoriesServiceProvider extends ServiceProvider
         });
 
         // Publish Resources
-        ! $this->app->runningInConsole() || $this->publishesLang('cortex/categories');
-        ! $this->app->runningInConsole() || $this->publishesViews('cortex/categories');
-        ! $this->app->runningInConsole() || $this->publishesMigrations('cortex/categories');
+        ! $this->app->runningInConsole() || $this->publishesLang('cortex/categories', true);
+        ! $this->app->runningInConsole() || $this->publishesViews('cortex/categories', true);
+        ! $this->app->runningInConsole() || $this->publishesMigrations('cortex/categories', true);
     }
 }
