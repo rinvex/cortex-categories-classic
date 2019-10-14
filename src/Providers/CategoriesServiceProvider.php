@@ -73,7 +73,7 @@ class CategoriesServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/categories');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/categories');
 
-        $this->app->runningInConsole() || $dispatcher->listen('controller.constructed', function ($accessarea) {
+        $this->app->runningInConsole() || $dispatcher->listen('accessarea.ready', function ($accessarea) {
             ! file_exists($menus = __DIR__."/../../routes/menus/{$accessarea}.php") || require $menus;
             ! file_exists($breadcrumbs = __DIR__."/../../routes/breadcrumbs/{$accessarea}.php") || require $breadcrumbs;
         });
