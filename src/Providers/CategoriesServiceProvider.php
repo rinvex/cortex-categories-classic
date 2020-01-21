@@ -44,6 +44,9 @@ class CategoriesServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        // Merge config
+        $this->mergeConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'cortex.categories');
+
         // Bind eloquent models to IoC container
         $this->app['config']['rinvex.categories.models.category'] === Category::class
         || $this->app->alias('rinvex.categories.category', Category::class);
@@ -82,5 +85,6 @@ class CategoriesServiceProvider extends ServiceProvider
         ! $this->app->runningInConsole() || $this->publishesLang('cortex/categories', true);
         ! $this->app->runningInConsole() || $this->publishesViews('cortex/categories', true);
         ! $this->app->runningInConsole() || $this->publishesMigrations('cortex/categories', true);
+        ! $this->app['config']['cortex.categories.autoload_migrations'] || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 }
