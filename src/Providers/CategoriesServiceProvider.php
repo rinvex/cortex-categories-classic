@@ -82,9 +82,9 @@ class CategoriesServiceProvider extends ServiceProvider
         });
 
         // Publish Resources
-        ! $this->app->runningInConsole() || $this->publishesLang('cortex/categories', true);
-        ! $this->app->runningInConsole() || $this->publishesViews('cortex/categories', true);
-        ! $this->app->runningInConsole() || $this->publishesMigrations('cortex/categories', true);
-        ! $this->app['config']['cortex.categories.autoload_migrations'] || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+        $this->publishesLang('cortex/categories', true);
+        $this->publishesViews('cortex/categories', true);
+        $this->publishesMigrations('cortex/categories', true);
+        ! $this->autoloadMigrations('cortex.categories') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 }
