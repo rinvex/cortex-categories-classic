@@ -13,6 +13,12 @@ class CategoryTransformer extends TransformerAbstract
     use Escaper;
 
     /**
+     * Transform category model.
+     *
+     * @param \Cortex\Categories\Models\Category $category
+     *
+     * @throws \Exception
+     *
      * @return array
      */
     public function transform(Category $category): array
