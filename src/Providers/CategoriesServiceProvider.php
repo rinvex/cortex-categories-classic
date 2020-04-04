@@ -75,6 +75,7 @@ class CategoriesServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/../../routes/web/adminarea.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/categories');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/categories');
+        ! $this->autoloadMigrations('cortex/categories') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
 
         $this->app->runningInConsole() || $dispatcher->listen('accessarea.ready', function ($accessarea) {
             ! file_exists($menus = __DIR__."/../../routes/menus/{$accessarea}.php") || require $menus;
@@ -85,6 +86,5 @@ class CategoriesServiceProvider extends ServiceProvider
         $this->publishesLang('cortex/categories', true);
         $this->publishesViews('cortex/categories', true);
         $this->publishesMigrations('cortex/categories', true);
-        ! $this->autoloadMigrations('cortex.categories') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 }
