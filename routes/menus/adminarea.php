@@ -7,7 +7,7 @@ use Cortex\Categories\Models\Category;
 use Rinvex\Menus\Models\MenuGenerator;
 
 Menu::register('adminarea.sidebar', function (MenuGenerator $menu, Category $category) {
-    $menu->findByTitleOrAdd(trans('cortex/foundation::common.taxonomy'), 10, 'fa fa-arrows', [], function (MenuItem $dropdown) use ($category) {
+    $menu->findByTitleOrAdd(trans('cortex/foundation::common.taxonomy'), 10, 'fa fa-arrows', 'header', [], function (MenuItem $dropdown) use ($category) {
         $dropdown->route(['adminarea.categories.index'], trans('cortex/categories::common.categories'), 10, 'fa fa-sitemap')->ifCan('list', $category)->activateOnRoute('adminarea.categories');
     });
 });
