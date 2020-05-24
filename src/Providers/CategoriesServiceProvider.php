@@ -72,7 +72,6 @@ class CategoriesServiceProvider extends ServiceProvider
         ]);
 
         // Load resources
-        $this->loadRoutesFrom(__DIR__.'/../../routes/web/adminarea.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/categories');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/categories');
         ! $this->autoloadMigrations('cortex/categories') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
