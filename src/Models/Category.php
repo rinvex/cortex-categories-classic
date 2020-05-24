@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\Models;
 
-use Cortex\Foundation\Events\CrudPerformed;
 use Kalnoy\Nestedset\NestedSet;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
+use Cortex\Foundation\Events\CrudPerformed;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Cortex\Foundation\Traits\FiresCustomModelEvent;
 use Rinvex\Categories\Models\Category as BaseCategory;
