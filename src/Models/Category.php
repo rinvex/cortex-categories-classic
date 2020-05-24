@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\Models;
 
+use Cortex\Foundation\Events\CrudPerformed;
 use Kalnoy\Nestedset\NestedSet;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Cortex\Foundation\Traits\FiresCustomModelEvent;
 use Rinvex\Categories\Models\Category as BaseCategory;
 
 /**
@@ -48,6 +50,7 @@ class Category extends BaseCategory
     use Auditable;
     use HashidsTrait;
     use LogsActivity;
+    use FiresCustomModelEvent;
 
     /**
      * {@inheritdoc}
@@ -74,6 +77,18 @@ class Category extends BaseCategory
         'style' => 'string',
         'icon' => 'string',
         'deleted_at' => 'datetime',
+    ];
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => CrudPerformed::class,
+        'deleted' => CrudPerformed::class,
+        'restored' => CrudPerformed::class,
+        'updated' => CrudPerformed::class,
     ];
 
     /**
