@@ -25,7 +25,6 @@ class CategoryTransformer extends TransformerAbstract
     {
         return $this->escape([
             'id' => (string) $category->getRouteKey(),
-            'DT_RowId' => 'row_'.$category->getRouteKey(),
             'name' => (string) $category->name,
             'created_at' => (string) $category->created_at,
             'updated_at' => (string) $category->updated_at,
