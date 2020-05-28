@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\Models;
 
-use Cortex\Foundation\Events\CrudPerformed;
 use Kalnoy\Nestedset\NestedSet;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Cortex\Foundation\Traits\FiresCustomModelEvent;
+use Cortex\Foundation\Events\ModelDeleted;
+use Cortex\Foundation\Events\ModelCreated;
+use Cortex\Foundation\Events\ModelUpdated;
+use Cortex\Foundation\Events\ModelRestored;
+
 use Rinvex\Categories\Models\Category as BaseCategory;
 
 /**
@@ -85,10 +89,10 @@ class Category extends BaseCategory
      * @var array
      */
     protected $dispatchesEvents = [
-        'created' => CrudPerformed::class,
-        'deleted' => CrudPerformed::class,
-        'restored' => CrudPerformed::class,
-        'updated' => CrudPerformed::class,
+        'created' => ModeC::class,
+        'deleted' => ModelDeleted::class,
+        'restored' => ModelRestored::class,
+        'updated' => ModelUpdated::class,
     ];
 
     /**
