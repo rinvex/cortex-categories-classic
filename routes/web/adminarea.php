@@ -10,7 +10,7 @@ Route::domain(domain())->group(function () {
 
         // Categories Routes
              Route::name('categories.')->prefix('categories')->group(function () {
-                 Route::get('/')->name('index')->uses('CategoriesController@index');
+                 Route::match(['get', 'post'], '/')->name('index')->uses('CategoriesController@index');
                  Route::get('import')->name('import')->uses('CategoriesController@import');
                  Route::post('import')->name('stash')->uses('CategoriesController@stash');
                  Route::post('hoard')->name('hoard')->uses('CategoriesController@hoard');
