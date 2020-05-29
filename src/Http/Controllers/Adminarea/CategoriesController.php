@@ -190,7 +190,7 @@ class CategoriesController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.categories.index'),
-            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/categories::common.category'), 'identifier' => $category->name])],
+            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/categories::common.category'), 'identifier' => $category->getRouteKey()])],
         ]);
     }
 
@@ -209,7 +209,7 @@ class CategoriesController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.categories.index'),
-            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/categories::common.category'), 'identifier' => $category->name])],
+            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/categories::common.category'), 'identifier' => $category->getRouteKey()])],
         ]);
     }
 }
