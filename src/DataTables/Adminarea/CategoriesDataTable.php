@@ -32,6 +32,7 @@ class CategoriesDataTable extends AbstractDataTable
             : '"<a href=\""+routes.route(\'adminarea.categories.edit\', {category: full.id})+"\">"+data+"</a>"';
 
         return [
+            'id' => ['checkboxes' => '{"selectRow": true}', 'exportable' => false, 'printable' => false],
             'name' => ['title' => trans('cortex/categories::common.name'), 'render' => $link, 'responsivePriority' => 0],
             'created_at' => ['title' => trans('cortex/categories::common.created_at'), 'render' => "moment(data).format('YYYY-MM-DD, hh:mm:ss A')"],
             'updated_at' => ['title' => trans('cortex/categories::common.updated_at'), 'render' => "moment(data).format('YYYY-MM-DD, hh:mm:ss A')"],
