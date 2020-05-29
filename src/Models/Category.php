@@ -7,13 +7,11 @@ namespace Cortex\Categories\Models;
 use Kalnoy\Nestedset\NestedSet;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
-use Spatie\Activitylog\Traits\LogsActivity;
-use Cortex\Foundation\Traits\FiresCustomModelEvent;
 use Cortex\Foundation\Events\ModelDeleted;
-use Cortex\Foundation\Events\ModelCreated;
 use Cortex\Foundation\Events\ModelUpdated;
 use Cortex\Foundation\Events\ModelRestored;
-
+use Spatie\Activitylog\Traits\LogsActivity;
+use Cortex\Foundation\Traits\FiresCustomModelEvent;
 use Rinvex\Categories\Models\Category as BaseCategory;
 
 /**
