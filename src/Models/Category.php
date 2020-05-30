@@ -7,6 +7,7 @@ namespace Cortex\Categories\Models;
 use Kalnoy\Nestedset\NestedSet;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
+use Cortex\Foundation\Events\ModelCreated;
 use Cortex\Foundation\Events\ModelDeleted;
 use Cortex\Foundation\Events\ModelUpdated;
 use Cortex\Foundation\Events\ModelRestored;
@@ -87,7 +88,7 @@ class Category extends BaseCategory
      * @var array
      */
     protected $dispatchesEvents = [
-        'created' => ModeC::class,
+        'created' => ModelCreated::class,
         'deleted' => ModelDeleted::class,
         'restored' => ModelRestored::class,
         'updated' => ModelUpdated::class,
