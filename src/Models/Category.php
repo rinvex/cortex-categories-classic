@@ -7,7 +7,11 @@ namespace Cortex\Categories\Models;
 use Kalnoy\Nestedset\NestedSet;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
+use Cortex\Foundation\Events\ModelDeleted;
+use Cortex\Foundation\Events\ModelUpdated;
+use Cortex\Foundation\Events\ModelRestored;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Cortex\Foundation\Traits\FiresCustomModelEvent;
 use Rinvex\Categories\Models\Category as BaseCategory;
 
 /**
@@ -48,6 +52,7 @@ class Category extends BaseCategory
     use Auditable;
     use HashidsTrait;
     use LogsActivity;
+    use FiresCustomModelEvent;
 
     /**
      * {@inheritdoc}
@@ -74,6 +79,18 @@ class Category extends BaseCategory
         'style' => 'string',
         'icon' => 'string',
         'deleted_at' => 'datetime',
+    ];
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => ModeC::class,
+        'deleted' => ModelDeleted::class,
+        'restored' => ModelRestored::class,
+        'updated' => ModelUpdated::class,
     ];
 
     /**
@@ -112,14 +129,14 @@ class Category extends BaseCategory
 
         $this->setTable(config('rinvex.categories.tables.categories'));
         $this->setRules([
-            'name' => 'required|string|max:150',
+            'name' => 'required|string|strip_tags|max:150',
             'description' => 'nullable|string|max:10000',
             'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.categories.tables.categories').',slug',
             NestedSet::LFT => 'sometimes|required|integer',
             NestedSet::RGT => 'sometimes|required|integer',
             NestedSet::PARENT_ID => 'nullable|integer',
-            'style' => 'nullable|string|max:150',
-            'icon' => 'nullable|string|max:150',
+            'style' => 'nullable|string|strip_tags|max:150',
+            'icon' => 'nullable|string|strip_tags|max:150',
         ]);
     }
 
