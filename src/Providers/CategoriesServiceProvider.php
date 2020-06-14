@@ -44,9 +44,6 @@ class CategoriesServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // Merge config
-        $this->mergeConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'cortex.categories');
-
         // Bind eloquent models to IoC container
         $this->app['config']['rinvex.categories.models.category'] === Category::class
         || $this->app->alias('rinvex.categories.category', Category::class);
@@ -70,20 +67,5 @@ class CategoriesServiceProvider extends ServiceProvider
         Relation::morphMap([
             'category' => config('rinvex.categories.models.category'),
         ]);
-
-        // Load resources
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/categories');
-        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/categories');
-        ! $this->autoloadMigrations('cortex/categories') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-
-        $this->app->runningInConsole() || $dispatcher->listen('accessarea.ready', function ($accessarea) {
-            ! file_exists($menus = __DIR__."/../../routes/menus/{$accessarea}.php") || require $menus;
-            ! file_exists($breadcrumbs = __DIR__."/../../routes/breadcrumbs/{$accessarea}.php") || require $breadcrumbs;
-        });
-
-        // Publish Resources
-        $this->publishesLang('cortex/categories', true);
-        $this->publishesViews('cortex/categories', true);
-        $this->publishesMigrations('cortex/categories', true);
     }
 }
