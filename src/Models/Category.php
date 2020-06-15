@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\Models;
 
-use Kalnoy\Nestedset\NestedSet;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Cortex\Foundation\Events\ModelCreated;
@@ -56,33 +55,6 @@ class Category extends BaseCategory
     use FiresCustomModelEvent;
 
     /**
-     * {@inheritdoc}
-     */
-    protected $fillable = [
-        'slug',
-        'name',
-        'description',
-        NestedSet::LFT,
-        NestedSet::RGT,
-        NestedSet::PARENT_ID,
-        'style',
-        'icon',
-    ];
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $casts = [
-        'slug' => 'string',
-        NestedSet::LFT => 'integer',
-        NestedSet::RGT => 'integer',
-        NestedSet::PARENT_ID => 'integer',
-        'style' => 'string',
-        'icon' => 'string',
-        'deleted_at' => 'datetime',
-    ];
-
-    /**
      * The event map for the model.
      *
      * @var array
@@ -128,17 +100,13 @@ class Category extends BaseCategory
     {
         parent::__construct($attributes);
 
+        $this->mergeFillable(['style', 'icon']);
+
+        $this->mergeCasts(['style' => 'string', 'icon' => 'string']);
+
+        $this->mergeRules(['style' => 'nullable|string|strip_tags|max:150', 'icon' => 'nullable|string|strip_tags|max:150']);
+
         $this->setTable(config('rinvex.categories.tables.categories'));
-        $this->setRules([
-            'name' => 'required|string|strip_tags|max:150',
-            'description' => 'nullable|string|max:10000',
-            'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.categories.tables.categories').',slug',
-            NestedSet::LFT => 'sometimes|required|integer',
-            NestedSet::RGT => 'sometimes|required|integer',
-            NestedSet::PARENT_ID => 'nullable|integer',
-            'style' => 'nullable|string|strip_tags|max:150',
-            'icon' => 'nullable|string|strip_tags|max:150',
-        ]);
     }
 
     /**
