@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\Models;
 
+use Rinvex\Support\Traits\Macroable;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Cortex\Foundation\Events\ModelCreated;
@@ -50,6 +51,7 @@ use Rinvex\Categories\Models\Category as BaseCategory;
 class Category extends BaseCategory
 {
     use Auditable;
+    use Macroable;
     use HashidsTrait;
     use LogsActivity;
     use FiresCustomModelEvent;
