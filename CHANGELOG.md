@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v4.2.1] - 2020-06-19
+- Update composer dependencies
+- Stick to composer version constraints recommendations and ease minimum required version of modules
+
 ## [v4.2.0] - 2020-06-15
 - Autoload config, views, language, menus, breadcrumbs, and migrations
   - This is now done automatically through cortex/foundation, so no need to manually wire it here anymore
@@ -144,6 +148,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v4.2.1]: https://github.com/rinvex/cortex-categories/compare/v4.2.0...v4.2.1
 [v4.2.0]: https://github.com/rinvex/cortex-categories/compare/v4.1.1...v4.2.0
 [v4.1.1]: https://github.com/rinvex/cortex-categories/compare/v4.1.0...v4.1.1
 [v4.1.0]: https://github.com/rinvex/cortex-categories/compare/v4.0.8...v4.1.0
