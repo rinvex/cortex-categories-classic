@@ -15,10 +15,10 @@ Route::domain(domain())->group(function () {
                  Route::post('import')->name('stash')->uses('CategoriesController@stash');
                  Route::post('hoard')->name('hoard')->uses('CategoriesController@hoard');
                  Route::get('import/logs')->name('import.logs')->uses('CategoriesController@importLogs');
-                 Route::get('create')->name('create')->uses('CategoriesController@form');
+                 Route::get('create')->name('create')->uses('CategoriesController@create');
                  Route::post('create')->name('store')->uses('CategoriesController@store');
                  Route::get('{category}')->name('show')->uses('CategoriesController@show');
-                 Route::get('{category}/edit')->name('edit')->uses('CategoriesController@form');
+                 Route::get('{category}/edit')->name('edit')->uses('CategoriesController@edit');
                  Route::put('{category}/edit')->name('update')->uses('CategoriesController@update');
                  Route::get('{category}/logs')->name('logs')->uses('CategoriesController@logs');
                  Route::delete('{category}')->name('destroy')->uses('CategoriesController@destroy');
