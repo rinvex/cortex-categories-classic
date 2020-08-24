@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Categories\Http\Controllers\Adminarea;
 
 use Exception;
+use Illuminate\Http\Request;
 use Cortex\Categories\Models\Category;
 use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
@@ -135,13 +136,40 @@ class CategoriesController extends AuthorizedController
     }
 
     /**
-     * Show category create/edit form.
+     * Create new category.
      *
+     * @param \Illuminate\Http\Request           $request
      * @param \Cortex\Categories\Models\Category $category
      *
      * @return \Illuminate\View\View
      */
-    protected function form(Category $category)
+    public function create(Request $request, Category $category)
+    {
+        return $this->form($request, $category);
+    }
+
+    /**
+     * Edit given category.
+     *
+     * @param \Illuminate\Http\Request           $request
+     * @param \Cortex\Categories\Models\Category $category
+     *
+     * @return \Illuminate\View\View
+     */
+    public function edit(Request $request, Category $category)
+    {
+        return $this->form($request, $category);
+    }
+
+    /**
+     * Show category create/edit form.
+     *
+     * @param \Illuminate\Http\Request           $request
+     * @param \Cortex\Categories\Models\Category $category
+     *
+     * @return \Illuminate\View\View
+     */
+    protected function form(Request $request, Category $category)
     {
         return view('cortex/categories::adminarea.pages.category', compact('category'));
     }
