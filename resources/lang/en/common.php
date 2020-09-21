@@ -19,6 +19,7 @@ return [
 
     'category' => 'Category',
     'categories' => 'Categories',
+    'parent_category' => 'Parent category',
     'create_category' => 'Create New Category',
 
 ];
