@@ -7,7 +7,7 @@
 @endsection
 
 @push('inline-scripts')
-    {!! JsValidator::formRequest(Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest::class)->selector("#adminarea-categories-create-form, #adminarea-categories-{$category->getRouteKey()}-update-form")->ignore('.skip-validation') !!}
+    {!! JsValidator::formRequest(Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest::class)->selector("#adminarea-cortex-categories-categories-create-form, #adminarea-cortex-categories-categories-{$category->getRouteKey()}-update-form")->ignore('.skip-validation') !!}
 @endpush
 
 {{-- Main Content --}}
@@ -27,7 +27,7 @@
                 @if($category->exists && app('request.user')->can('delete', $category))
                     <div class="pull-right">
                         <a href="#" data-toggle="modal" data-target="#delete-confirmation"
-                           data-modal-action="{{ route('adminarea.categories.destroy', ['category' => $category]) }}"
+                           data-modal-action="{{ route('adminarea.cortex.categories.categories.destroy', ['category' => $category]) }}"
                            data-modal-title="{{ trans('cortex/foundation::messages.delete_confirmation_title') }}"
                            data-modal-button="<a href='#' class='btn btn-danger' data-form='delete' data-token='{{ csrf_token() }}'><i class='fa fa-trash-o'></i> {{ trans('cortex/foundation::common.delete') }}</a>"
                            data-modal-body="{{ trans('cortex/foundation::messages.delete_confirmation_body', ['resource' => trans('cortex/categories::common.category'), 'identifier' => $category->getRouteKey()]) }}"
@@ -35,16 +35,16 @@
                         </a>
                     </div>
                 @endif
-                {!! Menu::render('adminarea.categories.tabs', 'nav-tab') !!}
+                {!! Menu::render('adminarea.cortex.categories.categories.tabs', 'nav-tab') !!}
 
                 <div class="tab-content">
 
                     <div class="tab-pane active" id="details-tab">
 
                         @if ($category->exists)
-                            {{ Form::model($category, ['url' => route('adminarea.categories.update', ['category' => $category]), 'method' => 'put', 'id' => "adminarea-categories-{$category->getRouteKey()}-update-form"]) }}
+                            {{ Form::model($category, ['url' => route('adminarea.cortex.categories.categories.update', ['category' => $category]), 'method' => 'put', 'id' => "adminarea-cortex-categories-categories-{$category->getRouteKey()}-update-form"]) }}
                         @else
-                            {{ Form::model($category, ['url' => route('adminarea.categories.store'), 'id' => 'adminarea-categories-create-form']) }}
+                            {{ Form::model($category, ['url' => route('adminarea.cortex.categories.categories.store'), 'id' => 'adminarea-cortex-categories-categories-create-form']) }}
                         @endif
 
                             <div class="row">
