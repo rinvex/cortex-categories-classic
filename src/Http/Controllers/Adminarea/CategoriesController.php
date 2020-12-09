@@ -35,7 +35,7 @@ class CategoriesController extends AuthorizedController
     {
         return $categoriesDataTable->with([
             'id' => 'adminarea-cortex-categories-categories-index',
-            'pusher' => ['entity' => 'category', 'channel' => 'rinvex.categories.categories.index'],
+            'pusher' => ['entity' => 'category', 'channel' => 'cortex.categories.categories.index'],
         ])->render('cortex/foundation::adminarea.pages.datatable-index');
     }
 

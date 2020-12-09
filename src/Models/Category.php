@@ -9,6 +9,10 @@ use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Rinvex\Support\Traits\HasTimezones;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Cortex\Categories\Events\CategoryCreated;
+use Cortex\Categories\Events\CategoryDeleted;
+use Cortex\Categories\Events\CategoryUpdated;
+use Cortex\Categories\Events\CategoryRestored;
 
 use Rinvex\Categories\Models\Category as BaseCategory;
 
@@ -52,6 +56,18 @@ class Category extends BaseCategory
     use HashidsTrait;
     use HasTimezones;
     use LogsActivity;
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => CategoryCreated::class,
+        'updated' => CategoryUpdated::class,
+        'deleted' => CategoryDeleted::class,
+        'restored' => CategoryRestored::class,
+    ];
 
     /**
      * Indicates whether to log only dirty attributes or all.
