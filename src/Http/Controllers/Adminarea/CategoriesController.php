@@ -34,7 +34,8 @@ class CategoriesController extends AuthorizedController
     public function index(CategoriesDataTable $categoriesDataTable)
     {
         return $categoriesDataTable->with([
-            'id' => 'adminarea-categories-index',
+            'id' => 'adminarea-cortex-categories-categories-index',
+            'pusher' => ['entity' => 'category', 'channel' => 'cortex.categories.categories.index'],
         ])->render('cortex/foundation::adminarea.pages.datatable-index');
     }
 
@@ -50,8 +51,8 @@ class CategoriesController extends AuthorizedController
     {
         return $logsDataTable->with([
             'resource' => $category,
-            'tabs' => 'adminarea.categories.tabs',
-            'id' => "adminarea-categories-{$category->getRouteKey()}-logs",
+            'tabs' => 'adminarea.cortex.categories.categories.tabs',
+            'id' => "adminarea-cortex-categories-categories-{$category->getRouteKey()}-logs",
         ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
 
@@ -67,9 +68,9 @@ class CategoriesController extends AuthorizedController
     {
         return $importRecordsDataTable->with([
             'resource' => $category,
-            'tabs' => 'adminarea.categories.tabs',
-            'url' => route('adminarea.categories.stash'),
-            'id' => "adminarea-categories-{$category->getRouteKey()}-import",
+            'tabs' => 'adminarea.cortex.categories.categories.tabs',
+            'url' => route('adminarea.cortex.categories.categories.stash'),
+            'id' => "adminarea-cortex-categories-categories-{$category->getRouteKey()}-import",
         ])->render('cortex/foundation::adminarea.pages.datatable-dropzone');
     }
 
@@ -130,8 +131,8 @@ class CategoriesController extends AuthorizedController
     {
         return $importLogsDatatable->with([
             'resource' => trans('cortex/categories::common.category'),
-            'tabs' => 'adminarea.categories.tabs',
-            'id' => 'adminarea-categories-import-logs',
+            'tabs' => 'adminarea.cortex.categories.categories.tabs',
+            'id' => 'adminarea-cortex-categories-categories-import-logs',
         ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
 
@@ -217,7 +218,7 @@ class CategoriesController extends AuthorizedController
         $category->fill($data)->save();
 
         return intend([
-            'url' => route('adminarea.categories.index'),
+            'url' => route('adminarea.cortex.categories.categories.index'),
             'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/categories::common.category'), 'identifier' => $category->getRouteKey()])],
         ]);
     }
@@ -236,7 +237,7 @@ class CategoriesController extends AuthorizedController
         $category->delete();
 
         return intend([
-            'url' => route('adminarea.categories.index'),
+            'url' => route('adminarea.cortex.categories.categories.index'),
             'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/categories::common.category'), 'identifier' => $category->getRouteKey()])],
         ]);
     }
