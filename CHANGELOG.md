@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v4.3.2] - 2020-12-11
+- Move custom eloquent model events to module layer from core package layer
+- Rename broadcast channels file to avoid accessarea naming
+- Rename routes, channels, menus, breadcrumbs, datatable & form IDs to follow same modular naming conventions
+- Tweak datatables realtime
+- Move Eloquent Events to core package responsibility
+- Enforce consistent datatables request object usage
+- Override datatable ajax method to adjust custom order column: 'name'
+
 ## [v4.3.1] - 2020-08-25
 - Enforce controller API consistency
 - Activate module after installation
@@ -159,6 +168,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v4.3.2]: https://github.com/rinvex/cortex-categories/compare/v4.3.1...v4.3.2
 [v4.3.1]: https://github.com/rinvex/cortex-categories/compare/v4.3.0...v4.3.1
 [v4.3.0]: https://github.com/rinvex/cortex-categories/compare/v4.2.2...v4.3.0
 [v4.2.2]: https://github.com/rinvex/cortex-categories/compare/v4.2.1...v4.2.2
