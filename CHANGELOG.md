@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v5.0.1] - 2020-12-25
+- Add support for PHP v8
+
 ## [v5.0.0] - 2020-12-22
 - Upgrade to Laravel v8
 
@@ -171,6 +174,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v5.0.1]: https://github.com/rinvex/cortex-categories/compare/v5.0.0...v5.0.1
 [v5.0.0]: https://github.com/rinvex/cortex-categories/compare/v4.3.2...v5.0.0
 [v4.3.2]: https://github.com/rinvex/cortex-categories/compare/v4.3.1...v4.3.2
 [v4.3.1]: https://github.com/rinvex/cortex-categories/compare/v4.3.0...v4.3.1
