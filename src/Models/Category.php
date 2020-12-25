@@ -13,24 +13,23 @@ use Cortex\Categories\Events\CategoryCreated;
 use Cortex\Categories\Events\CategoryDeleted;
 use Cortex\Categories\Events\CategoryUpdated;
 use Cortex\Categories\Events\CategoryRestored;
-
 use Rinvex\Categories\Models\Category as BaseCategory;
 
 /**
  * Cortex\Categories\Models\Category.
  *
- * @property int                                                                           $id
- * @property string                                                                        $slug
- * @property array                                                                         $name
- * @property array                                                                         $description
- * @property int                                                                           $_lft
- * @property int                                                                           $_rgt
- * @property int                                                                           $parent_id
- * @property string                                                                        $style
- * @property string                                                                        $icon
- * @property \Carbon\Carbon|null                                                           $created_at
- * @property \Carbon\Carbon|null                                                           $updated_at
- * @property \Carbon\Carbon|null                                                           $deleted_at
+ * @property int                 $id
+ * @property string              $slug
+ * @property array               $name
+ * @property array               $description
+ * @property int                 $_lft
+ * @property int                 $_rgt
+ * @property int                 $parent_id
+ * @property string              $style
+ * @property string              $icon
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property \Carbon\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cortex\Foundation\Models\Log[] $activity
  * @property-read \Kalnoy\Nestedset\Collection|\Cortex\Categories\Models\Category[]        $children
  * @property-read \Cortex\Categories\Models\Category|null                                  $parent
