@@ -11,10 +11,14 @@ use Rinvex\Support\Traits\ConsoleTools;
 use Illuminate\Contracts\Events\Dispatcher;
 use Cortex\Categories\Console\Commands\SeedCommand;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Cortex\Categories\Console\Commands\UnloadCommand;
 use Cortex\Categories\Console\Commands\InstallCommand;
 use Cortex\Categories\Console\Commands\MigrateCommand;
 use Cortex\Categories\Console\Commands\PublishCommand;
 use Cortex\Categories\Console\Commands\RollbackCommand;
+use Cortex\Categories\Console\Commands\ActivateCommand;
+use Cortex\Categories\Console\Commands\AutoloadCommand;
+use Cortex\Categories\Console\Commands\DeactivateCommand;
 
 class CategoriesServiceProvider extends ServiceProvider
 {
@@ -26,6 +30,11 @@ class CategoriesServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
+        ActivateCommand::class => 'command.cortex.categories.activate',
+        DeactivateCommand::class => 'command.cortex.categories.deactivate',
+        AutoloadCommand::class => 'command.cortex.categories.autoload',
+        UnloadCommand::class => 'command.cortex.categories.unload',
+
         SeedCommand::class => 'command.cortex.categories.seed',
         InstallCommand::class => 'command.cortex.categories.install',
         MigrateCommand::class => 'command.cortex.categories.migrate',
