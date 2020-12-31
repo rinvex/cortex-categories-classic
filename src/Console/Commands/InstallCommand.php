@@ -35,6 +35,7 @@ class InstallCommand extends Command
         $this->call('cortex:migrate:categories', ['--force' => $this->option('force')]);
         $this->call('cortex:seed:categories');
 
-        $this->call('cortex:activate', ['--module' => 'cortex/categories']);
+        $this->call('cortex:autoload:categories', ['--force' => $this->option('force')]);
+        $this->call('cortex:activate:categories', ['--force' => $this->option('force')]);
     }
 }
