@@ -15,9 +15,9 @@ use Cortex\Categories\Console\Commands\UnloadCommand;
 use Cortex\Categories\Console\Commands\InstallCommand;
 use Cortex\Categories\Console\Commands\MigrateCommand;
 use Cortex\Categories\Console\Commands\PublishCommand;
-use Cortex\Categories\Console\Commands\RollbackCommand;
 use Cortex\Categories\Console\Commands\ActivateCommand;
 use Cortex\Categories\Console\Commands\AutoloadCommand;
+use Cortex\Categories\Console\Commands\RollbackCommand;
 use Cortex\Categories\Console\Commands\DeactivateCommand;
 
 class CategoriesServiceProvider extends ServiceProvider
