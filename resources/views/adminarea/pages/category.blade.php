@@ -113,7 +113,22 @@
                                 </div>
 
                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
 
+                                    {{-- Category --}}
+                                    <div class="form-group{{ $errors->has('parent_id') ? ' has-error' : '' }}">
+                                        {{ Form::label('parent_id', trans('cortex/categories::common.parent_category'), ['class' => 'control-label']) }}
+                                        {{ Form::hidden('parent_id', '', ['class' => 'skip-validation']) }}
+                                        {{ Form::select('parent_id', $ParentCategories, null, ['class' => 'form-control select2', 'data-width' => '100%', 'data-allow-clear' => 'true', 'placeholder' => trans('cortex/categories::common.parent_category')]) }}
+
+                                        @if ($errors->has('parent_id'))
+                                            <span class="help-block">{{ $errors->first('parent_id') }}</span>
+                                        @endif
+                                    </div>
+
+                                </div>
+                            </div>
                             <div class="row">
 
                                 <div class="col-md-12">
