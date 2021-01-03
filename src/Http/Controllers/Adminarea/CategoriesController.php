@@ -172,9 +172,9 @@ class CategoriesController extends AuthorizedController
      */
     protected function form(Request $request, Category $category)
     {
-        $ParentCategories = app('rinvex.categories.category')->pluck('name','id');
+        $ParentCategories = app('rinvex.categories.category')->pluck('name', 'id');
 
-        return view('cortex/categories::adminarea.pages.category', compact('category','ParentCategories'));
+        return view('cortex/categories::adminarea.pages.category', compact('category', 'ParentCategories'));
     }
 
     /**
