@@ -172,7 +172,13 @@ class CategoriesController extends AuthorizedController
      */
     protected function form(Request $request, Category $category)
     {
-        return view('cortex/categories::adminarea.pages.category', compact('category'));
+        if (! $category->exists && $request->has('replicate') && $replicated = $category->resolveRouteBinding($request->get('replicate'))) {
+            $category = $replicated->replicate();
+        }
+
+        $ParentCategories = app('rinvex.categories.category')->pluck('name', 'id');
+
+        return view('cortex/categories::adminarea.pages.category', compact('category', 'ParentCategories'));
     }
 
     /**
