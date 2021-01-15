@@ -172,7 +172,7 @@ class CategoriesController extends AuthorizedController
      */
     protected function form(Request $request, Category $category)
     {
-        if(! $category->exists && $request->has('replicate') && $replicated = $category->resolveRouteBinding($request->get('replicate'))){
+        if (! $category->exists && $request->has('replicate') && $replicated = $category->resolveRouteBinding($request->get('replicate'))) {
             $category = $replicated->replicate();
         }
 
