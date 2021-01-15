@@ -107,8 +107,6 @@ class Category extends BaseCategory
         $this->mergeCasts(['style' => 'string', 'icon' => 'string']);
 
         $this->mergeRules(['style' => 'nullable|string|strip_tags|max:150', 'icon' => 'nullable|string|strip_tags|max:150']);
-
-        $this->setTable(config('rinvex.categories.tables.categories'));
     }
 
     /**
