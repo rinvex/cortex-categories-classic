@@ -22,7 +22,7 @@ class CategoriesController extends AuthorizedController
     /**
      * {@inheritdoc}
      */
-    protected $resource = Category::class;
+    protected $resource = 'rinvex.categories.models.category';
 
     /**
      * List all categories.
