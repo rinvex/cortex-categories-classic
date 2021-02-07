@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v5.0.7] - 2021-02-07
+- Remove indirect composer dependency
+
 ## [v5.0.6] - 2021-02-06
 - Add support for runtime configurable model to allow model override (fix abilities/permission issues)
 - Skip publishing module resources unless explicitly specified, for simplicity
@@ -196,6 +199,7 @@ allow admin to select category parent
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v5.0.7]: https://github.com/rinvex/cortex-categories/compare/v5.0.6...v5.0.7
 [v5.0.6]: https://github.com/rinvex/cortex-categories/compare/v5.0.5...v5.0.6
 [v5.0.5]: https://github.com/rinvex/cortex-categories/compare/v5.0.4...v5.0.5
 [v5.0.4]: https://github.com/rinvex/cortex-categories/compare/v5.0.3...v5.0.4
