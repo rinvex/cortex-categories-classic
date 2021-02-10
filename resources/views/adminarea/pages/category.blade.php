@@ -144,7 +144,7 @@
                                         {{ Form::button(trans('cortex/categories::common.submit'), ['class' => 'btn btn-primary btn-flat', 'type' => 'submit']) }}
                                     </div>
 
-                                    @include('cortex/foundation::adminarea.partials.timestamps', ['model' => $category])
+                                    @include('cortex/foundation::common.partials.timestamps', ['model' => $category])
 
                                 </div>
 
