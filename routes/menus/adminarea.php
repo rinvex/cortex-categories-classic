@@ -6,9 +6,9 @@ use Rinvex\Menus\Models\MenuItem;
 use Cortex\Categories\Models\Category;
 use Rinvex\Menus\Models\MenuGenerator;
 
-Menu::register('adminarea.sidebar', function (MenuGenerator $menu, Category $category) {
-    $menu->findByTitleOrAdd(trans('cortex/foundation::common.taxonomy'), 10, 'fa fa-arrows', 'header', [], function (MenuItem $dropdown) use ($category) {
-        $dropdown->route(['adminarea.cortex.categories.categories.index'], trans('cortex/categories::common.categories'), 10, 'fa fa-sitemap')->ifCan('list', $category)->activateOnRoute('adminarea.cortex.categories.categories');
+Menu::register('adminarea.sidebar', function (MenuGenerator $menu) {
+    $menu->findByTitleOrAdd(trans('cortex/foundation::common.taxonomy'), 10, 'fa fa-arrows', 'header', [], function (MenuItem $dropdown) {
+        $dropdown->route(['adminarea.cortex.categories.categories.index'], trans('cortex/categories::common.categories'), 10, 'fa fa-sitemap')->ifCan('list', app('rinvex.categories.category'))->activateOnRoute('adminarea.cortex.categories.categories');
     });
 });
 
