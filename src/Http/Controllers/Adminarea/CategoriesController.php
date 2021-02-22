@@ -7,7 +7,7 @@ namespace Cortex\Categories\Http\Controllers\Adminarea;
 use Exception;
 use Illuminate\Http\Request;
 use Cortex\Categories\Models\Category;
-use Illuminate\Foundation\Http\FormRequest;
+use Cortex\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Foundation\Importers\DefaultImporter;
 use Cortex\Foundation\DataTables\ImportLogsDataTable;
@@ -210,7 +210,7 @@ class CategoriesController extends AuthorizedController
     /**
      * Process stored/updated category.
      *
-     * @param \Illuminate\Foundation\Http\FormRequest $request
+     * @param \Cortex\Foundation\Http\FormRequest $request
      * @param \Cortex\Categories\Models\Category      $category
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
