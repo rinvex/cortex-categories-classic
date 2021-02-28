@@ -211,7 +211,7 @@ class CategoriesController extends AuthorizedController
      * Process stored/updated category.
      *
      * @param \Cortex\Foundation\Http\FormRequest $request
-     * @param \Cortex\Categories\Models\Category      $category
+     * @param \Cortex\Categories\Models\Category  $category
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
