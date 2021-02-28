@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v5.0.9] - 2021-02-28
+- Use overridden `FormRequest` instead of native class
+- Utilize IoC service container instead of hardcoded models for menu permissions
+- Use `request->input()` instead of `request->get()`
+
 ## [v5.0.8] - 2021-02-11
 - Replace form timestamps with common blade view
 
@@ -202,6 +207,7 @@ allow admin to select category parent
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v5.0.9]: https://github.com/rinvex/cortex-categories/compare/v5.0.8...v5.0.9
 [v5.0.8]: https://github.com/rinvex/cortex-categories/compare/v5.0.7...v5.0.8
 [v5.0.7]: https://github.com/rinvex/cortex-categories/compare/v5.0.6...v5.0.7
 [v5.0.6]: https://github.com/rinvex/cortex-categories/compare/v5.0.5...v5.0.6
