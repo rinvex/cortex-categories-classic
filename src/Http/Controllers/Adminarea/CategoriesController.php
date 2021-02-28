@@ -7,7 +7,7 @@ namespace Cortex\Categories\Http\Controllers\Adminarea;
 use Exception;
 use Illuminate\Http\Request;
 use Cortex\Categories\Models\Category;
-use Illuminate\Foundation\Http\FormRequest;
+use Cortex\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Foundation\Importers\DefaultImporter;
 use Cortex\Foundation\DataTables\ImportLogsDataTable;
@@ -98,7 +98,7 @@ class CategoriesController extends AuthorizedController
      */
     public function hoard(ImportFormRequest $request)
     {
-        foreach ((array) $request->get('selected_ids') as $recordId) {
+        foreach ((array) $request->input('selected_ids') as $recordId) {
             $record = app('cortex.foundation.import_record')->find($recordId);
 
             try {
@@ -172,7 +172,7 @@ class CategoriesController extends AuthorizedController
      */
     protected function form(Request $request, Category $category)
     {
-        if (! $category->exists && $request->has('replicate') && $replicated = $category->resolveRouteBinding($request->get('replicate'))) {
+        if (! $category->exists && $request->has('replicate') && $replicated = $category->resolveRouteBinding($request->input('replicate'))) {
             $category = $replicated->replicate();
         }
 
@@ -210,8 +210,8 @@ class CategoriesController extends AuthorizedController
     /**
      * Process stored/updated category.
      *
-     * @param \Illuminate\Foundation\Http\FormRequest $request
-     * @param \Cortex\Categories\Models\Category      $category
+     * @param \Cortex\Foundation\Http\FormRequest $request
+     * @param \Cortex\Categories\Models\Category  $category
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
