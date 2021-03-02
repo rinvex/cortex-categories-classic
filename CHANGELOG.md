@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v5.0.10] - 2021-03-02
+- Autoload artisan commands
+
 ## [v5.0.9] - 2021-02-28
 - Use overridden `FormRequest` instead of native class
 - Utilize IoC service container instead of hardcoded models for menu permissions
@@ -30,8 +33,8 @@ allow admin to select category parent
 
 ## [v5.0.3] - 2021-01-01
 - Move cortex:autoload & cortex:activate commands to cortex/foundation module responsibility- Move cortex:autoload & cortex:activate commands to cortex/foundation module responsibility
-  - This is because :autoload & :activate commands are registered only if the module already autoloaded, so there is no way we can execute commands of unloaded modules
-  - cortex/foundation module is always autoloaded, so it's the logical and reasonable place to register these :autoload & :activate module commands and control other modules from outside
+    - This is because :autoload & :activate commands are registered only if the module already autoloaded, so there is no way we can execute commands of unloaded modules
+    - cortex/foundation module is always autoloaded, so it's the logical and reasonable place to register these :autoload & :activate module commands and control other modules from outside
 
 ## [v5.0.2] - 2020-12-31
 - Rename seeders directory
@@ -70,7 +73,7 @@ allow admin to select category parent
 
 ## [v4.2.0] - 2020-06-15
 - Autoload config, views, language, menus, breadcrumbs, and migrations
-  - This is now done automatically through cortex/foundation, so no need to manually wire it here anymore
+    - This is now done automatically through cortex/foundation, so no need to manually wire it here anymore
 - Merge additional fillable, casts, and rules instead of overriding
 - Drop PHP 7.2 & 7.3 support from travis
 
@@ -142,7 +145,7 @@ allow admin to select category parent
 ## [v3.0.4] - 2019-12-18
 - Add DT_RowId field to datatables
 - Fix route regex pattern to include underscores
-  - This way it's compatible with validation rule `alpha_dash`
+    - This way it's compatible with validation rule `alpha_dash`
 - Fix `migrate:reset` args as it doesn't accept --step
 
 ## [v3.0.3] - 2019-10-14
@@ -185,8 +188,8 @@ allow admin to select category parent
 
 ## [v1.0.3] - 2019-01-04
 - Remove useless migration, this is confusing (why we introduced this migration at first place?!)
-  - 75944d928478cb8a02d9ec62dd8da046c411e5c5
-  - 7693524076ac1164bc60bfd1d719a0ed2593d3ae
+    - 75944d928478cb8a02d9ec62dd8da046c411e5c5
+    - 7693524076ac1164bc60bfd1d719a0ed2593d3ae
 
 ## [v1.0.2] - 2019-01-03
 - Rename environment variable QUEUE_DRIVER to QUEUE_CONNECTION
@@ -207,6 +210,7 @@ allow admin to select category parent
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v5.0.10]: https://github.com/rinvex/cortex-categories/compare/v5.0.9...v5.0.10
 [v5.0.9]: https://github.com/rinvex/cortex-categories/compare/v5.0.8...v5.0.9
 [v5.0.8]: https://github.com/rinvex/cortex-categories/compare/v5.0.7...v5.0.8
 [v5.0.7]: https://github.com/rinvex/cortex-categories/compare/v5.0.6...v5.0.7
