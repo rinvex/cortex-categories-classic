@@ -9,29 +9,11 @@ use Cortex\Categories\Models\Category;
 use Illuminate\Support\ServiceProvider;
 use Rinvex\Support\Traits\ConsoleTools;
 use Illuminate\Contracts\Events\Dispatcher;
-use Cortex\Categories\Console\Commands\SeedCommand;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Cortex\Categories\Console\Commands\InstallCommand;
-use Cortex\Categories\Console\Commands\MigrateCommand;
-use Cortex\Categories\Console\Commands\PublishCommand;
-use Cortex\Categories\Console\Commands\RollbackCommand;
 
 class CategoriesServiceProvider extends ServiceProvider
 {
     use ConsoleTools;
-
-    /**
-     * The commands to be registered.
-     *
-     * @var array
-     */
-    protected $commands = [
-        SeedCommand::class => 'command.cortex.categories.seed',
-        InstallCommand::class => 'command.cortex.categories.install',
-        MigrateCommand::class => 'command.cortex.categories.migrate',
-        PublishCommand::class => 'command.cortex.categories.publish',
-        RollbackCommand::class => 'command.cortex.categories.rollback',
-    ];
 
     /**
      * Register any application services.
@@ -47,9 +29,6 @@ class CategoriesServiceProvider extends ServiceProvider
         // Bind eloquent models to IoC container
         $this->app['config']['rinvex.categories.models.category'] === Category::class
         || $this->app->alias('rinvex.categories.category', Category::class);
-
-        // Register console commands
-        $this->registerCommands($this->commands);
     }
 
     /**
