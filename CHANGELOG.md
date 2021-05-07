@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v5.0.11] - 2021-05-07
+- Rename migrations to always run after rinvex core packages
+- Upgrade to GitHub-native Dependabot
+
 ## [v5.0.10] - 2021-03-02
 - Autoload artisan commands
 
@@ -210,6 +214,7 @@ allow admin to select category parent
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v5.0.11]: https://github.com/rinvex/cortex-categories/compare/v5.0.10...v5.0.11
 [v5.0.10]: https://github.com/rinvex/cortex-categories/compare/v5.0.9...v5.0.10
 [v5.0.9]: https://github.com/rinvex/cortex-categories/compare/v5.0.8...v5.0.9
 [v5.0.8]: https://github.com/rinvex/cortex-categories/compare/v5.0.7...v5.0.8
