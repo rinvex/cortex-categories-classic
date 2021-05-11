@@ -100,13 +100,13 @@ class Category extends BaseCategory
      */
     public function __construct(array $attributes = [])
     {
-        parent::__construct($attributes);
-
         $this->mergeFillable(['style', 'icon']);
 
         $this->mergeCasts(['style' => 'string', 'icon' => 'string']);
 
         $this->mergeRules(['style' => 'nullable|string|strip_tags|max:150', 'icon' => 'nullable|string|strip_tags|max:150']);
+
+        parent::__construct($attributes);
     }
 
     /**
