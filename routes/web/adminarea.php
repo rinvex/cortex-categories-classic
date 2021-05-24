@@ -20,7 +20,7 @@ Route::domain(domain())->group(function () {
                  Route::get('{category}')->name('show')->uses('CategoriesController@show');
                  Route::get('{category}/edit')->name('edit')->uses('CategoriesController@edit');
                  Route::put('{category}/edit')->name('update')->uses('CategoriesController@update');
-                 Route::get('{category}/logs')->name('logs')->uses('CategoriesController@logs');
+                 Route::match(['get', 'post'], '{category}/logs')->name('logs')->uses('CategoriesController@logs');
                  Route::delete('{category}')->name('destroy')->uses('CategoriesController@destroy');
              });
          });
