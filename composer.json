@@ -50,7 +50,7 @@
         "illuminate/support": "^8.0.0 || ^9.0.0",
         "cortex/foundation": "^6.0.0",
         "diglactic/laravel-breadcrumbs": "^7.0.0",
-        "kalnoy/nestedset": "^5.0.0",
+        "kalnoy/nestedset": "^6.0.0",
         "laravelcollective/html": "^6.2.0",
         "league/fractal": "^0.19.0",
         "proengsoft/laravel-jsvalidation": "^4.4.0",
@@ -58,14 +58,14 @@
         "rinvex/laravel-composer": "^5.0.0",
         "rinvex/laravel-menus": "^5.0.0",
         "rinvex/laravel-support": "^5.0.0",
-        "spatie/laravel-activitylog": "^3.16.0",
+        "spatie/laravel-activitylog": "^4.0.0",
         "yajra/laravel-datatables-buttons": "^4.10.0",
         "yajra/laravel-datatables-fractal": "^1.6.0",
         "yajra/laravel-datatables-html": "^4.36.0",
         "yajra/laravel-datatables-oracle": "^9.15.0"
     },
     "require-dev": {
-        "codedungeon/phpunit-result-printer": "^0.30.0",
+        "codedungeon/phpunit-result-printer": "^0.31.0",
         "phpunit/phpunit": "^9.5.0"
     },
     "autoload": {
