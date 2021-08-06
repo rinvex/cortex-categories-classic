@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\Models;
 
+use Spatie\Activitylog\LogOptions;
 use Rinvex\Support\Traits\Macroable;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
@@ -69,31 +70,6 @@ class Category extends BaseCategory
     ];
 
     /**
-     * Indicates whether to log only dirty attributes or all.
-     *
-     * @var bool
-     */
-    protected static $logOnlyDirty = true;
-
-    /**
-     * The attributes that are logged on change.
-     *
-     * @var array
-     */
-    protected static $logFillable = true;
-
-    /**
-     * The attributes that are ignored on change.
-     *
-     * @var array
-     */
-    protected static $ignoreChangedAttributes = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
-
-    /**
      * Create a new Eloquent model instance.
      *
      * @param array $attributes
@@ -107,6 +83,19 @@ class Category extends BaseCategory
         $this->mergeRules(['style' => 'nullable|string|strip_tags|max:150', 'icon' => 'nullable|string|strip_tags|max:150']);
 
         parent::__construct($attributes);
+    }
+
+    /**
+     * Set sensible Activity Log Options.
+     *
+     * @return \Spatie\Activitylog\LogOptions
+     */
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+                         ->logFillable()
+                         ->logOnlyDirty()
+                         ->dontSubmitEmptyLogs();
     }
 
     /**
