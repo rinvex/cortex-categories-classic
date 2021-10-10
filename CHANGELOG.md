@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v6.1.1] - 2021-10-11
+- Rename route parameter 'central_domain' to 'routeDomain'
+
 ## [v6.1.0] - 2021-08-22
 - Drop PHP v7 support, and upgrade rinvex package dependencies to next major version
 
@@ -242,6 +245,7 @@ allow admin to select category parent
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v6.1.1]: https://github.com/rinvex/cortex-categories/compare/v6.1.0...v6.1.1
 [v6.1.0]: https://github.com/rinvex/cortex-categories/compare/v6.0.0...v6.1.0
 [v6.0.0]: https://github.com/rinvex/cortex-categories/compare/v5.0.17...v6.0.0
 [v5.0.17]: https://github.com/rinvex/cortex-categories/compare/v5.0.16...v5.0.17
