@@ -7,7 +7,6 @@ namespace Cortex\Categories\Providers;
 use Cortex\Categories\Models\Category;
 use Illuminate\Support\ServiceProvider;
 use Rinvex\Support\Traits\ConsoleTools;
-use Illuminate\Database\Eloquent\Relations\Relation;
 
 class CategoriesServiceProvider extends ServiceProvider
 {
@@ -27,18 +26,5 @@ class CategoriesServiceProvider extends ServiceProvider
         // Bind eloquent models to IoC container
         $this->app['config']['rinvex.categories.models.category'] === Category::class
         || $this->app->alias('rinvex.categories.category', Category::class);
-    }
-
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot(): void
-    {
-        // Map relations
-        Relation::morphMap([
-            'category' => config('rinvex.categories.models.category'),
-        ]);
     }
 }
