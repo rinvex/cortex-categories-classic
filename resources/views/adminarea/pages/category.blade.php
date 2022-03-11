@@ -24,7 +24,7 @@
         <section class="content">
 
             <div class="nav-tabs-custom">
-                @includeWhen($category->exists, 'cortex/foundation::adminarea.partials.actions', ['name' => 'category', 'model' => $category, 'resource' => trans('cortex/categories::common.category'), 'routePrefix' => 'adminarea.cortex.categories.categories.'])
+                @includeWhen($category->exists, 'cortex/foundation::adminarea.partials.actions', ['name' => 'category', 'model' => $category, 'resource' => trans('cortex/categories::common.category'), 'routePrefix' => 'adminarea.cortex.categories.categories'])
                 {!! Menu::render('adminarea.cortex.categories.categories.tabs', 'nav-tab') !!}
 
                 <div class="tab-content">
