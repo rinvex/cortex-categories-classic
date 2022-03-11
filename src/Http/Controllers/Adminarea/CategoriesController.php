@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\Http\Controllers\Adminarea;
 
-use Cortex\Foundation\Importers\InsertImporter;
-use Exception;
 use Illuminate\Http\Request;
 use Cortex\Categories\Models\Category;
 use Cortex\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
+use Cortex\Foundation\Importers\InsertImporter;
 use Cortex\Foundation\Http\Requests\ImportFormRequest;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 use Cortex\Categories\DataTables\Adminarea\CategoriesDataTable;
@@ -60,7 +59,7 @@ class CategoriesController extends AuthorizedController
      *
      * @param \Cortex\Foundation\Http\Requests\ImportFormRequest $request
      * @param \Cortex\Foundation\Importers\InsertImporter        $importer
-     * @param \Cortex\Categories\Models\Category $category
+     * @param \Cortex\Categories\Models\Category                 $category
      *
      * @return void
      */
