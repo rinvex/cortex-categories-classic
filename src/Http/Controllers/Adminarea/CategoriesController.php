@@ -4,15 +4,12 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\Http\Controllers\Adminarea;
 
-use Exception;
 use Illuminate\Http\Request;
 use Cortex\Categories\Models\Category;
 use Cortex\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
-use Cortex\Foundation\Importers\DefaultImporter;
-use Cortex\Foundation\DataTables\ImportLogsDataTable;
+use Cortex\Foundation\Importers\InsertImporter;
 use Cortex\Foundation\Http\Requests\ImportFormRequest;
-use Cortex\Foundation\DataTables\ImportRecordsDataTable;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 use Cortex\Categories\DataTables\Adminarea\CategoriesDataTable;
 use Cortex\Categories\Http\Requests\Adminarea\CategoryFormRequest;
@@ -35,6 +32,7 @@ class CategoriesController extends AuthorizedController
     {
         return $categoriesDataTable->with([
             'id' => 'adminarea-cortex-categories-categories-index',
+            'routePrefix' => 'adminarea.cortex.categories.categories',
             'pusher' => ['entity' => 'category', 'channel' => 'cortex.categories.categories.index'],
         ])->render('cortex/foundation::adminarea.pages.datatable-index');
     }
@@ -59,81 +57,15 @@ class CategoriesController extends AuthorizedController
     /**
      * Import categories.
      *
-     * @param \Cortex\Categories\Models\Category                   $category
-     * @param \Cortex\Foundation\DataTables\ImportRecordsDataTable $importRecordsDataTable
-     *
-     * @return \Illuminate\View\View
-     */
-    public function import(Category $category, ImportRecordsDataTable $importRecordsDataTable)
-    {
-        return $importRecordsDataTable->with([
-            'resource' => $category,
-            'tabs' => 'adminarea.cortex.categories.categories.tabs',
-            'url' => route('adminarea.cortex.categories.categories.stash'),
-            'id' => "adminarea-cortex-categories-categories-{$category->getRouteKey()}-import",
-        ])->render('cortex/foundation::adminarea.pages.datatable-dropzone');
-    }
-
-    /**
-     * Stash categories.
-     *
      * @param \Cortex\Foundation\Http\Requests\ImportFormRequest $request
-     * @param \Cortex\Foundation\Importers\DefaultImporter       $importer
+     * @param \Cortex\Foundation\Importers\InsertImporter        $importer
+     * @param \Cortex\Categories\Models\Category                 $category
      *
      * @return void
      */
-    public function stash(ImportFormRequest $request, DefaultImporter $importer)
+    public function import(ImportFormRequest $request, InsertImporter $importer, Category $category)
     {
-        // Handle the import
-        $importer->config['resource'] = $this->resource;
-        $importer->handleImport();
-    }
-
-    /**
-     * Hoard categories.
-     *
-     * @param \Cortex\Foundation\Http\Requests\ImportFormRequest $request
-     *
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     */
-    public function hoard(ImportFormRequest $request)
-    {
-        foreach ((array) $request->input('selected_ids') as $recordId) {
-            $record = app('cortex.foundation.import_record')->find($recordId);
-
-            try {
-                $fillable = collect($record['data'])->intersectByKeys(array_flip(app('rinvex.categories.category')->getFillable()))->toArray();
-
-                tap(app('rinvex.categories.category')->firstOrNew($fillable), function ($instance) use ($record) {
-                    $instance->save() && $record->delete();
-                });
-            } catch (Exception $exception) {
-                $record->notes = $exception->getMessage().(method_exists($exception, 'getMessageBag') ? "\n".json_encode($exception->getMessageBag())."\n\n" : '');
-                $record->status = 'fail';
-                $record->save();
-            }
-        }
-
-        return intend([
-            'back' => true,
-            'with' => ['success' => trans('cortex/foundation::messages.import_complete')],
-        ]);
-    }
-
-    /**
-     * List category import logs.
-     *
-     * @param \Cortex\Foundation\DataTables\ImportLogsDataTable $importLogsDatatable
-     *
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     */
-    public function importLogs(ImportLogsDataTable $importLogsDatatable)
-    {
-        return $importLogsDatatable->with([
-            'resource' => trans('cortex/categories::common.category'),
-            'tabs' => 'adminarea.cortex.categories.categories.tabs',
-            'id' => 'adminarea-cortex-categories-categories-import-logs',
-        ])->render('cortex/foundation::adminarea.pages.datatable-tab');
+        $importer->withModel($category)->import($request->file('file'));
     }
 
     /**

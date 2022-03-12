@@ -12,10 +12,7 @@ Route::domain('{adminarea}')->group(function () {
         // Categories Routes
              Route::name('cortex.categories.categories.')->prefix('categories')->group(function () {
                  Route::match(['get', 'post'], '/')->name('index')->uses([CategoriesController::class, 'index']);
-                 Route::get('import')->name('import')->uses([CategoriesController::class, 'import']);
-                 Route::post('import')->name('stash')->uses([CategoriesController::class, 'stash']);
-                 Route::post('hoard')->name('hoard')->uses([CategoriesController::class, 'hoard']);
-                 Route::get('import/logs')->name('import.logs')->uses([CategoriesController::class, 'importLogs']);
+                 Route::post('import')->name('import')->uses([CategoriesController::class, 'import']);
                  Route::get('create')->name('create')->uses([CategoriesController::class, 'create']);
                  Route::post('create')->name('store')->uses([CategoriesController::class, 'store']);
                  Route::get('{category}')->name('show')->uses([CategoriesController::class, 'show']);
