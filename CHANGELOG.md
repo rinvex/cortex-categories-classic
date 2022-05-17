@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v6.2.2] - 2022-05-17
+- Add support for menu list item attributes
+
 ## [v6.2.1] - 2022-03-12
 - WIP Refactor & Simplify datatables import functionality
 - Update composer dependency codedungeon/phpunit-result-printer
@@ -261,6 +264,7 @@ allow admin to select category parent
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v6.2.2]: https://github.com/rinvex/cortex-categories/compare/v6.2.1...v6.2.2
 [v6.2.1]: https://github.com/rinvex/cortex-categories/compare/v6.2.0...v6.2.1
 [v6.2.0]: https://github.com/rinvex/cortex-categories/compare/v6.1.2...v6.2.0
 [v6.1.2]: https://github.com/rinvex/cortex-categories/compare/v6.1.1...v6.1.2
