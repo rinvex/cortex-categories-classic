@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\DataTables\Adminarea;
 
+use Illuminate\Http\JsonResponse;
 use Cortex\Categories\Models\Category;
 use Cortex\Foundation\DataTables\AbstractDataTable;
 use Cortex\Categories\Transformers\Adminarea\CategoryTransformer;
@@ -25,7 +26,7 @@ class CategoriesDataTable extends AbstractDataTable
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function ajax()
+    public function ajax(): JsonResponse
     {
         return datatables($this->query())
             ->setTransformer(app($this->transformer))
