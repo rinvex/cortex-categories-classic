@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v6.2.5] - 2022-07-24
+- Fix datatables checkbox select-row options
+- Fix audit ability check for import logs
+- Add missing export ability
+
 ## [v6.2.4] - 2022-06-22
 - Fix datatables ajax method signature
 
@@ -275,6 +280,7 @@ allow admin to select category parent
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v6.2.5]: https://github.com/rinvex/cortex-categories/compare/v6.2.4...v6.2.5
 [v6.2.4]: https://github.com/rinvex/cortex-categories/compare/v6.2.3...v6.2.4
 [v6.2.3]: https://github.com/rinvex/cortex-categories/compare/v6.2.2...v6.2.3
 [v6.2.2]: https://github.com/rinvex/cortex-categories/compare/v6.2.1...v6.2.2
