@@ -14,7 +14,7 @@ Menu::register('adminarea.sidebar', function (MenuGenerator $menu) {
 
 Menu::register('adminarea.cortex.categories.categories.tabs', function (MenuGenerator $menu, Category $category) {
     $menu->route(['adminarea.cortex.categories.categories.import'], trans('cortex/categories::common.records'))->ifCan('import', $category)->if(Route::is('adminarea.cortex.categories.categories.import*'));
-    $menu->route(['adminarea.cortex.categories.categories.import.logs'], trans('cortex/categories::common.logs'))->ifCan('import', $category)->if(Route::is('adminarea.cortex.categories.categories.import*'));
+    $menu->route(['adminarea.cortex.categories.categories.import.logs'], trans('cortex/categories::common.logs'))->ifCan('audit', $category)->if(Route::is('adminarea.cortex.categories.categories.import*'));
     $menu->route(['adminarea.cortex.categories.categories.create'], trans('cortex/categories::common.details'))->ifCan('create', $category)->if(Route::is('adminarea.cortex.categories.categories.create'));
     $menu->route(['adminarea.cortex.categories.categories.edit', ['category' => $category]], trans('cortex/categories::common.details'))->ifCan('update', $category)->if($category->exists);
     $menu->route(['adminarea.cortex.categories.categories.logs', ['category' => $category]], trans('cortex/categories::common.logs'))->ifCan('audit', $category)->if($category->exists);
