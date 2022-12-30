@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v6.2.7] - 2022-12-30
+- Whitelist datatable columns to avoid invalid columns sent from client-side which might be a security issue in some scenarios
+
 ## [v6.2.6] - 2022-08-30
 - Clean the breadcrumbs definition and utilize parent features
 
@@ -283,6 +286,7 @@ allow admin to select category parent
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v6.2.7]: https://github.com/rinvex/cortex-categories/compare/v6.2.6...v6.2.7
 [v6.2.6]: https://github.com/rinvex/cortex-categories/compare/v6.2.5...v6.2.6
 [v6.2.5]: https://github.com/rinvex/cortex-categories/compare/v6.2.4...v6.2.5
 [v6.2.4]: https://github.com/rinvex/cortex-categories/compare/v6.2.3...v6.2.4
