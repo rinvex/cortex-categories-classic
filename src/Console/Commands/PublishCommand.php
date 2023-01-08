@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\Console\Commands;
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use Rinvex\Categories\Console\Commands\PublishCommand as BasePublishCommand;
 
+#[AsCommand(name: 'cortex:publish:categories')]
 class PublishCommand extends BasePublishCommand
 {
     /**

@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v7.0.0] - 2023-01-09
+- Drop PHP v8.0 support and update composer dependencies
+- Move Relation::morphMap to vendor package
+- Utilize PHP 8.1 attributes feature for artisan commands
+- Update composer dependencies and php version requirement to v8.1
+
 ## [v6.2.7] - 2022-12-30
 - Whitelist datatable columns to avoid invalid columns sent from client-side which might be a security issue in some scenarios
 
@@ -286,6 +292,7 @@ allow admin to select category parent
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v7.0.0]: https://github.com/rinvex/cortex-categories/compare/v6.2.7...v7.0.0
 [v6.2.7]: https://github.com/rinvex/cortex-categories/compare/v6.2.6...v6.2.7
 [v6.2.6]: https://github.com/rinvex/cortex-categories/compare/v6.2.5...v6.2.6
 [v6.2.5]: https://github.com/rinvex/cortex-categories/compare/v6.2.4...v6.2.5

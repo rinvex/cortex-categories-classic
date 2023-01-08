@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Cortex\Categories\Console\Commands;
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use Rinvex\Categories\Console\Commands\RollbackCommand as BaseRollbackCommand;
 
+#[AsCommand(name: 'cortex:rollback:categories')]
 class RollbackCommand extends BaseRollbackCommand
 {
     /**
