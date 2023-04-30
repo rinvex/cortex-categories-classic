@@ -47,6 +47,7 @@ use Rinvex\Categories\Models\Category as BaseCategory;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereStyle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Categories\Models\Category whereUpdatedAt($value)
+ *
  * @mixin \Eloquent
  */
 class Category extends BaseCategory
