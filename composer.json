@@ -53,7 +53,7 @@
         "kalnoy/nestedset": "^6.0.0",
         "laravelcollective/html": "^6.3.0",
         "league/fractal": "^0.20.0",
-        "proengsoft/laravel-jsvalidation": "^4.7.0",
+        "proengsoft/laravel-jsvalidation": "^4.8.0",
         "rinvex/laravel-categories": "^7.0.0",
         "rinvex/laravel-composer": "^7.0.0",
         "rinvex/laravel-menus": "^7.0.0",
