@@ -6,14 +6,14 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
 ## [v7.1.0] - 2023-05-02
-2d85e51 - Add support for Laravel v11, and drop support for Laravel v9
-18bb58b - Upgrade yajra/laravel-datatables-oracle to v10.4 from v10.0
-8149d7e - Upgrade yajra/laravel-datatables-html to v10.0 from v9.0
-fb30ff2 - Upgrade yajra/laravel-datatables-buttons to v10.0 from v9.0
-879db6c - Upgrade proengsoft/laravel-jsvalidation to v4.8 from v4.7
-2994a21 - Upgrade spatie/laravel-activitylog to v4.7 from v4.4
-e64df82 - Update yajra/laravel-datatables-fractal to v10.0 from v9.0
-7041f8a - Update phpunit to v10.1 from v9.5
+- 2d85e51: Add support for Laravel v11, and drop support for Laravel v9
+- 18bb58b: Upgrade yajra/laravel-datatables-oracle to v10.4 from v10.0
+- 8149d7e: Upgrade yajra/laravel-datatables-html to v10.0 from v9.0
+- fb30ff2: Upgrade yajra/laravel-datatables-buttons to v10.0 from v9.0
+- 879db6c: Upgrade proengsoft/laravel-jsvalidation to v4.8 from v4.7
+- 2994a21: Upgrade spatie/laravel-activitylog to v4.7 from v4.4
+- e64df82: Update yajra/laravel-datatables-fractal to v10.0 from v9.0
+- 7041f8a: Update phpunit to v10.1 from v9.5
 
 ## [v7.0.0] - 2023-01-09
 - Drop PHP v8.0 support and update composer dependencies
