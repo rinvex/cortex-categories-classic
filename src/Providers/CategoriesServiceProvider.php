@@ -24,7 +24,8 @@ class CategoriesServiceProvider extends ServiceProvider
     public function register(): void
     {
         // Bind eloquent models to IoC container
-        $this->app['config']['rinvex.categories.models.category'] === Category::class
-        || $this->app->alias('rinvex.categories.category', Category::class);
+        $this->registerModels([
+            'rinvex.categories.category' => Category::class,
+        ]);
     }
 }
