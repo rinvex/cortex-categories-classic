@@ -34,8 +34,8 @@ class MigrateCommand extends BaseMigrateCommand
         parent::handle();
 
         $path = config('cortex.categories.autoload_migrations') ?
-            'app/cortex/categories/database/migrations' :
-            'database/migrations/cortex/categories';
+            realpath(__DIR__.'/../../../database/migrations') :
+            $this->laravel->databasePath('migrations/cortex/categories');
 
         if (file_exists($path)) {
             $this->call('migrate', [
