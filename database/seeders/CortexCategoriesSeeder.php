@@ -17,6 +17,7 @@ class CortexCategoriesSeeder extends Seeder
     {
         $abilities = [
             ['name' => 'list', 'title' => 'List categories', 'entity_type' => 'category'],
+            ['name' => 'view', 'title' => 'View categories', 'entity_type' => 'category'],
             ['name' => 'import', 'title' => 'Import categories', 'entity_type' => 'category'],
             ['name' => 'export', 'title' => 'Export categories', 'entity_type' => 'category'],
             ['name' => 'create', 'title' => 'Create categories', 'entity_type' => 'category'],
