@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v7.2.3] - 2023-08-17
+- Seed the new 'view' ability
+
 ## [v7.2.2] - 2023-07-03
 - Update composer dependencies
 
@@ -314,6 +317,7 @@ allow admin to select category parent
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v7.2.3]: https://github.com/rinvex/cortex-categories/compare/v7.2.2...v7.2.3
 [v7.2.2]: https://github.com/rinvex/cortex-categories/compare/v7.2.1...v7.2.2
 [v7.2.1]: https://github.com/rinvex/cortex-categories/compare/v7.2.0...v7.2.1
 [v7.2.0]: https://github.com/rinvex/cortex-categories/compare/v7.1.0...v7.2.0
