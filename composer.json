@@ -62,7 +62,7 @@
         "rinvex/laravel-menus": "^7.0.0",
         "rinvex/laravel-support": "^7.0.0",
         "spatie/laravel-activitylog": "^4.7.0",
-        "yajra/laravel-datatables-buttons": "^10.0.0",
+        "yajra/laravel-datatables-buttons": "^11.0.0",
         "yajra/laravel-datatables-fractal": "^10.0.0",
         "yajra/laravel-datatables-html": "^10.0.0",
         "yajra/laravel-datatables-oracle": "^10.4.0",
